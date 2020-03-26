@@ -1,5 +1,18 @@
 .header {
+  grid-column: full-start / full-end;
+
   display: grid;
   grid-template-rows: repeat(2, 1fr);
-  grid-template-columns: 20rem 1fr;
+  grid-template-columns: min-content 1fr;
+  align-items: center;
+  justify-items: center;
+  padding-bottom: 2rem;
+  border-bottom: 1px dotted $color-grey-light-2;
+
+  &__logo {
+    height: 15rem;
+    object-fit: cover;
+    grid-row: 1 / -1;
+    grid-column: 1 / 2;
+  }
 }

@@ -1,12 +1,17 @@
 import React from 'react';
 
+import Logo from '../../img/logo.png';
+import TopNav from './TopNav';
+
+import BottomNav from './BottomNav';
+
 const Header = () => {
   return (
     <header className='header'>
-      <p>1</p>
-      <p>2</p>
+      <img src={Logo} alt='logo' className='header__logo' />
+      <TopNav />
 
-      <p>3</p>
+      <BottomNav />
     </header>
   );
 };

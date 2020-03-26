@@ -13,6 +13,10 @@ a {
     color: inherit;
   }
 }
+
+ul {
+  list-style-type: none;
+}
 body {
   font-family: $font-primary;
   font-weight: 400;
@@ -88,7 +92,7 @@ body {
   }
 }
 ::placeholder {
-  color: rgba($color-black, 0.9);
+  color: $color-grey-dark-2;
   font-size: 1.6rem;
 }
 

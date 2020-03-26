@@ -16,6 +16,12 @@ body {
 
 .container {
   margin-top: 5rem;
+
+  display: grid;
+  grid-template-rows: 17rem 50rem;
+  grid-template-columns: [marginLeft-start] 3rem [marginLeft-end full-start] 8rem [center-start] 1fr [middle-start] 2fr [middle-end] 1fr [center-end] 8rem [full-end marginRight-start] 3rem [marginRight-end];
+
+  grid-row-gap: 2rem;
 }
 .content {
 }

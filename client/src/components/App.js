@@ -6,7 +6,7 @@ import { loadUser } from '../actions/auth';
 import setAuthToken from './../utils/setAuthToken';
 
 import Alert from './layout/Alert';
-import DashboardPage from './pages/DashboardPage';
+import DashboardPage from './pages/dashboard/DashboardPage';
 import '../styles/main.scss';
 
 const App = () => {
