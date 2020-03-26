@@ -1,0 +1,35 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+}
+
+.container {
+}
+.content {
+}
+
+.devinfo {
+  color: $color-white;
+  font-style: italic;
+  margin-top: 0.5rem;
+  text-align: center;
+
+  &--left {
+    text-align: left;
+  }
+}
+::selection {
+  background-color: $color-primary-dark;
+  color: $color-white;
+}
