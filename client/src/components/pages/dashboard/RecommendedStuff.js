@@ -1,0 +1,55 @@
+import React, { useState } from 'react';
+
+import RecommendedOption from './RecommendedOption';
+
+const RecommendedStuff = () => {
+  const [option, setOption] = useState({
+    choosen: 'recommended'
+  });
+  const onChange = e => {
+    setOption({ ...option, [e.target.name]: e.target.value });
+    console.log(option.choosen);
+  };
+
+  return (
+    <section className='dashboard__recommended'>
+      <ul className='dashboard__recommended__list'>
+        <li>
+          <button
+            className='dashboard__recommended__list__item'
+            name='choosen'
+            value={'recommended'}
+            onClick={e => onChange(e)}
+          >
+            Recommended
+          </button>
+        </li>
+        <li>
+          <button
+            className='dashboard__recommended__list__item'
+            name='choosen'
+            value={'news'}
+            onClick={e => onChange(e)}
+          >
+            News
+          </button>
+        </li>
+        <li>
+          <button
+            className='dashboard__recommended__list__item'
+            name='choosen'
+            value={'hit'}
+            onClick={e => onChange(e)}
+          >
+            Hit
+          </button>
+        </li>
+      </ul>
+      <div className='dashboard__recommended__content'>
+        <RecommendedOption />
+      </div>
+    </section>
+  );
+};
+
+export default RecommendedStuff;

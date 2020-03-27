@@ -3,6 +3,8 @@
     grid-column: center-start / center-end;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    padding-bottom: 5rem;
+    border-bottom: 1px dotted $color-grey-dark-2;
 
     &__center {
       height: 100%;
@@ -70,6 +72,64 @@
         &__subheading {
           color: $color-background;
           font-weight: 300;
+        }
+      }
+    }
+  }
+
+  &__recommended {
+    grid-row: recommended-start / recommended-end;
+    grid-column: center-start / center-end;
+
+    display: grid;
+    grid-template-rows: min-content min-content;
+
+    &__list {
+      display: flex;
+      justify-content: space-evenly;
+
+      &__item {
+        background: none;
+        border: none;
+        font-family: $font-primary;
+        font-size: 2rem;
+        cursor: pointer;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    &__content {
+      grid-row: full-start / full-end;
+      margin-top: 5rem;
+
+      &__rec-option {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+
+        &__item {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
+
+          &__name {
+            font-size: 1.4rem;
+            font-weight: 300;
+          }
+          &__price {
+            font-size: 2rem;
+            color: $color-primary;
+            font-weight: 600;
+            letter-spacing: 1px;
+          }
+          &__oldPrice {
+            font-size: 1.4rem;
+            color: $color-grey-light-2;
+            text-decoration: line-through;
+          }
         }
       }
     }
