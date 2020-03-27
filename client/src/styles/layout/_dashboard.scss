@@ -1,6 +1,77 @@
 .dashboard {
-  &__landscape {
-    width: 100%;
-    grid-column: middle-start / middle-end;
+  &__overview {
+    grid-column: center-start / center-end;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    &__center {
+      height: 100%;
+
+      display: grid;
+      grid-template-rows: 10rem 1fr;
+      align-items: center;
+      cursor: pointer;
+
+      &__heading {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+        &__btn {
+          clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
+          border-radius: 2px;
+          text-transform: uppercase;
+          padding: 1rem 3rem;
+          background-color: $color-primary;
+          color: $color-background;
+          font-weight: 600;
+          text-align: center;
+        }
+      }
+    }
+    &__photo {
+      width: 100%;
+      padding: 1rem 3rem;
+      padding-bottom: 0;
+    }
+
+    &__square {
+      &__external {
+        &--left {
+          background-color: $color-primary;
+        }
+
+        &--right {
+          background-color: $color-primary-dark;
+        }
+      }
+      &__inner {
+        height: calc(100% - 8rem);
+        margin: 4rem;
+        border: 3px solid $color-background;
+        border-radius: 1rem;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        &__icon {
+          height: 6rem;
+          width: 6rem;
+          fill: $color-background;
+        }
+
+        &__heading {
+          color: $color-background;
+          font-weight: 300;
+          margin: 1.5rem 0;
+        }
+        &__subheading {
+          color: $color-background;
+          font-weight: 300;
+        }
+      }
+    }
   }
 }

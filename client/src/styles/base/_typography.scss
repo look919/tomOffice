@@ -41,7 +41,8 @@ body {
 }
 .heading-4 {
   @extend %heading;
-  font-size: 2.4rem;
+  font-size: 1.8rem;
+  font-style: italic;
 }
 .alert {
   position: absolute;
