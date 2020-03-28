@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../../layout/Header';
 import Overview from './Overview';
 import RecommendedStuff from './RecommendedStuff';
+import Footer from '../../layout/Footer';
 
 const DashboardPage = () => {
   return (
@@ -9,6 +10,7 @@ const DashboardPage = () => {
       <Header />
       <Overview />
       <RecommendedStuff />
+      <Footer />
     </main>
   );
 };
