@@ -1,0 +1,40 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+}
+
+.container {
+  margin-top: 5rem;
+
+  display: grid;
+  grid-template-rows: 17rem 50rem [recommended-start] min-content [recommended-end footer-start] min-content [footer-end];
+  grid-template-columns: [marginLeft-start] 3rem [marginLeft-end full-start] 8rem [center-start] 1fr [middle-start] 2fr [middle-end] 1fr [center-end] 8rem [full-end marginRight-start] 3rem [marginRight-end];
+
+  grid-row-gap: 5rem;
+}
+
+.devinfo {
+  color: $color-white;
+  font-style: italic;
+  margin-top: 0.5rem;
+  text-align: center;
+
+  &--left {
+    text-align: left;
+  }
+}
+::selection {
+  background-color: $color-primary-dark;
+  color: $color-white;
+}
