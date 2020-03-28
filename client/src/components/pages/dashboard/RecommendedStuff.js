@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
 import RecommendedOption from './RecommendedOption';
+import NewsOption from './NewsOption';
+import HitOption from './HitOption';
 
 const RecommendedStuff = () => {
   const [option, setOption] = useState({
@@ -16,7 +18,11 @@ const RecommendedStuff = () => {
       <ul className='dashboard__recommended__list'>
         <li>
           <button
-            className='dashboard__recommended__list__item'
+            className={
+              option.choosen === 'recommended'
+                ? 'dashboard__recommended__list__item--active dashboard__recommended__list__item'
+                : 'dashboard__recommended__list__item'
+            }
             name='choosen'
             value={'recommended'}
             onClick={e => onChange(e)}
@@ -26,7 +32,11 @@ const RecommendedStuff = () => {
         </li>
         <li>
           <button
-            className='dashboard__recommended__list__item'
+            className={
+              option.choosen === 'news'
+                ? 'dashboard__recommended__list__item--active dashboard__recommended__list__item'
+                : 'dashboard__recommended__list__item'
+            }
             name='choosen'
             value={'news'}
             onClick={e => onChange(e)}
@@ -36,7 +46,11 @@ const RecommendedStuff = () => {
         </li>
         <li>
           <button
-            className='dashboard__recommended__list__item'
+            className={
+              option.choosen === 'hit'
+                ? 'dashboard__recommended__list__item--active dashboard__recommended__list__item'
+                : 'dashboard__recommended__list__item'
+            }
             name='choosen'
             value={'hit'}
             onClick={e => onChange(e)}
@@ -46,7 +60,13 @@ const RecommendedStuff = () => {
         </li>
       </ul>
       <div className='dashboard__recommended__content'>
-        <RecommendedOption />
+        {option.choosen === 'recommended' ? (
+          <RecommendedOption />
+        ) : option.choosen === 'news' ? (
+          <NewsOption />
+        ) : (
+          <HitOption />
+        )}
       </div>
     </section>
   );
