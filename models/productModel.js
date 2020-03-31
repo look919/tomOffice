@@ -30,6 +30,19 @@ const productSchema = new mongoose.Schema({
   amount: {
     type: String,
     default: 10
+  },
+  colors: {
+    type: [String],
+    required: [true, 'at least one color is required']
+  },
+  state: {
+    type: String,
+    enum: ['recommended', 'new', 'hit', 'none'],
+    default: 'none'
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now()
   }
 });
 

@@ -1,12 +1,28 @@
 const crypto = require('crypto');
 const mongoose = require('mongoose');
+const validator = require('validator');
 const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
-  login: {
+  name: {
     type: String,
-    required: [true, 'login is required'],
-    unique: [true, 'login already taken']
+    required: [true, 'Please provide a name']
+  },
+  address: {
+    type: Object,
+    default: {
+      country: 'Poland',
+      town: '',
+      postCode: '',
+      street: ''
+    }
+  },
+  email: {
+    type: String,
+    required: [true, 'Please provide your email'],
+    unique: true,
+    lowercase: true,
+    validate: [validator.isEmail, 'Please provide a valid email']
   },
   role: {
     type: String,
@@ -56,10 +72,10 @@ userSchema.pre('save', function(next) {
 });
 
 userSchema.pre(/^find/, async function(next) {
-  this.populate({
-    // path: 'room',
-    // select: 'name price features'
-  });
+  //this.populate({
+  // path: 'room',
+  // select: 'name price features'
+  //});
 
   next();
 });

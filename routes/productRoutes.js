@@ -11,6 +11,7 @@ router.get('/:id', productController.getProduct);
 router.use(authController.protect);
 //RESTRICTED TO ADMIN
 router.use(authController.restrictTo('admin'));
+router.post('/', productController.createProduct);
 
 router
   .route('/:id')
