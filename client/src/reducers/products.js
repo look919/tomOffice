@@ -1,6 +1,6 @@
 import { GET_ALL_PRODUCTS_SUCCESS } from '../actions/types';
 
-const initialState = {};
+const initialState = [];
 
 export default function(state = initialState, action) {
   const { type, payload } = action;

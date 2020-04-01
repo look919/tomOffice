@@ -9,14 +9,15 @@ import setAuthToken from './../utils/setAuthToken';
 
 import Alert from './layout/Alert';
 import DashboardPage from './pages/dashboard/DashboardPage';
+import CategoryPage from './pages/product/CategoryPage';
 import '../styles/main.scss';
 
 const App = () => {
   if (localStorage.token) {
     setAuthToken(localStorage.token);
+    store.dispatch(loadUser());
   }
   useEffect(() => {
-    store.dispatch(loadUser());
     store.dispatch(getAllProducts());
   }, []);
 
@@ -29,6 +30,14 @@ const App = () => {
           <Alert />
           <Switch>
             <Route path='/' component={DashboardPage} exact={true} />
+            <Route
+              path='/:category'
+              render={props => <CategoryPage {...props} isAuthed={true} />}
+            />
+            <Route
+              path='/:category/:id'
+              //render={props => <ItemPage {...props} isAuthed={true} />}
+            />
           </Switch>
         </div>
       </BrowserRouter>

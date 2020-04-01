@@ -11,31 +11,14 @@ export const getAllProducts = (category = '') => async dispatch => {
       'hit',
       'new'
     ]);
-    console.log(res.data);
     res.data.recommended = recommended;
 
     dispatch({
       type: GET_ALL_PRODUCTS_SUCCESS,
-      payload: res.data
+      payload: res.data.data
     });
   } catch (err) {
     console.log(err);
-    dispatch({
-      type: GET_ALL_PRODUCTS_FAIL,
-      payload: { msg: 'error', status: 'not found' }
-    });
-  }
-};
-
-export const getRecommendedProducts = () => async dispatch => {
-  try {
-    const res = await axios.get('/api/v1/products');
-
-    dispatch({
-      type: GET_ALL_PRODUCTS_SUCCESS,
-      payload: res.data
-    });
-  } catch (err) {
     dispatch({
       type: GET_ALL_PRODUCTS_FAIL,
       payload: { msg: 'error', status: 'not found' }
