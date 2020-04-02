@@ -28,7 +28,7 @@
   &__amount {
     position: absolute;
     top: 4rem;
-    right: 2rem;
+    left: 3rem;
 
     padding: 1rem 3rem;
 
@@ -68,8 +68,9 @@
     align-items: center;
 
     &__name {
-      font-size: 2.4rem;
+      font-size: 2.6rem;
       font-weight: 600;
+      letter-spacing: 1px;
     }
     &__prices {
       display: flex;
@@ -78,12 +79,14 @@
       align-items: center;
     }
     &__price {
-      font-size: 2.8rem;
+      font-size: 3rem;
       color: $color-primary;
       letter-spacing: 1px;
+      font-weight: 600;
     }
     &__oldPrice {
       font-size: 2rem;
+      letter-spacing: 1px;
       color: $color-grey-light-2;
       text-decoration: line-through;
     }

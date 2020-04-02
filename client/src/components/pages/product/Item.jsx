@@ -75,7 +75,6 @@ export const Item = ({ products, id }) => {
                 type='number'
                 className='itemPage__details__amount'
                 disabled
-                defaultValue={amount}
                 value={amount}
               />
 

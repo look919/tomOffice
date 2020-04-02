@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import selector from '../../../selectors/categoryProducts';
@@ -10,7 +10,7 @@ export const CategoryPageItem = ({ products, category }) => {
   //Filters
   const [filters, setFilters] = useState({
     text: '',
-    minPrice: 0,
+    minPrice: 1,
     maxPrice: 10000,
     color: ''
   });
@@ -58,17 +58,22 @@ export const CategoryPageItem = ({ products, category }) => {
 
         <div className='categoryPage__filters__prices'>
           <input
-            className='categoryPage__filters__input'
-            placeholder='Min price'
-            type='number'
             name='minPrice'
             value={filters.minPrice}
             onChange={e => onChange(e)}
+            className='categoryPage__filters__input'
+            placeholder='Min price'
+            type='number'
+            min='0'
+            max='10000'
           />
           <input
             className='categoryPage__filters__input'
             placeholder='Max price'
             type='number'
+            min='1'
+            max='10000'
+            maxLength={5}
             name='maxPrice'
             value={filters.maxPrice}
             onChange={e => onChange(e)}
@@ -204,6 +209,7 @@ export const CategoryPageItem = ({ products, category }) => {
               <img
                 src={require(`../../../img/${item.image}`)}
                 className='categoryPage__item__img'
+                alt='furniture view'
               />
             </Link>
             <Link to={`/item/${item._id}`}>

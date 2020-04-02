@@ -104,15 +104,14 @@
     }
 
     &__input {
-      flex: 1 0 0;
       height: 3.2rem;
-      width: 15rem;
+
       font-family: $font-primary;
       font-size: 1.8rem;
       padding: 0.3rem 0.7rem;
       margin: 0 2rem;
       border: none;
-      color: $color-grey-dark-2;
+      color: $color-black;
       border-bottom: 1px solid $color-primary-dark;
       background: none;
       text-align: center;
@@ -152,6 +151,7 @@
     display: grid;
     grid-template-rows: 20rem repeat(2, 5rem);
     padding: 1rem;
+    transition: all 0.5s;
 
     &__img {
       width: 100%;
@@ -174,7 +174,7 @@
       color: $color-background;
       font-size: 1.2rem;
       transform: rotate(15deg);
-
+      transition: all 0.3s;
       &--empty {
         display: none;
       }
