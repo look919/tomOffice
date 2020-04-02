@@ -8,9 +8,13 @@
 }
 a {
   text-decoration: none;
+  color: $color-black;
 
   &:visited {
-    color: inherit;
+    color: $color-black;
+  }
+  &:hover {
+    text-decoration: underline;
   }
 }
 

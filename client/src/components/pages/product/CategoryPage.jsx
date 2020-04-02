@@ -6,7 +6,7 @@ import Footer from '../../layout/Footer';
 
 export const CategoryPage = props => {
   return (
-    <main className='container--category'>
+    <main className='container container--category'>
       <Header />
       <CategoryPageItem category={props.match.params.category} />
       <Footer />
