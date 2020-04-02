@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import selector from '../../../selectors/categoryProducts';
-import filterSelector from '../../../selectors/products';
+import filterSelector from '../../../selectors/filterProducts';
 import { Link } from 'react-router-dom';
 import { SearchIcon } from '../../layout/Icons';
 
 export const CategoryPageItem = ({ products, category }) => {
+  //Filters
   const [filters, setFilters] = useState({
     text: '',
     minPrice: 0,
@@ -14,25 +15,39 @@ export const CategoryPageItem = ({ products, category }) => {
     color: ''
   });
   const { text, minPrice, maxPrice, color } = filters;
-
-  products ? (products = products) : (products = []);
-  let items = selector(products, `${category}`);
-
-  if (text !== '' || minPrice !== 0 || maxPrice !== 10000 || color !== '')
-    items = filterSelector(items, filters);
-
   const onChange = e => {
     setFilters({ ...filters, [e.target.name]: e.target.value });
   };
+  const clearFilters = () =>
+    setFilters({
+      text: '',
+      minPrice: 0,
+      maxPrice: 10000,
+      color: ''
+    });
 
+  //Products
+  products ? (products = products) : (products = []);
+  let items = selector(products, `${category}`);
+  if (text !== '' || minPrice !== 0 || maxPrice !== 10000 || color !== '')
+    items = filterSelector(items, filters);
+
+  //Redirecting
   const categories = ['officeCabinet', 'sofa', 'desk', 'chair', 'lighting'];
   if (!categories.includes(category)) {
     return <Redirect to={'/'} />;
   }
+
   return (
     <section className='categoryPage'>
       <div className='categoryPage__filters'>
         <h3 className='heading-3 categoryPage__filters__header'>Filtry</h3>
+        <button
+          className='btn categoryPage__filters__clear'
+          onClick={clearFilters}
+        >
+          Wyczyść filtry
+        </button>
         <h4 className='heading-4 categoryPage__filters__prices__header'>
           Cena
         </h4>
@@ -185,13 +200,13 @@ export const CategoryPageItem = ({ products, category }) => {
       <div className='categoryPage__items'>
         {items.map(item => (
           <div className='categoryPage__item' key={item._id}>
-            <Link to={`/${category}/${item._id}`}>
+            <Link to={`/item/${item._id}`}>
               <img
                 src={require(`../../../img/${item.image}`)}
                 className='categoryPage__item__img'
               />
             </Link>
-            <Link to={`/${category}/${item._id}`}>
+            <Link to={`/item/${item._id}`}>
               <div className='categoryPage__item__name'>{item.name}</div>
             </Link>
             <div className='categoryPage__item__prices'>

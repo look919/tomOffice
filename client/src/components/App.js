@@ -4,12 +4,13 @@ import { Provider } from 'react-redux';
 import store from '../store';
 import { loadUser } from '../actions/auth';
 import { getAllProducts } from '../actions/products';
-import selector from '../selectors/products';
 import setAuthToken from './../utils/setAuthToken';
 
 import Alert from './layout/Alert';
 import DashboardPage from './pages/dashboard/DashboardPage';
 import CategoryPage from './pages/product/CategoryPage';
+import ItemPage from './pages/product/ItemPage';
+
 import '../styles/main.scss';
 
 const App = () => {
@@ -21,8 +22,6 @@ const App = () => {
     store.dispatch(getAllProducts());
   }, []);
 
-  //console.log(selector(getAllProducts(), { text: 'baba', color: 'white' }));
-
   return (
     <Provider store={store}>
       <BrowserRouter>
@@ -31,12 +30,12 @@ const App = () => {
           <Switch>
             <Route path='/' component={DashboardPage} exact={true} />
             <Route
-              path='/:category'
+              path='/products/:category'
               render={props => <CategoryPage {...props} isAuthed={true} />}
             />
             <Route
-              path='/:category/:id'
-              //render={props => <ItemPage {...props} isAuthed={true} />}
+              path='/item/:id'
+              render={props => <ItemPage {...props} isAuthed={true} />}
             />
           </Switch>
         </div>

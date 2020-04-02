@@ -9,19 +9,19 @@ const BottomNav = () => {
           <Link to='/'>Main page</Link>
         </li>
         <li className='nav__bottom__list__item'>
-          <Link to='/officeCabinet'>Szafy</Link>
+          <Link to='/products/officeCabinet'>Szafy</Link>
         </li>
         <li className='nav__bottom__list__item'>
-          <Link to='/sofa'>Sofy</Link>
+          <Link to='/products/sofa'>Sofy</Link>
         </li>
         <li className='nav__bottom__list__item'>
-          <Link to='/desk'>Biurka</Link>
+          <Link to='/products/desk'>Biurka</Link>
         </li>
         <li className='nav__bottom__list__item'>
-          <Link to='/chair'>Krzesła</Link>
+          <Link to='/products/chair'>Krzesła</Link>
         </li>
         <li className='nav__bottom__list__item'>
-          <Link to='/lighting'>Oświetlenie</Link>
+          <Link to='/products/lighting'>Oświetlenie</Link>
         </li>
       </ul>
     </nav>
