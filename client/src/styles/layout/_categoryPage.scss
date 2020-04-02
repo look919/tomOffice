@@ -47,6 +47,8 @@
     &__colors {
       grid-row: 2 / 3;
       grid-column: 3 / 4;
+      display: flex;
+      align-items: center;
 
       &__header {
         font-style: normal;
@@ -59,10 +61,24 @@
         cursor: pointer;
         margin: 0.5rem 1rem;
 
+        &--active {
+          box-shadow: 0 0 3pt 2pt $color-primary;
+        }
         &:focus {
           outline: none;
         }
 
+        &--rainbow {
+          background-image: linear-gradient(
+            to left,
+            violet,
+            blue,
+            green,
+            yellow,
+            orange,
+            red
+          );
+        }
         &--black {
           background-color: $color-black;
         }
@@ -134,7 +150,7 @@
     &__img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
     }
     &__name {
       text-align: center;

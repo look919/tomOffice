@@ -1,13 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import selector from '../../../selectors/categoryProducts';
+import filterSelector from '../../../selectors/products';
 import { Link } from 'react-router-dom';
 import { SearchIcon } from '../../layout/Icons';
 
 export const CategoryPageItem = ({ products, category }) => {
+  const [filters, setFilters] = useState({
+    text: '',
+    minPrice: 0,
+    maxPrice: 10000,
+    color: ''
+  });
+  const { text, minPrice, maxPrice, color } = filters;
+
   products ? (products = products) : (products = []);
-  const items = selector(products, `${category}`);
+  let items = selector(products, `${category}`);
+
+  if (text !== '' || minPrice !== 0 || maxPrice !== 10000 || color !== '')
+    items = filterSelector(items, filters);
+
+  const onChange = e => {
+    setFilters({ ...filters, [e.target.name]: e.target.value });
+  };
 
   const categories = ['officeCabinet', 'sofa', 'desk', 'chair', 'lighting'];
   if (!categories.includes(category)) {
@@ -30,34 +46,138 @@ export const CategoryPageItem = ({ products, category }) => {
             className='categoryPage__filters__input'
             placeholder='Min price'
             type='number'
+            name='minPrice'
+            value={filters.minPrice}
+            onChange={e => onChange(e)}
           />
           <input
             className='categoryPage__filters__input'
             placeholder='Max price'
             type='number'
+            name='maxPrice'
+            value={filters.maxPrice}
+            onChange={e => onChange(e)}
           />
         </div>
         <div className='categoryPage__filters__colors'>
-          <button className='categoryPage__filters__colors__color categoryPage__filters__colors__color--black'>
-            &nbsp;
-          </button>
-          <button className='categoryPage__filters__colors__color categoryPage__filters__colors__color--grey'>
-            &nbsp;
-          </button>
-          <button className='categoryPage__filters__colors__color categoryPage__filters__colors__color--brown'>
-            &nbsp;
-          </button>
-          <button className='categoryPage__filters__colors__color categoryPage__filters__colors__color--blue'>
-            &nbsp;
-          </button>
-          <button className='categoryPage__filters__colors__color categoryPage__filters__colors__color--white'>
-            &nbsp;
-          </button>
+          {color === '' ? (
+            <button
+              className='categoryPage__filters__colors__color categoryPage__filters__colors__color--active categoryPage__filters__colors__color--rainbow'
+              name='color'
+              value={''}
+              onClick={e => onChange(e)}
+            ></button>
+          ) : (
+            <button
+              className='categoryPage__filters__colors__color categoryPage__filters__colors__color--rainbow'
+              name='color'
+              value={''}
+              onClick={e => onChange(e)}
+            ></button>
+          )}
+          {color === 'black' ? (
+            <button
+              className='categoryPage__filters__colors__color categoryPage__filters__colors__color--active categoryPage__filters__colors__color--black'
+              name='color'
+              value={'black'}
+              onClick={e => onChange(e)}
+            >
+              &nbsp;
+            </button>
+          ) : (
+            <button
+              className='categoryPage__filters__colors__color categoryPage__filters__colors__color--black'
+              name='color'
+              value={'black'}
+              onClick={e => onChange(e)}
+            >
+              &nbsp;
+            </button>
+          )}
+          {color === 'grey' ? (
+            <button
+              className='categoryPage__filters__colors__color categoryPage__filters__colors__color--active categoryPage__filters__colors__color--grey'
+              name='color'
+              value={'grey'}
+              onClick={e => onChange(e)}
+            >
+              &nbsp;
+            </button>
+          ) : (
+            <button
+              className='categoryPage__filters__colors__color categoryPage__filters__colors__color--grey'
+              name='color'
+              value={'grey'}
+              onClick={e => onChange(e)}
+            >
+              &nbsp;
+            </button>
+          )}
+          {color === 'brown' ? (
+            <button
+              className='categoryPage__filters__colors__color categoryPage__filters__colors__color--active categoryPage__filters__colors__color--brown'
+              name='color'
+              value={'brown'}
+              onClick={e => onChange(e)}
+            >
+              &nbsp;
+            </button>
+          ) : (
+            <button
+              className='categoryPage__filters__colors__color categoryPage__filters__colors__color--brown'
+              name='color'
+              value={'brown'}
+              onClick={e => onChange(e)}
+            >
+              &nbsp;
+            </button>
+          )}
+          {color === 'blue' ? (
+            <button
+              className='categoryPage__filters__colors__color categoryPage__filters__colors__color--active categoryPage__filters__colors__color--blue'
+              name='color'
+              value={'blue'}
+              onClick={e => onChange(e)}
+            >
+              &nbsp;
+            </button>
+          ) : (
+            <button
+              className='categoryPage__filters__colors__color categoryPage__filters__colors__color--blue'
+              name='color'
+              value={'blue'}
+              onClick={e => onChange(e)}
+            >
+              &nbsp;
+            </button>
+          )}
+          {color === 'white' ? (
+            <button
+              className='categoryPage__filters__colors__color categoryPage__filters__colors__color--active categoryPage__filters__colors__color--white'
+              name='color'
+              value={'white'}
+              onClick={e => onChange(e)}
+            >
+              &nbsp;
+            </button>
+          ) : (
+            <button
+              className='categoryPage__filters__colors__color categoryPage__filters__colors__color--white'
+              name='color'
+              value={'white'}
+              onClick={e => onChange(e)}
+            >
+              &nbsp;
+            </button>
+          )}
         </div>
         <div className='nav__top__item categoryPage__filters__text'>
           <input
             className='nav__top__item__input '
             placeholder='Insert item name'
+            name='text'
+            value={filters.text}
+            onChange={e => onChange(e)}
           />
           <SearchIcon />
         </div>

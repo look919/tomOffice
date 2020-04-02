@@ -1,9 +1,13 @@
 // Get visible products
-export default (products, { text, color }) => {
+export default (products, { text, color, minPrice, maxPrice }) => {
   return products.filter(product => {
-    const textMatch = product.name.toLowerCase().includes(text.toLowerCase());
-    const colorMatch = product.colors.includes(color);
+    let textMatch = true;
+    if (text)
+      textMatch = product.name.toLowerCase().includes(text.toLowerCase());
+    let colorMatch = true;
+    if (color) colorMatch = product.colors.includes(color);
 
-    return textMatch && colorMatch;
+    const priceMatch = product.price < maxPrice && product.price > minPrice;
+    return textMatch && colorMatch && priceMatch;
   });
 };
