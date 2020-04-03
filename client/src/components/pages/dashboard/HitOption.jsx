@@ -4,8 +4,9 @@ import selector from '../../../selectors/recProducts';
 import { connect } from 'react-redux';
 import { CartIconButton } from '../../layout/Icons';
 import addItemToCart from '../../../utils/addItemToCart';
+import { getCartItems } from '../../../actions/products';
 
-const HitOption = ({ products }) => {
+const HitOption = ({ products, getCartItems }) => {
   if (!products) products = [];
   let items = selector(products, ['hit']);
 
@@ -16,6 +17,7 @@ const HitOption = ({ products }) => {
 
   const handleButton = () => {
     addItemToCart(itemJSON);
+    getCartItems(products);
   };
 
   return (
@@ -78,4 +80,4 @@ const mapStateToProps = state => ({
   products: state.products.data
 });
 
-export default connect(mapStateToProps, {})(HitOption);
+export default connect(mapStateToProps, { getCartItems })(HitOption);

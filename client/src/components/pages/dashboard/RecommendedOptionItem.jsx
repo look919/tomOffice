@@ -1,7 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import { Link } from 'react-router-dom';
 import { CartIconButton } from '../../layout/Icons';
 import addItemToCart from '../../../utils/addItemToCart';
+import { getCartItems } from '../../../actions/products';
 
 const RecommendedOptionItem = props => {
   const item = {
@@ -11,6 +14,7 @@ const RecommendedOptionItem = props => {
 
   const handleButton = () => {
     addItemToCart(item);
+    props.getCartItems(props.products);
   };
 
   return (
@@ -42,4 +46,10 @@ const RecommendedOptionItem = props => {
   );
 };
 
-export default RecommendedOptionItem;
+const mapStateToProps = state => ({
+  products: state.products.data
+});
+
+export default connect(mapStateToProps, { getCartItems })(
+  RecommendedOptionItem
+);

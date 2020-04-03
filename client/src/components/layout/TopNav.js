@@ -1,24 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { SearchIcon, UserIcon, CartIcon } from './Icons';
-import getItemsFromCart from '../../utils/getItemsFromCart';
 
 import UKFlag from '../../img/uk.png';
 import PLFlag from '../../img/pl.png';
 
-const TopNav = ({ products }) => {
+const TopNav = ({ products, cart }) => {
   //Products
   if (!products) products = [];
-  const [cartProducts, setCartProducts] = useState([]);
-
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  console.log(cart.length, cartProducts.length);
-
-  useEffect(() => {
-    if (cart.length > cartProducts.length) {
-      setCartProducts(getItemsFromCart(products));
-    }
-  });
 
   return (
     <nav className='nav__top'>
@@ -40,19 +30,20 @@ const TopNav = ({ products }) => {
         <UserIcon />
         <p className='nav__top__item__p'>Moje konto</p>
       </div>
-      <div className='nav__top__item'>
+      <Link to='/cart' className='nav__top__item'>
         <CartIcon />
         <p className='nav__top__item__p'>Koszyk</p>
         <div className='nav__top__item__circle'>
-          <p className='nav__top__item__circle__p'>{cartProducts.length}</p>
+          <p className='nav__top__item__circle__p'>{cart.length || 0}</p>
         </div>
-      </div>
+      </Link>
     </nav>
   );
 };
 
 const mapStateToProps = state => ({
-  products: state.products.data
+  products: state.products.data,
+  cart: state.cart
 });
 
 export default connect(mapStateToProps, {})(TopNav);

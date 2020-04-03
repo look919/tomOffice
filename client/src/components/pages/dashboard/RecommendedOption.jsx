@@ -3,7 +3,7 @@ import RecommendedOptionItem from './RecommendedOptionItem';
 import selector from '../../../selectors/recProducts';
 import { connect } from 'react-redux';
 
-const RecommendedOption = ({ products }) => {
+const RecommendedOption = ({ products, getCartItems }) => {
   if (!products) products = [];
   let items = selector(products, ['recommended']);
 

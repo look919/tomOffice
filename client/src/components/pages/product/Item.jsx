@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 import addItemToCart from '../../../utils/addItemToCart';
 import selector from '../../../selectors/singleProduct';
 import { CartIconButton } from '../../layout/Icons';
+import { getCartItems } from '../../../actions/products';
 
-export const Item = ({ products, id }) => {
+export const Item = ({ products, id, getCartItems }) => {
   const [amount, setAmount] = useState(1);
   const decreaseAmount = () => {
     if (amount > 1) {
@@ -25,6 +26,7 @@ export const Item = ({ products, id }) => {
   const handleButton = item => {
     addItemToCart(item);
     setAmount(1);
+    getCartItems(products);
   };
 
   return (
@@ -159,4 +161,4 @@ const mapStateToProps = state => ({
   products: state.products.data
 });
 
-export default connect(mapStateToProps, {})(Item);
+export default connect(mapStateToProps, { getCartItems })(Item);

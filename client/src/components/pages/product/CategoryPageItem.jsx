@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+
 import selector from '../../../selectors/categoryProducts';
 import filterSelector from '../../../selectors/filterProducts';
+import { getCartItems } from '../../../actions/products';
 import addItemToCart from '../../../utils/addItemToCart';
-import { Link } from 'react-router-dom';
 import { SearchIcon, CartIconButton } from '../../layout/Icons';
 
-export const CategoryPageItem = ({ products, category }) => {
+export const CategoryPageItem = ({ products, category, getCartItems }) => {
   //Filters
   const [filters, setFilters] = useState({
     text: '',
@@ -35,6 +36,7 @@ export const CategoryPageItem = ({ products, category }) => {
 
   const handleButton = item => {
     addItemToCart(item);
+    getCartItems(products);
   };
 
   //Redirecting
@@ -270,4 +272,4 @@ const mapStateToProps = state => ({
   products: state.products.data
 });
 
-export default connect(mapStateToProps, {})(CategoryPageItem);
+export default connect(mapStateToProps, { getCartItems })(CategoryPageItem);
