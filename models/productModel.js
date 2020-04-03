@@ -28,7 +28,7 @@ const productSchema = new mongoose.Schema({
     default: 'default.png'
   },
   amount: {
-    type: String,
+    type: Number,
     default: 10
   },
   colors: {

@@ -1,6 +1,6 @@
 import React from 'react';
 import SquareOverview from './SquareOverview';
-import Promotion from '../../../img/promo1.jpg';
+import Promotion from '../../../img/promo.png';
 
 const Overview = () => {
   return (

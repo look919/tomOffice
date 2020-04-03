@@ -10,7 +10,6 @@ const RecommendedStuff = () => {
   });
   const onChange = e => {
     setOption({ ...option, [e.target.name]: e.target.value });
-    console.log(option.choosen);
   };
 
   return (

@@ -1,10 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { SearchIcon, UserIcon, CartIcon } from './Icons';
 
 import UKFlag from '../../img/uk.png';
 import PLFlag from '../../img/pl.png';
 
-const TopNav = () => {
+const TopNav = ({ products, cart }) => {
+  //Products
+  if (!products) products = [];
+
   return (
     <nav className='nav__top'>
       <div className='nav__top__item'>
@@ -23,17 +28,22 @@ const TopNav = () => {
       </button>
       <div className='nav__top__item'>
         <UserIcon />
-        <p className='nav__top__item__p'>My account</p>
+        <p className='nav__top__item__p'>Moje konto</p>
       </div>
-      <div className='nav__top__item'>
+      <Link to='/cart' className='nav__top__item'>
         <CartIcon />
-        <p className='nav__top__item__p'>Cart</p>
+        <p className='nav__top__item__p'>Koszyk</p>
         <div className='nav__top__item__circle'>
-          <p className='nav__top__item__circle__p'>13</p>
+          <p className='nav__top__item__circle__p'>{cart.length || 0}</p>
         </div>
-      </div>
+      </Link>
     </nav>
   );
 };
 
-export default TopNav;
+const mapStateToProps = state => ({
+  products: state.products.data,
+  cart: state.cart
+});
+
+export default connect(mapStateToProps, {})(TopNav);

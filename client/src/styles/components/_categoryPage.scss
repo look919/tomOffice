@@ -1,0 +1,253 @@
+.categoryPage {
+  grid-row: 2 / 3;
+  grid-column: center-start / center-end;
+
+  display: grid;
+  grid-template-rows: 20rem 1fr;
+  align-items: center;
+  justify-items: center;
+
+  &__filters {
+    padding: 5rem 2rem;
+    grid-row: 1 / 2;
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    grid-template-rows: 4rem 1fr;
+    grid-template-columns: 15rem repeat(3, 1fr);
+    align-items: center;
+    justify-items: center;
+
+    &__header {
+      grid-row: 1 / 2;
+      grid-column: 1 / 2;
+      font-size: 3rem;
+      font-weight: 600;
+    }
+    &__clear {
+      grid-row: 2 / 3;
+      grid-column: 1 / 2;
+      font-size: 1.2rem;
+    }
+
+    &__prices {
+      display: flex;
+      align-items: center;
+      padding: 1.5rem 3rem;
+
+      grid-row: 2 / 3;
+      grid-column: 2 / 3;
+
+      &__header {
+        grid-row: 1 / 2;
+        grid-column: 2 / 3;
+        font-style: normal;
+      }
+    }
+    &__text {
+      &__header {
+        font-style: normal;
+      }
+    }
+    &__colors {
+      grid-row: 2 / 3;
+      grid-column: 3 / 4;
+      display: flex;
+      align-items: center;
+
+      &__header {
+        font-style: normal;
+      }
+      &__color {
+        height: 2rem;
+        width: 2rem;
+        border-radius: 50%;
+        border: 1px solid $color-black;
+        cursor: pointer;
+        margin: 0.5rem 1rem;
+
+        &--active {
+          box-shadow: 0 0 3pt 2pt $color-primary;
+        }
+        &:focus {
+          outline: none;
+        }
+
+        &--rainbow {
+          background-image: linear-gradient(
+            to left,
+            violet,
+            blue,
+            green,
+            yellow,
+            orange,
+            red
+          );
+        }
+        &--black {
+          background-color: $color-black;
+        }
+        &--grey {
+          background-color: $color-grey-light-2;
+        }
+        &--white {
+          background-color: $color-white;
+        }
+        &--blue {
+          background-color: $color-primary;
+        }
+        &--brown {
+          background-color: burlywood;
+        }
+      }
+    }
+
+    &__input {
+      height: 3.2rem;
+
+      font-family: $font-primary;
+      font-size: 1.8rem;
+      padding: 0.3rem 0.7rem;
+      margin: 0 2rem;
+      border: none;
+      color: $color-black;
+      border-bottom: 1px solid $color-primary-dark;
+      background: none;
+      text-align: center;
+
+      &:focus {
+        outline: none;
+      }
+      &__icon {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+
+        height: 2rem;
+        width: 2rem;
+        fill: $color-primary;
+      }
+    }
+
+    &__text {
+      grid-row: 2 / 3;
+      grid-column: 4 / 5;
+    }
+  }
+  &__items {
+    width: 100%;
+    padding: 7rem 8rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+    grid-row-gap: 5rem;
+    align-items: center;
+    justify-items: center;
+  }
+
+  &__item {
+    position: relative;
+    height: 40rem;
+    display: grid;
+    grid-template-rows: 20rem repeat(2, 5rem);
+    padding: 1rem;
+    transition: all 0.5s;
+
+    &__img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    &__name {
+      text-align: center;
+      font-size: 1.6rem;
+      font-weight: 300;
+    }
+    &__amount {
+      position: absolute;
+      top: 2rem;
+      right: 1rem;
+
+      padding: 0.3rem 1rem;
+
+      border-radius: 3px;
+      color: $color-background;
+      font-size: 1.2rem;
+      transform: rotate(15deg);
+      transition: all 0.3s;
+      &--empty {
+        display: none;
+      }
+      &--single {
+        background-image: linear-gradient(
+          to right bottom,
+          rgba($color-primary-dark, 0.8),
+          rgba($color-primary, 0.9)
+        );
+      }
+      &--multi {
+        background-image: linear-gradient(
+          to right bottom,
+          rgba($color-primary, 0.9),
+          rgba($color-primary-dark, 0.9)
+        );
+      }
+    }
+    &__prices {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &__price {
+      font-size: 2.2rem;
+      color: $color-primary;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    &__oldPrice {
+      font-size: 1.6rem;
+      color: $color-grey-light-2;
+      text-decoration: line-through;
+    }
+    &__magazine {
+      font-size: 1.6rem;
+      text-align: center;
+      font-weight: 600;
+      grid-row: 4 / 5;
+      display: none;
+    }
+
+    &__btn {
+      grid-row: 5 / 6;
+      display: none;
+      padding: 0;
+
+      &:hover {
+        fill: $color-background;
+      }
+    }
+    &__icon {
+      height: 2rem;
+      width: 2rem;
+      fill: $color-background;
+      margin-right: 0.7rem;
+    }
+
+    &:hover {
+      border: 1px dotted $color-grey-dark-2;
+      grid-template-rows: 20rem repeat(4, 1fr);
+      z-index: 5;
+
+      transform: scale(1.2);
+    }
+    &:hover > &__magazine {
+      display: block;
+    }
+    &:hover > &__btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

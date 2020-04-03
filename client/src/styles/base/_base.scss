@@ -22,6 +22,10 @@ body {
   grid-template-columns: [marginLeft-start] 3rem [marginLeft-end full-start] 8rem [center-start] 1fr [middle-start] 2fr [middle-end] 1fr [center-end] 8rem [full-end marginRight-start] 3rem [marginRight-end];
 
   grid-row-gap: 5rem;
+
+  &--category {
+    grid-template-rows: 17rem min-content [footer-start] min-content [footer-end];
+  }
 }
 
 .devinfo {
