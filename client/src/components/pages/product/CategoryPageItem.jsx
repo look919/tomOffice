@@ -3,8 +3,9 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import selector from '../../../selectors/categoryProducts';
 import filterSelector from '../../../selectors/filterProducts';
+import addItemToCart from '../../../utils/addItemToCart';
 import { Link } from 'react-router-dom';
-import { SearchIcon } from '../../layout/Icons';
+import { SearchIcon, CartIconButton } from '../../layout/Icons';
 
 export const CategoryPageItem = ({ products, category }) => {
   //Filters
@@ -27,10 +28,14 @@ export const CategoryPageItem = ({ products, category }) => {
     });
 
   //Products
-  products ? (products = products) : (products = []);
+  if (!products) products = [];
   let items = selector(products, `${category}`);
   if (text !== '' || minPrice !== 0 || maxPrice !== 10000 || color !== '')
     items = filterSelector(items, filters);
+
+  const handleButton = item => {
+    addItemToCart(item);
+  };
 
   //Redirecting
   const categories = ['officeCabinet', 'sofa', 'desk', 'chair', 'lighting'];
@@ -223,6 +228,7 @@ export const CategoryPageItem = ({ products, category }) => {
                 {item.oldPrice.toFixed(2)}
               </span>
             </div>
+
             {item.amount > 5 ? (
               <span className='categoryPage__item__amount categoryPage__item__amount--empty'>
                 &nbsp;
@@ -246,7 +252,13 @@ export const CategoryPageItem = ({ products, category }) => {
                 ? 'W magazynie - wysyłka 5 dni'
                 : 'Produkt niedostepny'}
             </span>
-            <button className='btn categoryPage__item__btn'>Add to cart</button>
+            <button
+              onClick={() => handleButton({ id: item._id, amount: 1 })}
+              className='btn categoryPage__item__btn'
+            >
+              <CartIconButton className='categoryPage__item__icon' /> Dodaj do
+              koszyka
+            </button>
           </div>
         ))}
       </div>

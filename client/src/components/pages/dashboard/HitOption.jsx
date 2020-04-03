@@ -2,10 +2,21 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import selector from '../../../selectors/recProducts';
 import { connect } from 'react-redux';
+import { CartIconButton } from '../../layout/Icons';
+import addItemToCart from '../../../utils/addItemToCart';
 
 const HitOption = ({ products }) => {
-  products ? (products = products) : (products = []);
+  if (!products) products = [];
   let items = selector(products, ['hit']);
+
+  const itemJSON = {
+    id: items[0]._id || 'test',
+    amount: 1
+  };
+
+  const handleButton = () => {
+    addItemToCart(itemJSON);
+  };
 
   return (
     <div className='dashboard__recommended__content__hit-option'>
@@ -39,8 +50,11 @@ const HitOption = ({ products }) => {
                   {item.oldPrice + ',-'}
                 </span>
               </div>
-              <button className='btn dashboard__recommended__content__hit-option__item__btn'>
-                ADD TO CART
+              <button
+                onClick={handleButton}
+                className='btn dashboard__recommended__content__hit-option__item__btn'
+              >
+                <CartIconButton /> ADD TO CART
               </button>
             </div>
           </div>

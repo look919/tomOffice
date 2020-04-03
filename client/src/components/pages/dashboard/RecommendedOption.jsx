@@ -4,7 +4,7 @@ import selector from '../../../selectors/recProducts';
 import { connect } from 'react-redux';
 
 const RecommendedOption = ({ products }) => {
-  products ? (products = products) : (products = []);
+  if (!products) products = [];
   let items = selector(products, ['recommended']);
 
   return (
@@ -12,6 +12,7 @@ const RecommendedOption = ({ products }) => {
       {items.map(item => (
         <RecommendedOptionItem
           key={item._id}
+          id={item._id}
           link={`/item/${item._id}`}
           img={item.image}
           name={item.name}

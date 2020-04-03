@@ -4,7 +4,7 @@ import selector from '../../../selectors/recProducts';
 import { connect } from 'react-redux';
 
 const NewsOption = ({ products }) => {
-  products ? (products = products) : (products = []);
+  if (!products) products = [];
   let items = selector(products, ['new']);
 
   return (
@@ -12,6 +12,7 @@ const NewsOption = ({ products }) => {
       {items.map(item => (
         <NewsOptionItem
           key={item._id}
+          id={item._id}
           link={`/item/${item._id}`}
           name={item.name}
           desc={

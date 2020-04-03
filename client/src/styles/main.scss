@@ -6,11 +6,12 @@
 @import './base/utilities';
 
 @import './components/btn';
+@import './components//dashboard';
+@import './components/categoryPage';
+@import './components/itemPage';
+@import './components/cartPage';
 
 @import './layout/footer';
 @import './layout/header';
 @import './layout/nav-bottom';
 @import './layout/nav-top';
-@import './layout//dashboard';
-@import './layout/categoryPage';
-@import './layout/itemPage';

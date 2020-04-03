@@ -1,7 +1,9 @@
 import React, { useState, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import addItemToCart from '../../../utils/addItemToCart';
 import selector from '../../../selectors/singleProduct';
-import { Link, Redirect } from 'react-router-dom';
+import { CartIconButton } from '../../layout/Icons';
 
 export const Item = ({ products, id }) => {
   const [amount, setAmount] = useState(1);
@@ -17,8 +19,13 @@ export const Item = ({ products, id }) => {
   };
 
   //Product
-  products ? (products = products) : (products = []);
+  if (!products) products = [];
   let item = selector(products, id);
+
+  const handleButton = item => {
+    addItemToCart(item);
+    setAmount(1);
+  };
 
   return (
     <Fragment>
@@ -33,6 +40,7 @@ export const Item = ({ products, id }) => {
           </div>
           <div className='itemPage__img'>
             <img
+              alt='item view'
               className='itemPage__img'
               src={require(`../../../img/${item.image}`)}
             />
@@ -86,8 +94,11 @@ export const Item = ({ products, id }) => {
               </button>
             </div>
 
-            <button className='btn itemPage__details__btn'>
-              Dodaj do koszyka
+            <button
+              onClick={() => handleButton({ id: item._id, amount })}
+              className='btn itemPage__details__btn'
+            >
+              <CartIconButton /> Dodaj do koszyka
             </button>
           </div>
           <div className='itemPage__description'>

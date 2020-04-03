@@ -1,0 +1,62 @@
+.cartPage {
+  grid-row: 2 / 3;
+  grid-column: center-start / center-end;
+
+  display: grid;
+  grid-template-rows: 10rem min-content 30rem;
+  padding: 2rem 10rem;
+
+  &__steps {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    &__step {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &__circle {
+      position: relative;
+      height: 6rem;
+      width: 6rem;
+      border: 3px solid $color-grey-light-2;
+      border-radius: 50%;
+
+      &--active {
+        border: 3px solid $color-primary;
+      }
+
+      &__text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        font-weight: 900;
+        font-size: 2.6rem;
+        color: $color-grey-light-2;
+
+        &--active {
+          color: $color-primary;
+        }
+      }
+    }
+    &__header {
+      font-weight: 600;
+      text-decoration: none;
+      font-style: normal;
+      color: $color-grey-light-2;
+      margin-left: 2rem;
+
+      &--active {
+        color: $color-primary;
+      }
+    }
+    &__line {
+      background-color: $color-grey-light-2;
+      height: 3px;
+      width: 10rem;
+    }
+  }
+}
