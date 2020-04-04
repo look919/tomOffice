@@ -13,6 +13,7 @@ import CartPage from './pages/cart/CartPage';
 import CategoryPage from './pages/product/CategoryPage';
 import ItemPage from './pages/product/ItemPage';
 import LoginPage from './pages/auth/Login';
+import RegisterPage from './pages/auth/Register';
 
 import '../styles/main.scss';
 
@@ -35,7 +36,7 @@ const App = () => {
             <Route path='/' component={DashboardPage} exact={true} />
             <Route path='/cart' component={CartPage} />
             <Route path='/login' component={LoginPage} />
-
+            <Route path='/register' component={RegisterPage} />
             <Route
               path='/products/:category'
               render={(props) => <CategoryPage {...props} isAuthed={true} />}

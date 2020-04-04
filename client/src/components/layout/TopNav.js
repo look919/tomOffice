@@ -6,7 +6,7 @@ import { SearchIcon, UserIcon, CartIcon } from './Icons';
 import UKFlag from '../../img/uk.png';
 import PLFlag from '../../img/pl.png';
 
-const TopNav = ({ products, cart }) => {
+const TopNav = ({ auth, products, cart }) => {
   //Products
   if (!products) products = [];
 
@@ -26,10 +26,17 @@ const TopNav = ({ products, cart }) => {
       <button className='nav__top__item__btn  nav__top__item___btn--pl'>
         <img src={PLFlag} alt='uk flag' className='nav__top__item__btn--pl' />
       </button>
-      <div className='nav__top__item'>
-        <UserIcon />
-        <p className='nav__top__item__p'>Moje konto</p>
-      </div>
+      {auth ? (
+        <Link to='/' className='nav__top__item'>
+          <UserIcon />
+          <p className='nav__top__item__p'>Moje konto</p>
+        </Link>
+      ) : (
+        <Link to='/login' className='nav__top__item'>
+          <UserIcon />
+          <p className='nav__top__item__p'>Moje konto</p>
+        </Link>
+      )}
       <Link to='/cart' className='nav__top__item'>
         <CartIcon />
         <p className='nav__top__item__p'>Koszyk</p>
@@ -41,9 +48,10 @@ const TopNav = ({ products, cart }) => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   products: state.products.data,
-  cart: state.cart
+  cart: state.cart,
+  auth: state.auth.isAuthenticated,
 });
 
 export default connect(mapStateToProps, {})(TopNav);

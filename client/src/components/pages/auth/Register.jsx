@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-
-import { connect } from 'react-redux';
-import { login } from '../../../actions/auth';
-import Logo from '../../../img/logo.png';
 import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { register } from '../../../actions/auth';
+
+import Logo from '../../../img/logo.png';
 
 import { EmailIcon, PasswordIcon } from '../../layout/Icons';
 
-const Login = ({ login, auth }) => {
+const Register = ({ auth, register }) => {
   const [formData, setFormData] = useState({
+    name: '',
     email: '',
     password: '',
+    passwordConfirm: '',
   });
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,10 +21,17 @@ const Login = ({ login, auth }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    login(formData);
+    register(
+      formData.name,
+      formData.email,
+      formData.password,
+      formData.passwordConfirm
+    );
     setFormData({
+      name: '',
       email: '',
       password: '',
+      passwordConfirm: '',
     });
   };
 
@@ -36,7 +45,19 @@ const Login = ({ login, auth }) => {
         <Link to='/' className='auth__form__logo'>
           <img src={Logo} alt='logo' className='auth__form__logo' />
         </Link>
-        <h2 className='heading-2 auth__form__header'>Log In</h2>
+        <h2 className='heading-2 auth__form__header'>Register</h2>
+        <div className='auth__form__field' tabIndex='0'>
+          <EmailIcon />
+          <input
+            className='auth__form__field__input'
+            placeholder='Name'
+            name='name'
+            value={formData.name}
+            onChange={(e) => {
+              onChange(e);
+            }}
+          />
+        </div>
         <div className='auth__form__field' tabIndex='0'>
           <EmailIcon />
           <input
@@ -62,24 +83,25 @@ const Login = ({ login, auth }) => {
             }}
           />
         </div>
+        <div className='auth__form__field' tabIndex='0'>
+          <PasswordIcon />
+          <input
+            type='password'
+            className='auth__form__field__input'
+            placeholder='Password confirmation'
+            name='passwordConfirm'
+            value={formData.passwordConfirm}
+            onChange={(e) => {
+              onChange(e);
+            }}
+          />
+        </div>
         <div className='auth__form__login'>
-          <Link
-            to='/'
-            className='auth__form__login__link auth__form__login__link--password'
-          >
-            Forget your password?
-          </Link>
-          <Link
-            to='/'
-            className='auth__form__login__link auth__form__login__link--new-acc'
-          >
-            Create new account
-          </Link>
           <button
-            className='btn auth__form__login__btn'
+            className='btn auth__form__login__btn--register'
             onClick={(e) => onSubmit(e)}
           >
-            Log in
+            Register
           </button>
         </div>
       </form>
@@ -87,8 +109,8 @@ const Login = ({ login, auth }) => {
   );
 };
 
-Login.propTypes = {
-  login: PropTypes.func.isRequired,
+Register.propTypes = {
+  register: PropTypes.func.isRequired,
   auth: PropTypes.bool,
 };
 
@@ -96,4 +118,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, { login })(Login);
+export default connect(mapStateToProps, { register })(Register);
