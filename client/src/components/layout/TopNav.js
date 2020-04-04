@@ -27,7 +27,7 @@ const TopNav = ({ auth, products, cart }) => {
         <img src={PLFlag} alt='uk flag' className='nav__top__item__btn--pl' />
       </button>
       {auth ? (
-        <Link to='/' className='nav__top__item'>
+        <Link to='/user' className='nav__top__item'>
           <UserIcon />
           <p className='nav__top__item__p'>Moje konto</p>
         </Link>

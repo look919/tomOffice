@@ -1,0 +1,34 @@
+.userPage {
+  grid-row: 2 / 3;
+  grid-column: full-start / full-end;
+
+  display: grid;
+  grid-template-columns: 30rem 1fr;
+
+  &__nav {
+    grid-column: 1 / 2;
+
+    &__list {
+      height: 100%;
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &__item {
+        height: 3rem;
+        padding: 2rem 1rem;
+        width: 100%;
+        text-align: center;
+
+        &:not(:last-child) {
+          margin-bottom: 3rem;
+        }
+      }
+    }
+  }
+
+  &__content {
+    padding: 2rem 6rem;
+  }
+}
