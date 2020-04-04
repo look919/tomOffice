@@ -1,0 +1,93 @@
+.auth {
+  &__form {
+    position: relative;
+    z-index: 20;
+    padding: 6rem;
+    background-color: $color-background;
+    border-radius: 4px;
+    border: 1px solid $color-grey-light-2;
+
+    display: flex;
+    flex-direction: column;
+
+    &__logo {
+      height: 10rem;
+      margin-bottom: 3rem;
+      object-fit: contain;
+    }
+    &__header {
+      margin: 3rem 0;
+      font-weight: 900;
+      padding: 0 2rem;
+    }
+
+    &__field {
+      position: relative;
+      z-index: 3;
+      border-bottom: 1px solid $color-grey-dark-2;
+      height: 3rem;
+      width: 30rem;
+      padding: 2px;
+      margin: 1rem 0;
+
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      &:hover {
+        border-bottom: 2px solid $color-primary;
+      }
+      &:focus {
+        border-bottom: 2px solid $color-primary;
+        outline: none;
+      }
+
+      &__icon {
+        height: 2rem;
+        width: 2rem;
+      }
+
+      &__input {
+        border: none;
+        padding: 0 1rem;
+        font-family: $font-primary;
+        font-size: 1.6rem;
+        flex: 1 0 0;
+        background-color: $color-background;
+        margin-left: 1.5rem;
+        letter-spacing: 1px;
+
+        &:placeholder-shown {
+          color: $color-grey-dark-2;
+        }
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+    &__login {
+      display: grid;
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: repeat(2, 1fr);
+      margin: 1rem 0;
+
+      &__link {
+        font-size: 1.2rem;
+
+        &--password {
+          grid-row: 1 / 2;
+          grid-column: 1 / 2;
+        }
+        &--new-acc {
+          grid-row: 2 / 3;
+          grid-column: 1 / 2;
+        }
+      }
+      &__btn {
+        grid-row: 1 / 3;
+        grid-column: 2 / 3;
+        text-transform: lowercase;
+      }
+    }
+  }
+}
