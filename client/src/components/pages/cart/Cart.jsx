@@ -12,9 +12,9 @@ const Cart = ({ cart, products, getCartItems }) => {
   if (!products) products = [];
 
   let totalPrice = 0;
-  cart.forEach(item => (totalPrice += item.product.price * item.amount));
+  cart.forEach((item) => (totalPrice += item.product.price * item.amount));
 
-  const handleRemoveItemFromCart = id => {
+  const handleRemoveItemFromCart = (id) => {
     removeItemFromCart(id);
     getCartItems(products);
   };
@@ -39,9 +39,10 @@ const Cart = ({ cart, products, getCartItems }) => {
           <span className='cartPage__products__content__header'>Cena</span>
           <span className='cartPage__products__content__header'>Ilość</span>
           <span className='cartPage__products__content__header'>Wartość</span>
-          {cart.map(item => (
+          {cart.map((item) => (
             <div key={uuidv4()} className='cartPage__products__content__item'>
               <img
+                alt='product view'
                 src={require(`../../../img/${item.product.image}`)}
                 className='cartPage__products__content__item__img'
               />
@@ -117,9 +118,9 @@ const Cart = ({ cart, products, getCartItems }) => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   cart: state.cart,
-  products: state.products.data
+  products: state.products.data,
 });
 
 export default connect(mapStateToProps, { getCartItems })(Cart);

@@ -12,6 +12,10 @@ import DashboardPage from './pages/dashboard/DashboardPage';
 import CartPage from './pages/cart/CartPage';
 import CategoryPage from './pages/product/CategoryPage';
 import ItemPage from './pages/product/ItemPage';
+import LoginPage from './pages/auth/Login';
+import RegisterPage from './pages/auth/Register';
+import UserPage from './pages/auth/user/UserPage';
+import ForgetPasswordPage from './pages/auth/ForgetPassword';
 
 import '../styles/main.scss';
 
@@ -33,13 +37,18 @@ const App = () => {
           <Switch>
             <Route path='/' component={DashboardPage} exact={true} />
             <Route path='/cart' component={CartPage} />
+            <Route path='/login' component={LoginPage} />
+            <Route path='/register' component={RegisterPage} />
+            <Route path='/user' component={UserPage} />
+            <Route path='/forgetPassword' component={ForgetPasswordPage} />
+
             <Route
               path='/products/:category'
-              render={props => <CategoryPage {...props} isAuthed={true} />}
+              render={(props) => <CategoryPage {...props} isAuthed={true} />}
             />
             <Route
               path='/item/:id'
-              render={props => <ItemPage {...props} isAuthed={true} />}
+              render={(props) => <ItemPage {...props} isAuthed={true} />}
             />
           </Switch>
         </div>

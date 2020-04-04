@@ -9,31 +9,32 @@ import {
   UPDATE_PASSWORD_SUCCESS,
   UPDATE_PASSWORD_FAIL,
   UPDATE_USER_SUCCESS,
-  UPDATE_USER_FAIL
+  UPDATE_USER_FAIL,
 } from '../actions/types';
 
 const initialState = {
   token: localStorage.getItem('token'),
   isAuthenticated: null,
-  user: null
+  user: null,
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case AUTH_SUCCESS:
       return {
         ...state,
         isAuthenticated: true,
-        user: payload
+        user: payload,
       };
     case LOGIN_SUCCESS:
+    case REGISTER_SUCCESS:
     case UPDATE_PASSWORD_SUCCESS:
       localStorage.setItem('token', payload.token);
       return {
         ...state,
         user: payload.data.user,
-        isAuthenticated: true
+        isAuthenticated: true,
       };
     case LOGIN_FAIL:
     case AUTH_FAIL:
@@ -43,18 +44,17 @@ export default function(state = initialState, action) {
         ...state,
         token: null,
         isAuthenticated: false,
-        user: null
+        user: null,
       };
     case UPDATE_USER_SUCCESS:
       return {
         ...state,
         user: payload,
-        isAuthenticated: true
+        isAuthenticated: true,
       };
 
     case UPDATE_USER_FAIL:
     case UPDATE_PASSWORD_FAIL:
-    case REGISTER_SUCCESS:
     case REGISTER_FAIL:
     default:
       return state;
