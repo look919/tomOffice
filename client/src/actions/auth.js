@@ -12,6 +12,8 @@ import {
   LOGOUT,
   UPDATE_PASSWORD_SUCCESS,
   UPDATE_PASSWORD_FAIL,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_FAIL,
 } from './types';
 
 // Load User
@@ -36,14 +38,19 @@ export const loadUser = () => async (dispatch) => {
 };
 
 //register User
-export const register = (name, email, password, passwordConfirm) => async (
-  dispatch
-) => {
+export const register = (
+  name,
+  email,
+  password,
+  passwordConfirm,
+  phone
+) => async (dispatch) => {
   const body = JSON.stringify({
     name,
     email,
     password,
     passwordConfirm,
+    phone,
   });
 
   const config = {
@@ -100,6 +107,30 @@ export const logout = () => async (dispatch) => {
     });
   } catch (err) {
     dispatch(setAlert(err.response.data.message, 'danger'));
+  }
+};
+//update user
+export const updateUser = (name, email, phone, address) => async (dispatch) => {
+  const body = JSON.stringify({ name, email, address, phone });
+
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  try {
+    const res = await axios.patch('/api/v1/users/updateme', body, config);
+    dispatch({
+      type: UPDATE_USER_SUCCESS,
+      payload: res.data.data.user,
+    });
+    dispatch(setAlert('Data successfully updated', 'success'));
+  } catch (err) {
+    dispatch(setAlert(err.response.data.message, 'danger'));
+    dispatch({
+      type: UPDATE_USER_FAIL,
+      payload: err.message,
+    });
   }
 };
 

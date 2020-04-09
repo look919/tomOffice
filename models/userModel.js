@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs');
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, 'Please provide a name']
+    required: [true, 'Please provide a name'],
   },
   address: {
     type: Object,
@@ -14,47 +14,52 @@ const userSchema = new mongoose.Schema({
       country: 'Poland',
       town: '',
       postCode: '',
-      street: ''
-    }
+      street: '',
+    },
   },
   email: {
     type: String,
     required: [true, 'Please provide your email'],
-    unique: true,
+    unique: [true, 'This email is already taken'],
     lowercase: true,
-    validate: [validator.isEmail, 'Please provide a valid email']
+    validate: [validator.isEmail, 'Please provide a valid email'],
+  },
+  phone: {
+    type: String,
+    required: [true, 'Please provide your phone number'],
+    validate: [validator.isMobilePhone, 'Please provide a valid phone nr'],
   },
   role: {
     type: String,
     enum: ['user', 'admin'],
-    default: 'user'
+    default: 'user',
   },
   password: {
     type: String,
     required: [true, 'password is required'],
     minlength: 8,
-    select: false
+    select: false,
   },
   passwordConfirm: {
     type: String,
     required: [true, 'password confirm is required'],
     validate: {
-      validator: function(el) {
+      validator: function (el) {
         return el === this.password;
       },
-      message: 'Passwords are not the same'
-    }
+      message: 'Passwords are not the same',
+    },
   },
   createdAt: {
     type: Date,
-    default: Date.now()
+    default: Date.now(),
   },
   passwordChangedAt: Date,
   passwordResetToken: String,
-  passwordResetExpires: Date
+  passwordResetExpires: Date,
 });
 
-userSchema.pre('save', async function(next) {
+userSchema.pre('save', async function (next) {
   // Runs only when password gets modified
   if (!this.isModified('password')) return next();
 
@@ -63,7 +68,7 @@ userSchema.pre('save', async function(next) {
 
   next();
 });
-userSchema.pre('save', function(next) {
+userSchema.pre('save', function (next) {
   if (!this.isModified('password') || this.isNew) return next();
 
   this.passwordChangedAt = Date.now() - 1000;
@@ -71,7 +76,7 @@ userSchema.pre('save', function(next) {
   next();
 });
 
-userSchema.pre(/^find/, async function(next) {
+userSchema.pre(/^find/, async function (next) {
   //this.populate({
   // path: 'room',
   // select: 'name price features'
@@ -80,14 +85,14 @@ userSchema.pre(/^find/, async function(next) {
   next();
 });
 
-userSchema.methods.correctPassword = async function(
+userSchema.methods.correctPassword = async function (
   candidatePassword,
   userPassword
 ) {
   return await bcrypt.compare(candidatePassword, userPassword);
 };
 
-userSchema.methods.changedPasswordAfter = function(JWTTimestamp) {
+userSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
   if (this.passwordChangedAt) {
     const changedTimestamp = parseInt(
       this.passwordChangedAt.getTime() / 1000,
@@ -99,7 +104,7 @@ userSchema.methods.changedPasswordAfter = function(JWTTimestamp) {
   return false;
 };
 
-userSchema.methods.createPasswordResetToken = function() {
+userSchema.methods.createPasswordResetToken = function () {
   const resetToken = crypto.randomBytes(32).toString('hex');
   this.passwordResetToken = crypto
     .createHash('sha256')

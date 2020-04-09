@@ -39,8 +39,10 @@ const App = () => {
             <Route path='/cart' component={CartPage} />
             <Route path='/login' component={LoginPage} />
             <Route path='/register' component={RegisterPage} />
-            <Route path='/user' component={UserPage} />
             <Route path='/forgetPassword' component={ForgetPasswordPage} />
+            <Route path='/user' component={UserPage} />
+            <Route path='/settings' component={UserPage} />
+            <Route path='/orders' component={UserPage} />
 
             <Route
               path='/products/:category'

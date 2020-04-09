@@ -6,7 +6,12 @@ import { register } from '../../../actions/auth';
 
 import Logo from '../../../img/logo.png';
 
-import { EmailIcon, PasswordIcon } from '../../layout/Icons';
+import {
+  UserRegisterIcon,
+  EmailIcon,
+  PasswordIcon,
+  PhoneRegisterIcon,
+} from '../../layout/Icons';
 
 const Register = ({ auth, register }) => {
   const [formData, setFormData] = useState({
@@ -14,6 +19,7 @@ const Register = ({ auth, register }) => {
     email: '',
     password: '',
     passwordConfirm: '',
+    phone: '',
   });
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -25,13 +31,15 @@ const Register = ({ auth, register }) => {
       formData.name,
       formData.email,
       formData.password,
-      formData.passwordConfirm
+      formData.passwordConfirm,
+      formData.phone
     );
     setFormData({
       name: '',
       email: '',
       password: '',
       passwordConfirm: '',
+      phone: '',
     });
   };
 
@@ -47,10 +55,11 @@ const Register = ({ auth, register }) => {
         </Link>
         <h2 className='heading-2 auth__form__header'>Register</h2>
         <div className='auth__form__field' tabIndex='0'>
-          <EmailIcon />
+          <UserRegisterIcon />
           <input
+            required
             className='auth__form__field__input'
-            placeholder='Name'
+            placeholder='Imię i nazwisko'
             name='name'
             value={formData.name}
             onChange={(e) => {
@@ -61,6 +70,8 @@ const Register = ({ auth, register }) => {
         <div className='auth__form__field' tabIndex='0'>
           <EmailIcon />
           <input
+            required
+            type='email'
             className='auth__form__field__input'
             placeholder='Email'
             name='email'
@@ -73,9 +84,10 @@ const Register = ({ auth, register }) => {
         <div className='auth__form__field' tabIndex='0'>
           <PasswordIcon />
           <input
+            required
             type='password'
             className='auth__form__field__input'
-            placeholder='Password'
+            placeholder='Hasło'
             name='password'
             value={formData.password}
             onChange={(e) => {
@@ -86,11 +98,26 @@ const Register = ({ auth, register }) => {
         <div className='auth__form__field' tabIndex='0'>
           <PasswordIcon />
           <input
+            required
             type='password'
             className='auth__form__field__input'
-            placeholder='Password confirmation'
+            placeholder='Potwierdź hasło'
             name='passwordConfirm'
             value={formData.passwordConfirm}
+            onChange={(e) => {
+              onChange(e);
+            }}
+          />
+        </div>
+        <div className='auth__form__field' tabIndex='0'>
+          <PhoneRegisterIcon />
+          <input
+            type='tel'
+            required
+            className='auth__form__field__input'
+            placeholder='Numer telefonu'
+            name='phone'
+            value={formData.phone}
             onChange={(e) => {
               onChange(e);
             }}

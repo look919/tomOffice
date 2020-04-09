@@ -12,7 +12,7 @@ router.post('/login', authController.login);
 //USERS AUTHENTICATED
 router.use(authController.protect);
 router.post('/logout', authController.logout);
-
+router.patch('/updateme', userController.getMe, userController.updateMe);
 router.patch('/updatepassword', authController.updatePassword);
 
 //RESTRICTED TO ADMIN

@@ -3,32 +3,151 @@
   grid-column: full-start / full-end;
 
   display: grid;
+  grid-template-rows: min-content;
   grid-template-columns: 30rem 1fr;
 
   &__nav {
     grid-column: 1 / 2;
 
     &__list {
-      height: 100%;
-      list-style-type: none;
+      padding: 4rem 2rem;
+
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
 
       &__item {
-        height: 3rem;
-        padding: 2rem 1rem;
+        position: relative;
         width: 100%;
+        padding: 1rem;
         text-align: center;
+        font-size: 1.6rem;
+        letter-spacing: 1px;
 
+        &--active {
+          color: $color-background !important;
+        }
+
+        &__link {
+          position: relative;
+          z-index: 30;
+          padding: 0.3rem;
+        }
+        &:hover {
+          text-decoration: none;
+          color: $color-background;
+        }
         &:not(:last-child) {
-          margin-bottom: 3rem;
+          margin-bottom: 1rem;
+        }
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 3px;
+          background-color: $color-primary;
+          transform: scaleY(0);
+          transition: transform 0.2s, width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s,
+            background-color 0.1s;
+        }
+
+        &:hover::before,
+        &--active::before {
+          transform: scaleY(1);
+          width: 100%;
+        }
+
+        &:active::before {
+          background-color: $color-primary;
+        }
+
+        &--btn {
+          background: none;
+          border: none;
+          cursor: pointer;
+
+          font-family: $font-primary;
+
+          &:focus {
+            outline: none;
+          }
         }
       }
     }
   }
 
-  &__content {
-    padding: 2rem 6rem;
+  &__about,
+  &__settings,
+  &__orders {
+    padding: 4rem 12rem;
+
+    &__header {
+      margin-bottom: 5rem;
+    }
+
+    display: flex;
+    flex-direction: column;
+
+    &__list {
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      &__item {
+        font-size: 1.4rem;
+
+        &__address {
+          font-size: 1.4rem;
+
+          display: flex;
+          align-items: center;
+          &__text {
+            margin-right: 1rem;
+          }
+          &__link {
+            padding: 0.2rem 0.4rem;
+            font-size: 1.4rem;
+          }
+        }
+      }
+    }
+  }
+  &__settings {
+    &__input-container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+
+      &__text {
+        width: 16rem;
+        font-size: 1.8rem;
+        margin: 0.5rem 1rem;
+      }
+      &__input {
+        width: 30rem;
+        padding: 1rem 2rem;
+        background-color: $color-background;
+        border: 1px solid $color-grey-dark-2;
+        font-family: $font-primary;
+        font-size: 1.6rem;
+        color: $color-black;
+
+        &::placeholder {
+          color: $color-grey-light-2;
+        }
+      }
+    }
+    &__btn {
+      padding: 1rem 2rem;
+      width: 50rem;
+      border-radius: 0;
+      margin-top: 2rem;
+    }
   }
 }
