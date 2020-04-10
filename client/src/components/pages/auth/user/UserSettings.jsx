@@ -35,10 +35,8 @@ const UserSettings = ({ user, updateUser }) => {
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-
   const onSubmit = async (e) => {
     e.preventDefault();
-
     updateUser(name, email, phone, address);
   };
 

@@ -50,6 +50,10 @@ const userSchema = new mongoose.Schema({
       message: 'Passwords are not the same',
     },
   },
+  orders: {
+    type: [],
+    default: [],
+  },
   createdAt: {
     type: Date,
     default: Date.now(),

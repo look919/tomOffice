@@ -15,6 +15,8 @@ import {
   UPDATE_USER_SUCCESS,
   UPDATE_USER_FAIL,
 } from './types';
+const Stripe = require('stripe');
+const stripe = Stripe('pk_test_BUkd0ZXAj6m0q0jMyRgBxNns00PPtgvjjr');
 
 // Load User
 export const loadUser = () => async (dispatch) => {
@@ -160,5 +162,32 @@ export const updatePassword = (
       type: UPDATE_PASSWORD_FAIL,
       payload: err.message,
     });
+  }
+};
+
+export const booking = async (products, token) => async (dispatch) => {
+  const body = JSON.stringify({ products, token });
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  try {
+    // 1) Get checkout session from API
+    const session = await axios.post(
+      `/api/v1/bookings/checkout-session`,
+      body,
+      config
+    );
+    // console.log(session);
+
+    // 2) Create checkout form + chanre credit card
+    await stripe.redirectToCheckout({
+      sessionId: session.data.session.id,
+    });
+  } catch (err) {
+    console.log(err);
+    setAlert(err, 'danger');
   }
 };

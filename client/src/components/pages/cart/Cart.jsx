@@ -1,15 +1,25 @@
 import React from 'react';
+import StripeCheckout from 'react-stripe-checkout';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import axios from 'axios';
 
+import { booking } from '../../../actions/auth';
 import { getCartItems } from '../../../actions/products';
 import removeItemFromCart from '../../../utils/removeItemFromCart';
 import CartSteps from './CartSteps';
 import { CartIcon, TruckIconCart, RemoveItemIcon } from '../../layout/Icons';
 import { v4 as uuidv4 } from 'uuid';
 
-const Cart = ({ cart, products, getCartItems }) => {
+toast.configure();
+
+const Cart = ({ user, cart, products, getCartItems, booking }) => {
   if (!products) products = [];
+  if (!user)
+    user = {
+      _id: '',
+    };
 
   let totalPrice = 0;
   cart.forEach((item) => (totalPrice += item.product.price * item.amount));
@@ -18,6 +28,30 @@ const Cart = ({ cart, products, getCartItems }) => {
     removeItemFromCart(id);
     getCartItems(products);
   };
+
+  const product = {
+    name: 'TomOffice',
+    price: totalPrice.toFixed(2),
+    items: cart,
+    user: user._id,
+  };
+
+  async function handleToken(token, addresses) {
+    console.log(token, product);
+    const response = await axios.post('/api/v1/booking/checkout', {
+      token,
+      product,
+    });
+
+    const { status } = response.data;
+    console.log('Response:', response.data);
+
+    if (status === 'success') {
+      toast('Success! Check email for details', { type: 'success' });
+    } else {
+      toast('Something went wrong', { type: 'error' });
+    }
+  }
 
   return (
     <section className='cartPage'>
@@ -111,7 +145,20 @@ const Cart = ({ cart, products, getCartItems }) => {
           <span className='cartPage__cta__summary__item cartPage__cta__summary__item--bigger'>
             {totalPrice.toFixed(2)}
           </span>
-          <button className='btn cartPage__cta__summary__btn'>DALEJ</button>
+          {user ? (
+            <StripeCheckout
+              stripeKey={'pk_test_rcm73WxgoFhDtsH2i3B6a3C600eFskjudh'}
+              token={handleToken}
+              billingAddress
+              shippingAddress
+              amount={totalPrice * 100}
+              name={'TomOffice'}
+            />
+          ) : (
+            <Link to='/login' className='btn cartPage__cta__summary__btn'>
+              Zaloguj się
+            </Link>
+          )}
         </div>
       </div>
     </section>
@@ -121,6 +168,7 @@ const Cart = ({ cart, products, getCartItems }) => {
 const mapStateToProps = (state) => ({
   cart: state.cart,
   products: state.products.data,
+  user: state.auth.user,
 });
 
-export default connect(mapStateToProps, { getCartItems })(Cart);
+export default connect(mapStateToProps, { getCartItems, booking })(Cart);
