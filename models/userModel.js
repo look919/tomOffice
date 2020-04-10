@@ -51,7 +51,8 @@ const userSchema = new mongoose.Schema({
     },
   },
   orders: {
-    type: [],
+    type: [mongoose.Schema.ObjectId],
+    ref: 'Booking',
     default: [],
   },
   createdAt: {
@@ -81,10 +82,10 @@ userSchema.pre('save', function (next) {
 });
 
 userSchema.pre(/^find/, async function (next) {
-  //this.populate({
-  // path: 'room',
-  // select: 'name price features'
-  //});
+  this.populate({
+    path: 'orders',
+    select: 'name price items',
+  });
 
   next();
 });
