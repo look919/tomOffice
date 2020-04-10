@@ -50,6 +50,11 @@ const userSchema = new mongoose.Schema({
       message: 'Passwords are not the same',
     },
   },
+  orders: {
+    type: [mongoose.Schema.ObjectId],
+    ref: 'Booking',
+    default: [],
+  },
   createdAt: {
     type: Date,
     default: Date.now(),
@@ -77,10 +82,10 @@ userSchema.pre('save', function (next) {
 });
 
 userSchema.pre(/^find/, async function (next) {
-  //this.populate({
-  // path: 'room',
-  // select: 'name price features'
-  //});
+  this.populate({
+    path: 'orders',
+    select: 'name price items',
+  });
 
   next();
 });
