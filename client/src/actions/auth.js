@@ -135,6 +135,29 @@ export const updateUser = (name, email, phone, address) => async (dispatch) => {
     });
   }
 };
+export const updateUserOrders = (orders) => async (dispatch) => {
+  const body = JSON.stringify({ orders });
+
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  try {
+    const res = await axios.patch('/api/v1/users/updateme', body, config);
+    dispatch({
+      type: UPDATE_USER_SUCCESS,
+      payload: res.data.data.user,
+    });
+    dispatch(setAlert('Order successfully created', 'success'));
+  } catch (err) {
+    dispatch(setAlert(err.response.data.message, 'danger'));
+    dispatch({
+      type: UPDATE_USER_FAIL,
+      payload: err.message,
+    });
+  }
+};
 
 //updatePassword
 export const updatePassword = (
@@ -162,32 +185,5 @@ export const updatePassword = (
       type: UPDATE_PASSWORD_FAIL,
       payload: err.message,
     });
-  }
-};
-
-export const booking = async (products, token) => async (dispatch) => {
-  const body = JSON.stringify({ products, token });
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  };
-
-  try {
-    // 1) Get checkout session from API
-    const session = await axios.post(
-      `/api/v1/bookings/checkout-session`,
-      body,
-      config
-    );
-    // console.log(session);
-
-    // 2) Create checkout form + chanre credit card
-    await stripe.redirectToCheckout({
-      sessionId: session.data.session.id,
-    });
-  } catch (err) {
-    console.log(err);
-    setAlert(err, 'danger');
   }
 };

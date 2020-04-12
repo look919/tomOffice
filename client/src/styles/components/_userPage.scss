@@ -150,4 +150,31 @@
       margin-top: 2rem;
     }
   }
+
+  &__orders {
+    &__list {
+      padding: 0.3rem 1rem;
+      &__header {
+        font-style: normal;
+        font-weight: 600;
+      }
+      &__item {
+        display: grid;
+        grid-template-rows: 4rem 2.5rem;
+        margin: 2rem 0;
+
+        &__product {
+          margin: 0.2rem 1rem;
+          display: grid;
+          grid-template-columns: 30rem 5rem 1fr;
+
+          &__price {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin: 0.2rem 1rem;
+          }
+        }
+      }
+    }
+  }
 }

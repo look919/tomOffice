@@ -4,7 +4,7 @@ const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 
 exports.getAllUsers = factory.getAll(User);
-exports.getUser = factory.getOne(User, { path: 'order' });
+exports.getUser = factory.getOne(User, { path: 'orders' });
 exports.updateUser = factory.updateOne(User);
 exports.deleteUser = factory.deleteOne(User);
 
@@ -32,13 +32,22 @@ exports.updateMe = catchAsync(async (req, res, next) => {
   }
 
   // 2) Filtered out unwanted fields names that are not allowed to be updated
-  const filteredBody = filterObj(req.body, 'name', 'email', 'address', 'phone');
-  if (req.file) filteredBody.photo = req.file.filename;
+  const filteredBody = filterObj(
+    req.body,
+    'name',
+    'email',
+    'address',
+    'phone',
+    'orders'
+  );
 
   // 3) Update user document
   const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, {
     new: true,
     runValidators: true,
+  }).populate({
+    path: 'orders',
+    select: 'items price createdAt',
   });
 
   res.status(200).json({

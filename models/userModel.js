@@ -50,11 +50,12 @@ const userSchema = new mongoose.Schema({
       message: 'Passwords are not the same',
     },
   },
-  orders: {
-    type: [mongoose.Schema.ObjectId],
-    ref: 'Booking',
-    default: [],
-  },
+  orders: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: 'Booking',
+    },
+  ],
   createdAt: {
     type: Date,
     default: Date.now(),
@@ -82,10 +83,10 @@ userSchema.pre('save', function (next) {
 });
 
 userSchema.pre(/^find/, async function (next) {
-  this.populate({
-    path: 'orders',
-    select: 'name price items',
-  });
+  // this.findOne().populate({
+  //   path: 'orders',
+  //   select: 'price user items',
+  // });
 
   next();
 });

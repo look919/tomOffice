@@ -2,8 +2,14 @@ import React from 'react';
 import UserNav from './UserNav';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
 const UserOrders = ({ user }) => {
+  if (!user)
+    user = {
+      orders: [{ items: [] }],
+    };
+  console.log(user);
   return (
     <section className='userPage'>
       <UserNav />
@@ -11,7 +17,24 @@ const UserOrders = ({ user }) => {
         <h2 className='userPage__orders__header'>Twoje zamówienia</h2>
         <div className='userPage__orders__list'>
           {user.orders.map((order) => (
-            <div key={order}>{order}</div>
+            <div key={order._id} className='userPage__orders__list__item'>
+              <h4 className='heading-4 userPage__orders__list__header'>{`Zamówienie z dnia ${moment(
+                order.createdAt
+              ).format('DD-MM-YYYY')}`}</h4>
+              {order.items.map((item) => (
+                <div
+                  className='userPage__orders__list__item__product'
+                  key={item.product._id}
+                >
+                  <span>{item.product.name}</span>
+                  <span>{`${item.amount}szt`}</span>
+                  <span>{`${item.product.price.toFixed(2)} zł`}</span>
+                </div>
+              ))}
+              <span className='userPage__orders__list__item__product__price'>{`Razem ${order.price.toFixed(
+                2
+              )} zł`}</span>
+            </div>
           ))}
         </div>
       </section>

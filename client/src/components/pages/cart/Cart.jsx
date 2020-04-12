@@ -1,20 +1,17 @@
 import React from 'react';
 import StripeCheckout from 'react-stripe-checkout';
+import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import axios from 'axios';
-
-import { booking } from '../../../actions/auth';
+import { updateUserOrders } from '../../../actions/auth';
 import { getCartItems } from '../../../actions/products';
 import removeItemFromCart from '../../../utils/removeItemFromCart';
+
 import CartSteps from './CartSteps';
 import { CartIcon, TruckIconCart, RemoveItemIcon } from '../../layout/Icons';
-import { v4 as uuidv4 } from 'uuid';
 
-toast.configure();
-
-const Cart = ({ user, cart, products, getCartItems, booking }) => {
+const Cart = ({ user, cart, products, getCartItems, updateUserOrders }) => {
   if (!products) products = [];
   if (!user)
     user = {
@@ -37,19 +34,20 @@ const Cart = ({ user, cart, products, getCartItems, booking }) => {
   };
 
   async function handleToken(token, addresses) {
-    console.log(token, product);
     const response = await axios.post('/api/v1/booking/checkout', {
       token,
       product,
     });
 
-    const { status } = response.data;
-    console.log('Response:', response.data);
+    const { status, doc } = response.data;
 
     if (status === 'success') {
-      toast('Success! Check email for details', { type: 'success' });
+      let orders = user.orders || [];
+      orders.push(doc);
+
+      updateUserOrders(orders);
     } else {
-      toast('Something went wrong', { type: 'error' });
+      console.log('order not completted');
     }
   }
 
@@ -171,4 +169,6 @@ const mapStateToProps = (state) => ({
   user: state.auth.user,
 });
 
-export default connect(mapStateToProps, { getCartItems, booking })(Cart);
+export default connect(mapStateToProps, { getCartItems, updateUserOrders })(
+  Cart
+);
