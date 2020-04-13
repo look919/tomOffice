@@ -7,7 +7,16 @@
 
   display: grid;
   grid-template-rows: 30rem min-content;
-  grid-template-columns: 1fr repeat(3, 25rem);
+  grid-template-columns: 1fr repeat(3, 20rem);
+
+  @media only screen and (max-width: $bp-1000) {
+    grid-template-columns: 1fr repeat(3, 18rem);
+  }
+  @media only screen and (max-width: $bp-600) {
+    grid-template-rows: 30rem 30rem min-content;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+  }
 
   &__contact {
     grid-row: 1 / 2;
@@ -18,13 +27,42 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 60rem;
+    padding: 2rem 6rem;
+    max-width: 60rem;
+
+    @media only screen and (max-width: $bp-1600) {
+      margin-right: 4rem;
+    }
+    @media only screen and (max-width: $bp-1200) {
+      padding: 0.5rem 3rem;
+    }
+    @media only screen and (max-width: $bp-1000) {
+      padding: 0 1rem;
+    }
+    @media only screen and (max-width: $bp-800) {
+      flex-direction: column;
+      justify-content: center;
+      margin-right: 2rem;
+    }
+    @media only screen and (max-width: $bp-600) {
+      grid-column: 1 / -1;
+      padding: 2rem 6rem;
+      margin-bottom: 2.5rem;
+    }
 
     &__icon {
       margin: 3rem;
       height: 10rem;
       width: 10rem;
       fill: $color-primary-dark;
+
+      @media only screen and (max-width: $bp-1000) {
+        margin: 1rem;
+      }
+      @media only screen and (max-width: $bp-1000) {
+        height: 6rem;
+        width: 6rem;
+      }
     }
     &__info {
       height: 12rem;
@@ -33,6 +71,11 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
+
+      @media only screen and (max-width: $bp-800) {
+        width: 100%;
+        margin: 1rem 0;
+      }
 
       &__heading {
         color: $color-primary;
@@ -44,11 +87,18 @@
         font-size: 1.6rem;
         letter-spacing: 0;
         margin: 0.5rem 0;
+
+        @media only screen and (max-width: $bp-800) {
+          font-size: 1.2rem;
+        }
       }
       &__text {
         font-size: 1.2rem;
         text-align: center;
         margin: 0.5rem 0;
+        @media only screen and (max-width: $bp-800) {
+          font-size: 1.2rem;
+        }
       }
     }
   }
@@ -56,6 +106,11 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+
+    @media only screen and (max-width: $bp-600) {
+      align-items: center;
+    }
 
     &__heading {
       font-style: normal;
@@ -64,11 +119,26 @@
       letter-spacing: 0;
       margin-bottom: 1.5rem;
       text-transform: uppercase;
+
+      @media only screen and (max-width: $bp-1000) {
+        font-size: 1.4rem;
+      }
+      @media only screen and (max-width: $bp-600) {
+        font-size: 1.6rem;
+      }
     }
 
     &__item {
       color: $color-grey-dark-1;
       font-size: 1.4rem;
+      padding: 0 0.5rem;
+
+      @media only screen and (max-width: $bp-1000) {
+        font-size: 1.2rem;
+      }
+      @media only screen and (max-width: $bp-600) {
+        text-align: center;
+      }
 
       &:not(:last-child) {
         margin-bottom: 0.7rem;

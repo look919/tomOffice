@@ -7,14 +7,14 @@ const Overview = () => {
     <div className='dashboard__overview'>
       <SquareOverview
         svg={'office'}
-        text={'Equip your office'}
-        subText={'with modern and cheap furniture'}
+        text={'Wyposaż swoje biuro!'}
+        subText={'w nowoczesne i tanie meble'}
         dir='left'
       />
       <div className='dashboard__overview__center'>
         <div className='dashboard__overview__center__heading'>
           <div className='dashboard__overview__center__heading__btn'>
-            Great opportunity!
+            Wielka okazja!
           </div>
           <h3 className='heading-3 dashboard__overview__center__heading__prdct-name'>
             Narożnik ASTI
@@ -29,8 +29,8 @@ const Overview = () => {
 
       <SquareOverview
         svg={'truck'}
-        text={'Free delivery!'}
-        subText={'on all products'}
+        text={'Darmowa dostawa!'}
+        subText={'na wszystkie produkty'}
         dir='right'
       />
     </div>

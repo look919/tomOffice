@@ -1,5 +1,6 @@
 .header {
   grid-column: full-start / full-end;
+  grid-row: 1 / 2;
 
   display: grid;
   grid-template-rows: repeat(2, 1fr);
@@ -14,5 +15,23 @@
     object-fit: cover;
     grid-row: 1 / -1;
     grid-column: 1 / 2;
+    max-height: 100%;
+
+    @media only screen and (max-width: $bp-1000) {
+      height: 12rem;
+    }
+    @media only screen and (max-width: $bp-800) {
+      height: 8rem;
+    }
+
+    @media only screen and (max-width: $bp-600) {
+      height: 6rem;
+    }
+    @media only screen and (max-width: $bp-500) {
+      height: 8rem;
+    }
+    @media only screen and (max-width: $bp-450) {
+      height: 6rem;
+    }
   }
 }
