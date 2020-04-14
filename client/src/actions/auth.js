@@ -15,8 +15,6 @@ import {
   UPDATE_USER_SUCCESS,
   UPDATE_USER_FAIL,
 } from './types';
-const Stripe = require('stripe');
-const stripe = Stripe('pk_test_BUkd0ZXAj6m0q0jMyRgBxNns00PPtgvjjr');
 
 // Load User
 export const loadUser = () => async (dispatch) => {

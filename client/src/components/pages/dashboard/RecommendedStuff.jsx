@@ -6,9 +6,9 @@ import HitOption from './HitOption';
 
 const RecommendedStuff = () => {
   const [option, setOption] = useState({
-    choosen: 'recommended'
+    choosen: 'recommended',
   });
-  const onChange = e => {
+  const onChange = (e) => {
     setOption({ ...option, [e.target.name]: e.target.value });
   };
 
@@ -24,9 +24,9 @@ const RecommendedStuff = () => {
             }
             name='choosen'
             value={'recommended'}
-            onClick={e => onChange(e)}
+            onClick={(e) => onChange(e)}
           >
-            Recommended
+            Polecane
           </button>
         </li>
         <li>
@@ -38,9 +38,9 @@ const RecommendedStuff = () => {
             }
             name='choosen'
             value={'news'}
-            onClick={e => onChange(e)}
+            onClick={(e) => onChange(e)}
           >
-            News
+            Nowe
           </button>
         </li>
         <li>
@@ -52,7 +52,7 @@ const RecommendedStuff = () => {
             }
             name='choosen'
             value={'hit'}
-            onClick={e => onChange(e)}
+            onClick={(e) => onChange(e)}
           >
             Hit
           </button>

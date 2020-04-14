@@ -14,10 +14,10 @@ export const CategoryPageItem = ({ products, category, getCartItems }) => {
     text: '',
     minPrice: 1,
     maxPrice: 10000,
-    color: ''
+    color: '',
   });
   const { text, minPrice, maxPrice, color } = filters;
-  const onChange = e => {
+  const onChange = (e) => {
     setFilters({ ...filters, [e.target.name]: e.target.value });
   };
   const clearFilters = () =>
@@ -25,7 +25,7 @@ export const CategoryPageItem = ({ products, category, getCartItems }) => {
       text: '',
       minPrice: 0,
       maxPrice: 10000,
-      color: ''
+      color: '',
     });
 
   //Products
@@ -34,7 +34,7 @@ export const CategoryPageItem = ({ products, category, getCartItems }) => {
   if (text !== '' || minPrice !== 0 || maxPrice !== 10000 || color !== '')
     items = filterSelector(items, filters);
 
-  const handleButton = item => {
+  const handleButton = (item) => {
     addItemToCart(item);
     getCartItems(products);
   };
@@ -67,7 +67,7 @@ export const CategoryPageItem = ({ products, category, getCartItems }) => {
           <input
             name='minPrice'
             value={filters.minPrice}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
             className='categoryPage__filters__input'
             placeholder='Min price'
             type='number'
@@ -83,7 +83,7 @@ export const CategoryPageItem = ({ products, category, getCartItems }) => {
             maxLength={5}
             name='maxPrice'
             value={filters.maxPrice}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
           />
         </div>
         <div className='categoryPage__filters__colors'>
@@ -92,14 +92,14 @@ export const CategoryPageItem = ({ products, category, getCartItems }) => {
               className='categoryPage__filters__colors__color categoryPage__filters__colors__color--active categoryPage__filters__colors__color--rainbow'
               name='color'
               value={''}
-              onClick={e => onChange(e)}
+              onClick={(e) => onChange(e)}
             ></button>
           ) : (
             <button
               className='categoryPage__filters__colors__color categoryPage__filters__colors__color--rainbow'
               name='color'
               value={''}
-              onClick={e => onChange(e)}
+              onClick={(e) => onChange(e)}
             ></button>
           )}
           {color === 'black' ? (
@@ -107,7 +107,7 @@ export const CategoryPageItem = ({ products, category, getCartItems }) => {
               className='categoryPage__filters__colors__color categoryPage__filters__colors__color--active categoryPage__filters__colors__color--black'
               name='color'
               value={'black'}
-              onClick={e => onChange(e)}
+              onClick={(e) => onChange(e)}
             >
               &nbsp;
             </button>
@@ -116,7 +116,7 @@ export const CategoryPageItem = ({ products, category, getCartItems }) => {
               className='categoryPage__filters__colors__color categoryPage__filters__colors__color--black'
               name='color'
               value={'black'}
-              onClick={e => onChange(e)}
+              onClick={(e) => onChange(e)}
             >
               &nbsp;
             </button>
@@ -126,7 +126,7 @@ export const CategoryPageItem = ({ products, category, getCartItems }) => {
               className='categoryPage__filters__colors__color categoryPage__filters__colors__color--active categoryPage__filters__colors__color--grey'
               name='color'
               value={'grey'}
-              onClick={e => onChange(e)}
+              onClick={(e) => onChange(e)}
             >
               &nbsp;
             </button>
@@ -135,7 +135,7 @@ export const CategoryPageItem = ({ products, category, getCartItems }) => {
               className='categoryPage__filters__colors__color categoryPage__filters__colors__color--grey'
               name='color'
               value={'grey'}
-              onClick={e => onChange(e)}
+              onClick={(e) => onChange(e)}
             >
               &nbsp;
             </button>
@@ -145,7 +145,7 @@ export const CategoryPageItem = ({ products, category, getCartItems }) => {
               className='categoryPage__filters__colors__color categoryPage__filters__colors__color--active categoryPage__filters__colors__color--brown'
               name='color'
               value={'brown'}
-              onClick={e => onChange(e)}
+              onClick={(e) => onChange(e)}
             >
               &nbsp;
             </button>
@@ -154,7 +154,7 @@ export const CategoryPageItem = ({ products, category, getCartItems }) => {
               className='categoryPage__filters__colors__color categoryPage__filters__colors__color--brown'
               name='color'
               value={'brown'}
-              onClick={e => onChange(e)}
+              onClick={(e) => onChange(e)}
             >
               &nbsp;
             </button>
@@ -164,7 +164,7 @@ export const CategoryPageItem = ({ products, category, getCartItems }) => {
               className='categoryPage__filters__colors__color categoryPage__filters__colors__color--active categoryPage__filters__colors__color--blue'
               name='color'
               value={'blue'}
-              onClick={e => onChange(e)}
+              onClick={(e) => onChange(e)}
             >
               &nbsp;
             </button>
@@ -173,7 +173,7 @@ export const CategoryPageItem = ({ products, category, getCartItems }) => {
               className='categoryPage__filters__colors__color categoryPage__filters__colors__color--blue'
               name='color'
               value={'blue'}
-              onClick={e => onChange(e)}
+              onClick={(e) => onChange(e)}
             >
               &nbsp;
             </button>
@@ -183,7 +183,7 @@ export const CategoryPageItem = ({ products, category, getCartItems }) => {
               className='categoryPage__filters__colors__color categoryPage__filters__colors__color--active categoryPage__filters__colors__color--white'
               name='color'
               value={'white'}
-              onClick={e => onChange(e)}
+              onClick={(e) => onChange(e)}
             >
               &nbsp;
             </button>
@@ -192,25 +192,25 @@ export const CategoryPageItem = ({ products, category, getCartItems }) => {
               className='categoryPage__filters__colors__color categoryPage__filters__colors__color--white'
               name='color'
               value={'white'}
-              onClick={e => onChange(e)}
+              onClick={(e) => onChange(e)}
             >
               &nbsp;
             </button>
           )}
         </div>
-        <div className='nav__top__item categoryPage__filters__text'>
+        <div className='categoryPage__filters__text'>
           <input
-            className='nav__top__item__input '
+            className='categoryPage__filters__input__search'
             placeholder='Insert item name'
             name='text'
             value={filters.text}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
           />
           <SearchIcon />
         </div>
       </div>
       <div className='categoryPage__items'>
-        {items.map(item => (
+        {items.map((item) => (
           <div className='categoryPage__item' key={item._id}>
             <Link to={`/item/${item._id}`}>
               <img
@@ -268,8 +268,8 @@ export const CategoryPageItem = ({ products, category, getCartItems }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  products: state.products.data
+const mapStateToProps = (state) => ({
+  products: state.products.data,
 });
 
 export default connect(mapStateToProps, { getCartItems })(CategoryPageItem);

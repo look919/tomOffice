@@ -6,7 +6,6 @@ import UserNav from './UserNav';
 import { updateUser } from '../../../../actions/auth';
 import {
   UserRegisterIcon,
-  EmailIcon,
   PhoneRegisterIcon,
   CountryRegisterIcon,
   TownRegisterIcon,
@@ -57,20 +56,6 @@ const UserSettings = ({ user, updateUser }) => {
               value={formData.name}
               onChange={(e) => onChange(e)}
               placeholder={user.name}
-            />
-          </div>
-          <div className='userPage__settings__input-container'>
-            <EmailIcon />
-            <span className='userPage__settings__input-container__text'>
-              Email:
-            </span>
-            <input
-              className='userPage__settings__input-container__input'
-              type='email'
-              name='email'
-              value={formData.email}
-              onChange={(e) => onChange(e)}
-              placeholder={user.email}
             />
           </div>
           <div className='userPage__settings__input-container'>
@@ -147,7 +132,6 @@ const UserSettings = ({ user, updateUser }) => {
           </button>
         </div>
       </form>
-      >
     </section>
   );
 };

@@ -42,11 +42,28 @@ body {
 .heading-3 {
   @extend %heading;
   font-size: 3rem;
+
+  @media only screen and (max-width: $bp-1600) {
+    font-size: 2.8rem;
+  }
+  @media only screen and (max-width: $bp-1200) {
+    font-size: 2.2rem;
+  }
+  @media only screen and (max-width: $bp-800) {
+    font-size: 1.8rem;
+  }
 }
 .heading-4 {
   @extend %heading;
   font-size: 1.8rem;
   font-style: italic;
+
+  @media only screen and (max-width: $bp-1200) {
+    font-size: 1.4rem;
+  }
+  @media only screen and (max-width: $bp-800) {
+    font-size: 1.2rem;
+  }
 }
 .alert {
   position: fixed;
@@ -91,6 +108,7 @@ body {
 
 .isActive {
   color: $color-primary !important;
+  font-weight: 600;
 
   &--2 {
     color: $color-primary-dark !important;

@@ -9,7 +9,7 @@ const UserOrders = ({ user }) => {
     user = {
       orders: [{ items: [] }],
     };
-  console.log(user);
+
   return (
     <section className='userPage'>
       <UserNav />

@@ -5,20 +5,52 @@
   justify-content: center;
   padding: 0.5rem 5rem;
 
+  @media only screen and (max-width: $bp-1000) {
+    padding: 0.5rem 3rem;
+  }
+
+  @media only screen and (max-width: $bp-800) {
+    padding: 0.5rem 1.5rem;
+  }
+
   &__list {
-    width: 70%;
+    width: 100%;
     height: 100%;
 
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: flex-end;
 
     font-size: 2rem;
     font-weight: 400;
     letter-spacing: 1px;
 
+    @media only screen and (max-width: $bp-1400) {
+      font-size: 1.6rem;
+    }
+    @media only screen and (max-width: $bp-800) {
+      font-size: 1.4rem;
+      letter-spacing: 0;
+    }
+    @media only screen and (max-width: $bp-450) {
+      font-size: 1.2rem;
+    }
+
     &__item {
-      margin: 0 3rem;
+      &:not(:last-child) {
+        margin-right: 3rem;
+      }
+
+      @media only screen and (max-width: $bp-1400) {
+        &:not(:last-child) {
+          margin-right: 2rem;
+        }
+      }
+      @media only screen and (max-width: $bp-800) {
+        &:not(:last-child) {
+          margin-right: 1.4rem;
+        }
+      }
 
       &:hover {
         text-decoration: none;

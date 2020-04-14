@@ -15,6 +15,18 @@
   cursor: pointer;
   transition: all 0.4s;
 
+  @media only screen and (max-width: $bp-1400) {
+    font-size: 1.4rem;
+    padding: 0.5rem 2rem;
+  }
+  @media only screen and (max-width: $bp-1000) {
+    font-size: 1.2rem;
+    padding: 0.5rem 2rem;
+  }
+  @media only screen and (max-width: $bp-800) {
+    padding: 0.5rem 1.5rem;
+  }
+
   &:link,
   &:visited {
     text-decoration: none;

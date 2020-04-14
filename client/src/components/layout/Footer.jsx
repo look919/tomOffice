@@ -35,7 +35,7 @@ const Footer = () => {
           Strefa Premium
         </Link>
         <Link className='footer__list__item' to='/'>
-          Dostawa w sklepie internetowym
+          Dostawa
         </Link>
         <Link className='footer__list__item' to='/'>
           Dostawa w salonach
