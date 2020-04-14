@@ -6,8 +6,25 @@
   grid-template-rows: min-content;
   grid-template-columns: 30rem 1fr;
 
+  @media only screen and (max-width: $bp-1000) {
+    grid-template-columns: 25rem 1fr;
+  }
+  @media only screen and (max-width: $bp-800) {
+    grid-template-columns: 20rem 1fr;
+  }
+  @media only screen and (max-width: $bp-500) {
+    grid-template-rows: repeat(2, min-content);
+    grid-template-columns: 100%;
+    align-items: center;
+    justify-items: center;
+  }
+
   &__nav {
     grid-column: 1 / 2;
+
+    @media only screen and (max-width: $bp-500) {
+      grid-row: 1 / 2;
+    }
 
     &__list {
       padding: 4rem 2rem;
@@ -17,6 +34,14 @@
       align-items: center;
       justify-content: center;
 
+      @media only screen and (max-width: $bp-1000) {
+        padding: 4rem 0;
+      }
+      @media only screen and (max-width: $bp-500) {
+        padding: 0 4rem;
+        width: 100vw;
+      }
+
       &__item {
         position: relative;
         width: 100%;
@@ -24,6 +49,14 @@
         text-align: center;
         font-size: 1.6rem;
         letter-spacing: 1px;
+
+        @media only screen and (max-width: $bp-500) {
+          width: 60%;
+          &:last-child {
+            padding-bottom: 5rem;
+            border-bottom: 1px dotted $color-grey-dark-2;
+          }
+        }
 
         &--active {
           color: $color-background !important;
@@ -85,8 +118,19 @@
   &__orders {
     padding: 4rem 12rem;
 
+    @media only screen and (max-width: $bp-1000) {
+      padding: 4rem 8rem;
+    }
+    @media only screen and (max-width: $bp-800) {
+      padding: 4rem;
+    }
+
     &__header {
       margin-bottom: 5rem;
+
+      @media only screen and (max-width: $bp-800) {
+        margin-bottom: 2rem;
+      }
     }
 
     display: flex;
@@ -98,6 +142,10 @@
       flex-direction: column;
       justify-content: center;
 
+      @media only screen and (max-width: $bp-500) {
+        align-items: center;
+      }
+
       &__item {
         font-size: 1.4rem;
 
@@ -106,6 +154,7 @@
 
           display: flex;
           align-items: center;
+
           &__text {
             margin-right: 1rem;
           }
@@ -128,6 +177,10 @@
         width: 16rem;
         font-size: 1.8rem;
         margin: 0.5rem 1rem;
+
+        @media only screen and (max-width: $bp-800) {
+          width: 14rem;
+        }
       }
       &__input {
         width: 30rem;
@@ -137,6 +190,11 @@
         font-family: $font-primary;
         font-size: 1.6rem;
         color: $color-black;
+
+        @media only screen and (max-width: $bp-800) {
+          width: 22rem;
+          padding: 1rem 1.6rem;
+        }
 
         &::placeholder {
           color: $color-grey-light-2;
@@ -148,6 +206,10 @@
       width: 50rem;
       border-radius: 0;
       margin-top: 2rem;
+
+      @media only screen and (max-width: $bp-800) {
+        width: 40rem;
+      }
     }
   }
 
@@ -163,10 +225,19 @@
         grid-template-rows: 4rem 2.5rem;
         margin: 2rem 0;
 
+        @media only screen and (max-width: $bp-800) {
+          grid-template-rows: 3rem 2.5rem;
+          margin: 1.2rem 0;
+        }
+
         &__product {
           margin: 0.2rem 1rem;
           display: grid;
           grid-template-columns: 30rem 5rem 1fr;
+
+          @media only screen and (max-width: $bp-500) {
+            grid-template-columns: 25rem 4rem 7rem;
+          }
 
           &__price {
             font-size: 1.6rem;
