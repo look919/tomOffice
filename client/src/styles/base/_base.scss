@@ -41,7 +41,11 @@ body {
 
   display: grid;
   grid-template-rows: 17rem min-content [recommended-start] min-content [recommended-end footer-start] min-content [footer-end];
-  grid-template-columns: [marginLeft-start] 3rem [marginLeft-end full-start] 8rem [center-start] 1fr [center-end] 8rem [full-end marginRight-start] 3rem [marginRight-end];
+  grid-template-columns:
+    [marginLeft-start] 3rem [marginLeft-end full-start] 8rem [center-start] calc(
+      100% - 22rem
+    )
+    [center-end] 8rem [full-end marginRight-start] 3rem [marginRight-end];
   grid-row-gap: 5rem;
 
   @media only screen and (max-width: $bp-800) {

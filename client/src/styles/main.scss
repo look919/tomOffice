@@ -5,6 +5,11 @@
 @import './base/typography';
 @import './base/utilities';
 
+@import './layout/footer';
+@import './layout/header';
+@import './layout/nav-bottom';
+@import './layout/nav-top';
+
 @import './components/auth';
 @import './components/btn';
 @import './components//dashboard';
@@ -12,7 +17,3 @@
 @import './components/itemPage';
 @import './components/cartPage';
 @import './components/userPage';
-@import './layout/footer';
-@import './layout/header';
-@import './layout/nav-bottom';
-@import './layout/nav-top';
