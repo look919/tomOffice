@@ -65,7 +65,7 @@ const Cart = ({ user, cart, products, getCartItems, updateUserOrders }) => {
           <span className='cartPage__products__content__header cartPage__products__content__header--first'>
             Przedmiot
           </span>
-          <span className='cartPage__products__content__header'>
+          <span className='cartPage__products__content__header cartPage__products__content__header--time'>
             Czas dostawy
           </span>
           <span className='cartPage__products__content__header'>Cena</span>
@@ -151,6 +151,7 @@ const Cart = ({ user, cart, products, getCartItems, updateUserOrders }) => {
               shippingAddress
               amount={totalPrice * 100}
               name={'TomOffice'}
+              className='btn cartPage__cta__summary__btn'
             />
           ) : (
             <Link to='/login' className='btn cartPage__cta__summary__btn'>
