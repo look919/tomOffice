@@ -12,7 +12,7 @@ const HitOption = ({ products, getCartItems }) => {
 
   const itemJSON = {
     id: items[0]._id || 'test',
-    amount: 1
+    amount: 1,
   };
 
   const handleButton = () => {
@@ -22,7 +22,7 @@ const HitOption = ({ products, getCartItems }) => {
 
   return (
     <div className='dashboard__recommended__content__hit-option'>
-      {items.map(item => (
+      {items.map((item) => (
         <div
           className='dashboard__recommended__content__hit-option__item'
           key={item._id}
@@ -46,17 +46,17 @@ const HitOption = ({ products, getCartItems }) => {
             <div className='dashboard__recommended__content__hit-option__item__cta'>
               <div className='dashboard__recommended__content__hit-option__item__prices'>
                 <span className='dashboard__recommended__content__hit-option__item__price'>
-                  {item.price}
+                  {item.price.toFixed(2)}
                 </span>
                 <span className='dashboard__recommended__content__hit-option__item__oldPrice'>
-                  {item.oldPrice + ',-'}
+                  {item.oldPrice.toFixed(2) + ',-'}
                 </span>
               </div>
               <button
                 onClick={handleButton}
                 className='btn dashboard__recommended__content__hit-option__item__btn'
               >
-                <CartIconButton /> ADD TO CART
+                <CartIconButton /> Dodaj do koszyka
               </button>
             </div>
           </div>
@@ -76,8 +76,8 @@ const HitOption = ({ products, getCartItems }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  products: state.products.data
+const mapStateToProps = (state) => ({
+  products: state.products.data,
 });
 
 export default connect(mapStateToProps, { getCartItems })(HitOption);

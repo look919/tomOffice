@@ -17,6 +17,9 @@
       grid-template-rows: 15rem 40rem 15rem;
       grid-row-gap: 2rem;
     }
+    @media only screen and (max-width: $bp-450) {
+      grid-column: full-start / full-end;
+    }
 
     &__center {
       height: 100%;
@@ -161,7 +164,8 @@
         font-family: $font-primary;
         font-size: 2rem;
         cursor: pointer;
-        padding: 0.5rem 2rem;
+        padding: 0.5rem 1rem;
+        width: 12rem;
 
         &:focus {
           outline: none;

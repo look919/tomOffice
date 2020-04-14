@@ -15,7 +15,8 @@
   @media only screen and (max-width: $bp-600) {
     grid-template-rows: 30rem 30rem min-content;
     grid-template-columns: repeat(3, 1fr);
-    justify-items: center;
+
+    align-items: center;
   }
 
   &__contact {
@@ -48,6 +49,7 @@
       grid-column: 1 / -1;
       padding: 2rem 6rem;
       margin-bottom: 2.5rem;
+      margin-right: 0;
     }
 
     &__icon {

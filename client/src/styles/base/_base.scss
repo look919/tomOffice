@@ -27,6 +27,9 @@ html {
   @media only screen and (max-width: $bp-600) {
     font-size: 45%;
   }
+  @media only screen and (max-width: $bp-400) {
+    // font-size: 40%;
+  }
 }
 
 body {
@@ -55,10 +58,23 @@ body {
   }
   @media only screen and (max-width: $bp-450) {
     grid-template-rows: 8rem min-content [recommended-start] min-content [recommended-end footer-start] min-content [footer-end];
+    grid-template-columns:
+      [marginLeft-start] 1rem [marginLeft-end full-start] 6rem [center-start] calc(
+        100% - 14rem
+      )
+      [center-end] 6rem [full-end marginRight-start] 1rem [marginRight-end];
   }
 
   &--category {
     grid-template-rows: 17rem min-content [footer-start] min-content [footer-end];
+
+    @media only screen and (max-width: $bp-800) {
+      grid-template-rows: 12rem min-content [footer-start] min-content [footer-end];
+    }
+
+    @media only screen and (max-width: $bp-450) {
+      grid-template-rows: 8rem min-content [footer-start] min-content [footer-end];
+    }
   }
   &--login {
     height: 100vh;

@@ -108,6 +108,7 @@ body {
 
 .isActive {
   color: $color-primary !important;
+  font-weight: 600;
 
   &--2 {
     color: $color-primary-dark !important;
