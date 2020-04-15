@@ -46,6 +46,7 @@ const Cart = ({ user, cart, products, getCartItems, updateUserOrders }) => {
       orders.push(doc);
 
       updateUserOrders(orders);
+
     } else {
       console.log('order not completted');
     }
