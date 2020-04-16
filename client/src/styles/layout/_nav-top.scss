@@ -27,6 +27,53 @@
       margin: 0.3rem 0.5rem;
     }
 
+    &__search {
+      overflow: visible;
+
+      &__items {
+        position: absolute;
+        width: 100%;
+        margin-top: 9rem;
+        background-color: darken($color-background, 20%);
+        height: 15rem;
+        z-index: 10;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        border: 1px solid $color-grey-dark-2;
+
+        display: none;
+      }
+
+      &__item {
+        height: 50%;
+        display: flex;
+        align-items: center;
+
+        padding: 0.5rem 1rem;
+        width: 100%;
+        font-size: 1.2rem;
+
+        &__img {
+          height: 4rem;
+        }
+        &__text {
+          text-align: right;
+          flex: 1 0 0;
+        }
+
+        &:not(:last-child) {
+          border-bottom: 1px solid $color-grey-dark-2;
+        }
+      }
+
+      &:focus-within > &__items {
+        display: flex;
+      }
+    }
+
     &__btn {
       height: 3.5rem;
       width: 3.5rem;

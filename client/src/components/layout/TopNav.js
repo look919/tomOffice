@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { SearchIcon, UserIcon, CartIcon } from './Icons';
+import filter from '../../selectors/navSearch';
 
 import UKFlag from '../../img/uk.png';
 import PLFlag from '../../img/pl.png';
@@ -9,15 +10,53 @@ import PLFlag from '../../img/pl.png';
 const TopNav = ({ auth, products, cart }) => {
   //Products
   if (!products) products = [];
+  const [search, setSearch] = useState({
+    text: '',
+  });
+
+  //search navbar
+  const searchedItems = filter(products, search.text) || [];
+
+  const onChange = (e) => {
+    setSearch({ ...search, [e.target.name]: e.target.value });
+  };
 
   return (
     <nav className='nav__top'>
-      <div className='nav__top__item'>
+      <div className='nav__top__item nav__top__item__search'>
         <input
           className='nav__top__item__input'
           placeholder='Looking for something special?'
+          value={search.text}
+          name='text'
+          onChange={(e) => onChange(e)}
+          autoComplete='off'
         />
         <SearchIcon />
+        {searchedItems.length > 0 ? (
+          <div className='nav__top__item__search__items'>
+            {searchedItems.map((item) => (
+              <Link
+                to={`/item/${item._id}`}
+                className='nav__top__item__search__item'
+                key={item._id}
+              >
+                <img
+                  src={require(`../../img/${item.image}`)}
+                  className='nav__top__item__search__item__img'
+                  alt='item view'
+                />
+                <p className='nav__top__item__search__item__text'>
+                  {item.name}
+                </p>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <div className='nav__top__item__search__items'>
+            Brak przedmiotów z podaną nazwą
+          </div>
+        )}
       </div>
 
       <button className='nav__top__item__btn'>
