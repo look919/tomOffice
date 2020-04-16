@@ -209,61 +209,68 @@ export const CategoryPageItem = ({ products, category, getCartItems }) => {
           <SearchIcon />
         </div>
       </div>
-      <div className='categoryPage__items'>
-        {items.map((item) => (
-          <div className='categoryPage__item' key={item._id}>
-            <Link to={`/item/${item._id}`}>
-              <img
-                src={require(`../../../img/${item.image}`)}
-                className='categoryPage__item__img'
-                alt='furniture view'
-              />
-            </Link>
-            <Link to={`/item/${item._id}`}>
-              <div className='categoryPage__item__name'>{item.name}</div>
-            </Link>
-            <div className='categoryPage__item__prices'>
-              <span className='categoryPage__item__price'>
-                {item.price.toFixed(2)}
+
+      {items.length === 0 ? (
+        <div className='categoryPage__items'>
+          <p>No items found with that filters</p>
+        </div>
+      ) : (
+        <div className='categoryPage__items'>
+          {items.map((item) => (
+            <div className='categoryPage__item' key={item._id}>
+              <Link to={`/item/${item._id}`}>
+                <img
+                  src={require(`../../../img/${item.image}`)}
+                  className='categoryPage__item__img'
+                  alt='furniture view'
+                />
+              </Link>
+              <Link to={`/item/${item._id}`}>
+                <div className='categoryPage__item__name'>{item.name}</div>
+              </Link>
+              <div className='categoryPage__item__prices'>
+                <span className='categoryPage__item__price'>
+                  {item.price.toFixed(2)}
+                </span>
+                <span className='categoryPage__item__oldPrice'>
+                  {item.oldPrice.toFixed(2)}
+                </span>
+              </div>
+
+              {item.amount > 5 ? (
+                <span className='categoryPage__item__amount categoryPage__item__amount--empty'>
+                  &nbsp;
+                </span>
+              ) : item.amount > 1 ? (
+                <span className='categoryPage__item__amount categoryPage__item__amount--multi'>
+                  Ograniczona ilość!
+                </span>
+              ) : item.amount === 1 ? (
+                <span className='categoryPage__item__amount categoryPage__item__amount--single'>
+                  Ostatnia sztuka!
+                </span>
+              ) : (
+                <span className='categoryPage__item__amount categoryPage__item__amount--empty'>
+                  &nbsp;
+                </span>
+              )}
+
+              <span className='categoryPage__item__magazine'>
+                {item.amount > 0
+                  ? 'W magazynie - wysyłka 5 dni'
+                  : 'Produkt niedostepny'}
               </span>
-              <span className='categoryPage__item__oldPrice'>
-                {item.oldPrice.toFixed(2)}
-              </span>
+              <button
+                onClick={() => handleButton({ id: item._id, amount: 1 })}
+                className='btn categoryPage__item__btn'
+              >
+                <CartIconButton className='categoryPage__item__icon' /> Dodaj do
+                koszyka
+              </button>
             </div>
-
-            {item.amount > 5 ? (
-              <span className='categoryPage__item__amount categoryPage__item__amount--empty'>
-                &nbsp;
-              </span>
-            ) : item.amount > 1 ? (
-              <span className='categoryPage__item__amount categoryPage__item__amount--multi'>
-                Ograniczona ilość!
-              </span>
-            ) : item.amount === 1 ? (
-              <span className='categoryPage__item__amount categoryPage__item__amount--single'>
-                Ostatnia sztuka!
-              </span>
-            ) : (
-              <span className='categoryPage__item__amount categoryPage__item__amount--empty'>
-                &nbsp;
-              </span>
-            )}
-
-            <span className='categoryPage__item__magazine'>
-              {item.amount > 0
-                ? 'W magazynie - wysyłka 5 dni'
-                : 'Produkt niedostepny'}
-            </span>
-            <button
-              onClick={() => handleButton({ id: item._id, amount: 1 })}
-              className='btn categoryPage__item__btn'
-            >
-              <CartIconButton className='categoryPage__item__icon' /> Dodaj do
-              koszyka
-            </button>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 };
