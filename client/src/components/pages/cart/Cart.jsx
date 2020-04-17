@@ -160,16 +160,23 @@ const Cart = ({ user, cart, products, getCartItems, updateUserOrders }) => {
             <span className='cartPage__cta__summary__item cartPage__cta__summary__item--bigger'>
               {totalPrice.toFixed(2)}
             </span>
+
             {user ? (
-              <StripeCheckout
-                stripeKey={'pk_test_rcm73WxgoFhDtsH2i3B6a3C600eFskjudh'}
-                token={handleToken}
-                billingAddress
-                shippingAddress
-                amount={totalPrice * 100}
-                name={'TomOffice'}
-                className='btn cartPage__cta__summary__btn'
-              />
+              <div className='cartPage__cta__summary__item__payment'>
+                <StripeCheckout
+                  stripeKey={'pk_test_rcm73WxgoFhDtsH2i3B6a3C600eFskjudh'}
+                  token={handleToken}
+                  billingAddress
+                  shippingAddress
+                  amount={totalPrice * 100}
+                  name={'TomOffice'}
+                  className='btn cartPage__cta__summary__btn'
+                />
+                <p className='cartPage__cta__summary__item__payment__text'>
+                  Real payments for obvious reasons are disabled, to create test
+                  payment use 4242 4242 4242 4242 / 04/24 / 444
+                </p>
+              </div>
             ) : (
               <Link to='/login' className='btn cartPage__cta__summary__btn'>
                 Zaloguj się
