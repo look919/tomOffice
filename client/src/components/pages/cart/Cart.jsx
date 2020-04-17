@@ -46,7 +46,6 @@ const Cart = ({ user, cart, products, getCartItems, updateUserOrders }) => {
       orders.push(doc);
 
       updateUserOrders(orders);
-
     } else {
       console.log('order not completted');
     }
@@ -62,52 +61,62 @@ const Cart = ({ user, cart, products, getCartItems, updateUserOrders }) => {
             Twoje produkty
           </h4>
         </div>
-        <div className='cartPage__products__content'>
-          <span className='cartPage__products__content__header cartPage__products__content__header--first'>
-            Przedmiot
-          </span>
-          <span className='cartPage__products__content__header cartPage__products__content__header--time'>
-            Czas dostawy
-          </span>
-          <span className='cartPage__products__content__header'>Cena</span>
-          <span className='cartPage__products__content__header'>Ilość</span>
-          <span className='cartPage__products__content__header'>Wartość</span>
-          {cart.map((item) => (
-            <div key={uuidv4()} className='cartPage__products__content__item'>
-              <img
-                alt='product view'
-                src={require(`../../../img/${item.product.image}`)}
-                className='cartPage__products__content__item__img'
-              />
-              <Link
-                to={`/item/${item.product._id}`}
-                className='cartPage__products__content__item__name'
-              >
-                {item.product.name}
-              </Link>
-              <span className='cartPage__products__content__item__delivery'>
-                {item.product.amount > 0
-                  ? 'Wysyłka do 5 dni + dostawa'
-                  : 'Wysyłka do 5 dni po dostarczeniu do magazynu + dostawa'}
-              </span>
-              <span className='cartPage__products__content__item__price'>
-                {item.product.price.toFixed(2)}
-              </span>
-              <span className='cartPage__products__content__item__amount'>
-                {item.amount}
-              </span>
-              <span className='cartPage__products__content__item__value'>
-                {(item.product.price * item.amount).toFixed(2)}
-              </span>
-              <button
-                className='cartPage__products__content__item__icon'
-                onClick={() => handleRemoveItemFromCart(item.product._id)}
-              >
-                <RemoveItemIcon />
-              </button>
-            </div>
-          ))}
-        </div>
+
+        {cart.length > 0 ? (
+          <div className='cartPage__products__content'>
+            <span className='cartPage__products__content__header cartPage__products__content__header--first'>
+              Przedmiot
+            </span>
+            <span className='cartPage__products__content__header cartPage__products__content__header--time'>
+              Czas dostawy
+            </span>
+            <span className='cartPage__products__content__header'>Cena</span>
+            <span className='cartPage__products__content__header'>Ilość</span>
+            <span className='cartPage__products__content__header'>Wartość</span>
+            {cart.map((item) => (
+              <div key={uuidv4()} className='cartPage__products__content__item'>
+                <img
+                  alt='product view'
+                  src={require(`../../../img/${item.product.image}`)}
+                  className='cartPage__products__content__item__img'
+                />
+                <Link
+                  to={`/item/${item.product._id}`}
+                  className='cartPage__products__content__item__name'
+                >
+                  {item.product.name}
+                </Link>
+                <span className='cartPage__products__content__item__delivery'>
+                  {item.product.amount > 0
+                    ? 'Wysyłka do 5 dni + dostawa'
+                    : 'Wysyłka do 5 dni po dostarczeniu do magazynu + dostawa'}
+                </span>
+                <span className='cartPage__products__content__item__price'>
+                  {item.product.price.toFixed(2)}
+                </span>
+                <span className='cartPage__products__content__item__amount'>
+                  {item.amount}
+                </span>
+                <span className='cartPage__products__content__item__value'>
+                  {(item.product.price * item.amount).toFixed(2)}
+                </span>
+                <button
+                  className='cartPage__products__content__item__icon'
+                  onClick={() => handleRemoveItemFromCart(item.product._id)}
+                >
+                  <RemoveItemIcon />
+                </button>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className='cartPage__products__content'>
+            <span className='cartPage__products__content__header cartPage__products__content__header--first'>
+              Brak przedmiotów w twoim koszyku.
+            </span>
+          </div>
+        )}
+
         <div className='cartPage__products__delivery'>
           <div className='cartPage__products__header'>
             <TruckIconCart />
@@ -120,47 +129,55 @@ const Cart = ({ user, cart, products, getCartItems, updateUserOrders }) => {
           </span>
         </div>
       </div>
-      <div className='cartPage__cta'>
-        <div className='cartPage__cta__discount'>
-          <span className='cartPage__cta__discount__text'>Kod promocyjny</span>
-          <input
-            className='cartPage__cta__discount__input'
-            placeholder='Wpisz kod promocyjny'
-          />
-          <button className='btn cartPage__cta__discount__btn'>Aktywuj</button>
-        </div>
-        <div className='cartPage__cta__summary'>
-          <span className='cartPage__cta__summary__item'>Wartość towarów:</span>
-          <span className='cartPage__cta__summary__item'>
-            {totalPrice.toFixed(2)}
-          </span>
-          <span className='cartPage__cta__summary__item'>Rabat:</span>
-          <span className='cartPage__cta__summary__item'>-0.00</span>
-          <span className='cartPage__cta__summary__item'>Koszt dostawy:</span>
-          <span className='cartPage__cta__summary__item'>0.00</span>
-          <span className='cartPage__cta__summary__item cartPage__cta__summary__item--bigger'>
-            Podsumowanie:
-          </span>
-          <span className='cartPage__cta__summary__item cartPage__cta__summary__item--bigger'>
-            {totalPrice.toFixed(2)}
-          </span>
-          {user ? (
-            <StripeCheckout
-              stripeKey={'pk_test_rcm73WxgoFhDtsH2i3B6a3C600eFskjudh'}
-              token={handleToken}
-              billingAddress
-              shippingAddress
-              amount={totalPrice * 100}
-              name={'TomOffice'}
-              className='btn cartPage__cta__summary__btn'
+      {cart.length > 0 && (
+        <div className='cartPage__cta'>
+          <div className='cartPage__cta__discount'>
+            <span className='cartPage__cta__discount__text'>
+              Kod promocyjny
+            </span>
+            <input
+              className='cartPage__cta__discount__input'
+              placeholder='Wpisz kod promocyjny'
             />
-          ) : (
-            <Link to='/login' className='btn cartPage__cta__summary__btn'>
-              Zaloguj się
-            </Link>
-          )}
+            <button className='btn cartPage__cta__discount__btn'>
+              Aktywuj
+            </button>
+          </div>
+          <div className='cartPage__cta__summary'>
+            <span className='cartPage__cta__summary__item'>
+              Wartość towarów:
+            </span>
+            <span className='cartPage__cta__summary__item'>
+              {totalPrice.toFixed(2)}
+            </span>
+            <span className='cartPage__cta__summary__item'>Rabat:</span>
+            <span className='cartPage__cta__summary__item'>-0.00</span>
+            <span className='cartPage__cta__summary__item'>Koszt dostawy:</span>
+            <span className='cartPage__cta__summary__item'>0.00</span>
+            <span className='cartPage__cta__summary__item cartPage__cta__summary__item--bigger'>
+              Podsumowanie:
+            </span>
+            <span className='cartPage__cta__summary__item cartPage__cta__summary__item--bigger'>
+              {totalPrice.toFixed(2)}
+            </span>
+            {user ? (
+              <StripeCheckout
+                stripeKey={'pk_test_rcm73WxgoFhDtsH2i3B6a3C600eFskjudh'}
+                token={handleToken}
+                billingAddress
+                shippingAddress
+                amount={totalPrice * 100}
+                name={'TomOffice'}
+                className='btn cartPage__cta__summary__btn'
+              />
+            ) : (
+              <Link to='/login' className='btn cartPage__cta__summary__btn'>
+                Zaloguj się
+              </Link>
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </section>
   );
 };

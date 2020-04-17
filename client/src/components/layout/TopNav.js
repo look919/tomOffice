@@ -84,7 +84,11 @@ const TopNav = ({ auth, products, cart }) => {
         <CartIcon />
         <p className='nav__top__item__p'>Koszyk</p>
         <div className='nav__top__item__circle'>
-          <p className='nav__top__item__circle__p'>{cart.length || 0}</p>
+          <p className='nav__top__item__circle__p'>
+            {cart.reduce((currentTotal, item) => {
+              return item.amount + currentTotal;
+            }, 0)}
+          </p>
         </div>
       </Link>
     </nav>
