@@ -204,6 +204,7 @@ export const CategoryPageItem = ({ products, category, getCartItems }) => {
             placeholder='Insert item name'
             name='text'
             value={filters.text}
+            autoComplete='off'
             onChange={(e) => onChange(e)}
           />
           <SearchIcon />

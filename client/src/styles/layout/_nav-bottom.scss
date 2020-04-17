@@ -38,7 +38,7 @@
 
     &__item {
       &:not(:last-child) {
-        margin-right: 3rem;
+        margin-right: 4rem;
       }
 
       @media only screen and (max-width: $bp-1400) {

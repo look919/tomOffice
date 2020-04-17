@@ -52,9 +52,13 @@ const TopNav = ({ auth, products, cart }) => {
               </Link>
             ))}
           </div>
-        ) : (
+        ) : search.text.length >= 3 ? (
           <div className='nav__top__item__search__items'>
             Brak przedmiotów z podaną nazwą
+          </div>
+        ) : (
+          <div className='nav__top__item__search__items'>
+            Wpisz co najmniej 3 litery
           </div>
         )}
       </div>
