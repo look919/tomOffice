@@ -4,10 +4,9 @@ const authController = require('./../controllers/authController');
 
 const router = express.Router();
 
-router.get('/auth', authController.isLoggedIn);
-
 router.post('/signup', authController.signup);
 router.post('/login', authController.login);
+router.get('/auth', authController.isLoggedIn);
 
 //USERS AUTHENTICATED
 router.use(authController.protect);

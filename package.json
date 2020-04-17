@@ -6,9 +6,11 @@
   "scripts": {
     "start": "node server",
     "server": "nodemon server",
+    "server:prod": "NODE_ENV=production nodemon server.js",
     "debug": "ndb server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "dev:prod": "concurrently \"npm run server:prod\" \"npm run client\"",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "author": "Tomasz Wirkus",
@@ -27,6 +29,7 @@
     "mongoose": "^5.8.11",
     "morgan": "^1.9.1",
     "nodemailer": "^6.4.6",
+    "nodemailer-sendgrid": "^1.0.3",
     "pug": "^2.0.4",
     "react-reveal": "^1.2.2",
     "sharp": "^0.24.0",
