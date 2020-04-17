@@ -89,6 +89,7 @@ export const login = ({ email, password }) => async (dispatch) => {
       type: LOGIN_SUCCESS,
       payload: res.data,
     });
+    dispatch(setAlert('Successfully log in', 'success'));
   } catch (err) {
     dispatch(setAlert(err.response.data.message, 'danger'));
     dispatch({
@@ -105,6 +106,7 @@ export const logout = () => async (dispatch) => {
     dispatch({
       type: LOGOUT,
     });
+    dispatch(setAlert('Successfully logout', 'success'));
   } catch (err) {
     dispatch(setAlert(err.response.data.message, 'danger'));
   }
@@ -148,8 +150,9 @@ export const updateUserOrders = (orders) => async (dispatch) => {
       payload: res.data.data.user,
     });
     dispatch(setAlert('Order successfully created', 'success'));
+    localStorage.removeItem('cart');
   } catch (err) {
-    dispatch(setAlert(err.response.data.message, 'danger'));
+    dispatch(setAlert('There was a problem with your order', 'danger'));
     dispatch({
       type: UPDATE_USER_FAIL,
       payload: err.message,
