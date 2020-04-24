@@ -31,7 +31,7 @@ export const User = ({ user }) => {
                 Kod pocztowy: {` ${user.address.postCode}`}
               </span>
               <span className="userPage__about__list__item__address__text">
-                Miasto: {` ${user.address.postCode}`}
+                Miasto: {` ${user.address.town}`}
               </span>
               <span className="userPage__about__list__item__address__text">
                 Adres: {` ${user.address.street}`}
