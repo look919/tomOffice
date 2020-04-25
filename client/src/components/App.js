@@ -16,6 +16,8 @@ import LoginPage from './pages/auth/Login';
 import RegisterPage from './pages/auth/Register';
 import UserPage from './pages/auth/user/UserPage';
 import ForgetPasswordPage from './pages/auth/ForgetPassword';
+import ResetPasswordPage from './pages/auth/ResetPassword';
+import NotFoundPage from './layout/NotFoundPage';
 
 import '../styles/main.scss';
 
@@ -35,23 +37,30 @@ const App = () => {
         <div>
           <Alert />
           <Switch>
-            <Route path='/' component={DashboardPage} exact={true} />
-            <Route path='/cart' component={CartPage} />
-            <Route path='/login' component={LoginPage} />
-            <Route path='/register' component={RegisterPage} />
-            <Route path='/forgetPassword' component={ForgetPasswordPage} />
-            <Route path='/user' component={UserPage} />
-            <Route path='/settings' component={UserPage} />
-            <Route path='/orders' component={UserPage} />
-
+            <Route path="/" component={DashboardPage} exact={true} />
+            <Route path="/cart" component={CartPage} />
+            <Route path="/login" component={LoginPage} />
+            <Route path="/register" component={RegisterPage} />
+            <Route path="/forgetPassword" component={ForgetPasswordPage} />
             <Route
-              path='/products/:category'
+              path="/resetPassword/:token"
+              render={(props) => (
+                <ResetPasswordPage {...props} isAuthed={true} />
+              )}
+            />
+
+            <Route path="/user" component={UserPage} />
+            <Route path="/settings" component={UserPage} />
+            <Route path="/orders" component={UserPage} />
+            <Route
+              path="/products/:category"
               render={(props) => <CategoryPage {...props} isAuthed={true} />}
             />
             <Route
-              path='/item/:id'
+              path="/item/:id"
               render={(props) => <ItemPage {...props} isAuthed={true} />}
             />
+            <Route component={NotFoundPage} />
           </Switch>
         </div>
       </BrowserRouter>

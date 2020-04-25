@@ -31,52 +31,52 @@ const Login = ({ login, auth }) => {
   }
 
   return (
-    <section className='container--login'>
-      <form className='auth__form'>
-        <Link to='/' className='auth__form__logo'>
-          <img src={Logo} alt='logo' className='auth__form__logo' />
+    <section className="container--login">
+      <form className="auth__form">
+        <Link to="/" className="auth__form__logo">
+          <img src={Logo} alt="logo" className="auth__form__logo" />
         </Link>
-        <h2 className='heading-2 auth__form__header'>Log In</h2>
-        <div className='auth__form__field' tabIndex='0'>
+        <h2 className="heading-2 auth__form__header">Log In</h2>
+        <div className="auth__form__field">
           <EmailIcon />
           <input
-            className='auth__form__field__input'
-            placeholder='Email'
-            name='email'
+            className="auth__form__field__input"
+            placeholder="Email"
+            name="email"
             value={formData.email}
             onChange={(e) => {
               onChange(e);
             }}
           />
         </div>
-        <div className='auth__form__field' tabIndex='0'>
+        <div className="auth__form__field">
           <PasswordIcon />
           <input
-            type='password'
-            className='auth__form__field__input'
-            placeholder='Password'
-            name='password'
+            type="password"
+            className="auth__form__field__input"
+            placeholder="Password"
+            name="password"
             value={formData.password}
             onChange={(e) => {
               onChange(e);
             }}
           />
         </div>
-        <div className='auth__form__login'>
+        <div className="auth__form__login">
           <Link
-            to='/forgetPassword'
-            className='auth__form__login__link auth__form__login__link--password'
+            to="/forgetPassword"
+            className="auth__form__login__link auth__form__login__link--password"
           >
             Forget your password?
           </Link>
           <Link
-            to='/register'
-            className='auth__form__login__link auth__form__login__link--new-acc'
+            to="/register"
+            className="auth__form__login__link auth__form__login__link--new-acc"
           >
             Create new account
           </Link>
           <button
-            className='btn auth__form__login__btn'
+            className="btn auth__form__login__btn"
             onClick={(e) => onSubmit(e)}
           >
             Log in

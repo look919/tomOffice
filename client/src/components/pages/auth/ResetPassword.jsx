@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { forgotPassword } from '../../../actions/auth';
+import { resetPassword } from '../../../actions/auth';
 
 import Logo from '../../../img/logo.png';
-import { EmailIcon } from '../../layout/Icons';
+import { PasswordIcon } from '../../layout/Icons';
 
-const ForgetPassword = ({ auth, forgotPassword }) => {
+const ResetPassword = ({ resetPassword, ...props }) => {
   const [formData, setFormData] = useState({
-    email: '',
+    password: '',
+    passwordConfirm: '',
   });
-  const { email } = formData;
+  const { password, passwordConfirm } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,30 +20,41 @@ const ForgetPassword = ({ auth, forgotPassword }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    forgotPassword(email);
+    resetPassword(password, passwordConfirm, props.match.params.token);
+
     setFormData({
-      email: '',
+      password: '',
+      passwordConfirm: '',
     });
   };
-  if (auth) {
-    return <Redirect to="/user" />;
-  }
-
   return (
     <section className="container--login">
       <form className="auth__form">
         <Link to="/" className="auth__form__logo">
           <img src={Logo} alt="logo" className="auth__form__logo" />
         </Link>
-        <h2 className="heading-2 auth__form__header">Password Reset</h2>
+        <h2 className="heading-2 auth__form__header">New password</h2>
         <div className="auth__form__field">
-          <EmailIcon />
+          <PasswordIcon />
           <input
-            type="email"
+            type="password"
             className="auth__form__field__input"
-            placeholder="Email"
-            name="email"
-            value={formData.email}
+            placeholder="Password"
+            name="password"
+            value={formData.password}
+            onChange={(e) => {
+              onChange(e);
+            }}
+          />
+        </div>
+        <div className="auth__form__field">
+          <PasswordIcon />
+          <input
+            type="password"
+            className="auth__form__field__input"
+            placeholder="Password Confirm"
+            name="passwordConfirm"
+            value={formData.passwordConfirm}
             onChange={(e) => {
               onChange(e);
             }}
@@ -56,16 +68,16 @@ const ForgetPassword = ({ auth, forgotPassword }) => {
             Log in
           </Link>
           <Link
-            to="/register"
+            to="/r"
             className="auth__form__login__link auth__form__login__link--new-acc"
           >
-            Main Page
+            Main page
           </Link>
           <button
             className="btn auth__form__login__btn"
             onClick={(e) => onSubmit(e)}
           >
-            Log in
+            Change password
           </button>
         </div>
       </form>
@@ -73,13 +85,8 @@ const ForgetPassword = ({ auth, forgotPassword }) => {
   );
 };
 
-ForgetPassword.propTypes = {
-  auth: PropTypes.bool,
-  forgotPassword: PropTypes.func.isRequired,
+ResetPassword.propTypes = {
+  resetPassword: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  auth: state.auth.isAuthenticated,
-});
-
-export default connect(mapStateToProps, { forgotPassword })(ForgetPassword);
+export default connect(null, { resetPassword })(ResetPassword);

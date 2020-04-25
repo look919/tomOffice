@@ -1,12 +1,16 @@
-import React, { useState, Fragment } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import addItemToCart from '../../../utils/addItemToCart';
-import selector from '../../../selectors/singleProduct';
-import { CartIconButton } from '../../layout/Icons';
-import { getCartItems } from '../../../actions/products';
+import React, { useState, Fragment } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import addItemToCart from "../../../utils/addItemToCart";
+import selector from "../../../selectors/singleProduct";
+import { CartIconButton } from "../../layout/Icons";
+import { getCartItems } from "../../../actions/products";
 
 export const Item = ({ products, id, getCartItems }) => {
+  //button text
+  const [buttonText, setButtonText] = useState("Dodaj do koszyka");
+
+  //amount
   const [amount, setAmount] = useState(1);
   const decreaseAmount = () => {
     if (amount > 1) {
@@ -23,10 +27,16 @@ export const Item = ({ products, id, getCartItems }) => {
   if (!products) products = [];
   let item = selector(products, id);
 
-  const handleButton = item => {
+  const handleButton = (item) => {
     addItemToCart(item);
     setAmount(1);
     getCartItems(products);
+
+    setButtonText("Dziękujemy");
+
+    setTimeout(() => {
+      setButtonText("Dodaj do koszyka");
+    }, 3500);
   };
 
   return (
@@ -34,62 +44,62 @@ export const Item = ({ products, id, getCartItems }) => {
       {!item ? (
         <div>&nbsp;</div>
       ) : (
-        <section className='itemPage'>
-          <div className='itemPage__links-back'>
-            <Link to='/'>TomOffice</Link>/
+        <section className="itemPage">
+          <div className="itemPage__links-back">
+            <Link to="/">TomOffice</Link>/
             <Link to={`/products/${item.category}`}>{item.category}</Link>/
             <Link to={`/item/${item._id}`}>{item.name}</Link>/
           </div>
-          <div className='itemPage__img'>
+          <div className="itemPage__img">
             <img
-              alt='item view'
-              className='itemPage__img'
+              alt="item view"
+              className="itemPage__img"
               src={require(`../../../img/${item.image}`)}
             />
             {item.amount > 5 ? (
-              <span className='itemPage__amount itemPage__amount--empty'>
+              <span className="itemPage__amount itemPage__amount--empty">
                 &nbsp;
               </span>
             ) : item.amount > 1 ? (
-              <span className='itemPage__amount itemPage__amount--multi'>
+              <span className="itemPage__amount itemPage__amount--multi">
                 Ograniczona ilość!
               </span>
             ) : item.amount === 1 ? (
-              <span className='itemPage__amount itemPage__amount--single'>
+              <span className="itemPage__amount itemPage__amount--single">
                 Ostatnia sztuka!
               </span>
             ) : (
-              <span className='itemPage__amount itemPage__amount--empty'>
+              <span className="itemPage__amount itemPage__amount--empty">
                 &nbsp;
               </span>
             )}
           </div>
-          <div className='itemPage__details'>
-            <span className='itemPage__details__name'>{item.name}</span>
-            <div className='itemPage__details__prices'>
-              <span className='itemPage__details__price'>
+          <div className="itemPage__details">
+            <span className="itemPage__details__name">{item.name}</span>
+            <div className="itemPage__details__prices">
+              <span className="itemPage__details__price">
                 {item.price.toFixed(2)}
               </span>
-              <span className='itemPage__details__oldPrice'>
+              <span className="itemPage__details__oldPrice">
                 {item.oldPrice.toFixed(2)}
               </span>
             </div>
-            <div className='itemPage__details__amountbox'>
+            <div className="itemPage__details__amountbox">
               <button
-                className='itemPage__details__amountbox__btn'
+                className="itemPage__details__amountbox__btn"
                 onClick={decreaseAmount}
               >
                 -
               </button>
               <input
-                type='number'
-                className='itemPage__details__amount'
+                type="number"
+                className="itemPage__details__amount"
                 disabled
                 value={amount}
               />
 
               <button
-                className='itemPage__details__amountbox__btn'
+                className="itemPage__details__amountbox__btn"
                 onClick={increaseAmount}
               >
                 +
@@ -98,12 +108,12 @@ export const Item = ({ products, id, getCartItems }) => {
 
             <button
               onClick={() => handleButton({ id: item._id, amount })}
-              className='btn itemPage__details__btn'
+              className="btn itemPage__details__btn"
             >
-              <CartIconButton /> Dodaj do koszyka
+              <CartIconButton /> {buttonText}
             </button>
           </div>
-          <div className='itemPage__description'>
+          <div className="itemPage__description">
             Vestibulum quis nisi eu risus semper feugiat et ut mi. Nullam
             suscipit semper velit vel maximus. Praesent id imperdiet lectus, non
             mattis urna. Cras eleifend felis eget ex sodales fringilla.
@@ -127,7 +137,7 @@ export const Item = ({ products, id, getCartItems }) => {
             tristique urna, et bibendum risus sodales in. Proin bibendum
             imperdiet viverra. Nulla mi sem, gravida sed nisl imperdiet, ornare
             auctor orci.
-            <ul className='itemPage__description__list'>
+            <ul className="itemPage__description__list">
               <li>Etiam viverra dolor venenatis gravida mollis</li>
               <li>
                 Aliquam vel arcu ultrices, dictum lectus semper, fringilla ex
@@ -143,7 +153,7 @@ export const Item = ({ products, id, getCartItems }) => {
               <li>Praesent semper mi eget tortor efficitur rhoncus</li>
               <li>Nulla eu elit eget augue euismod porta.</li>
             </ul>
-            <ul className='itemPage__description__list'>
+            <ul className="itemPage__description__list">
               <li>Quisque eu diam sit amet ex consequat fermentum.</li>
               <li>Etiam tempor purus ut lorem blandit sagittis</li>
               <li>
@@ -157,8 +167,8 @@ export const Item = ({ products, id, getCartItems }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  products: state.products.data
+const mapStateToProps = (state) => ({
+  products: state.products.data,
 });
 
 export default connect(mapStateToProps, { getCartItems })(Item);

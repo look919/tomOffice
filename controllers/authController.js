@@ -169,6 +169,7 @@ exports.restrictTo = (...roles) => {
 };
 exports.forgotPassword = catchAsync(async (req, res, next) => {
   // 1) Get user based on POSTed email
+  console.log(req.body);
   const user = await User.findOne({ email: req.body.email });
   if (!user) {
     return next(new AppError('There is no user with email address.', 404));
@@ -180,9 +181,10 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
 
   // 3) Send it to user's email
   try {
-    const resetURL = `${req.protocol}://${req.get(
-      'host'
-    )}/api/v1/users/resetPassword/${resetToken}`;
+    let resetURL = `https://tomoffice.herokuapp.com/resetPassword/${resetToken}`;
+    if (process.env.NODE_ENV === 'development') {
+      resetURL = `localhost:3000/resetPassword/${resetToken}`;
+    }
     await new Email(user, resetURL).sendPasswordReset();
 
     res.status(200).json({
@@ -202,6 +204,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
 });
 
 exports.resetPassword = catchAsync(async (req, res, next) => {
+  console.log(req.body, req.params);
   // 1) Get user based on the token
   const hashedToken = crypto
     .createHash('sha256')
