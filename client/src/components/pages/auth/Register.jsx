@@ -1,25 +1,25 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { Link, Redirect } from "react-router-dom";
-import { connect } from "react-redux";
-import { register } from "../../../actions/auth";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { register } from '../../../actions/auth';
 
-import Logo from "../../../img/logo.png";
+import Logo from '../../../img/logo.png';
 
 import {
   UserRegisterIcon,
   EmailIcon,
   PasswordIcon,
   PhoneRegisterIcon,
-} from "../../layout/Icons";
+} from '../../layout/Icons';
 
 const Register = ({ auth, register }) => {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    passwordConfirm: "",
-    phone: "",
+    name: '',
+    email: '',
+    password: '',
+    passwordConfirm: '',
+    phone: '',
   });
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -35,16 +35,16 @@ const Register = ({ auth, register }) => {
       formData.phone
     );
     setFormData({
-      name: "",
-      email: "",
-      password: "",
-      passwordConfirm: "",
-      phone: "",
+      name: '',
+      email: '',
+      password: '',
+      passwordConfirm: '',
+      phone: '',
     });
   };
 
   if (auth) {
-    return <Redirect to={"/"} />;
+    return <Redirect to={'/'} />;
   }
 
   return (

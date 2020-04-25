@@ -6,10 +6,14 @@ import {
   AUTH_SUCCESS,
   AUTH_FAIL,
   LOGOUT,
-  UPDATE_PASSWORD_SUCCESS,
-  UPDATE_PASSWORD_FAIL,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_FAIL,
+  UPDATE_PASSWORD_SUCCESS,
+  UPDATE_PASSWORD_FAIL,
+  FORGOT_PASSWORD_SUCCESS,
+  FORGOT_PASSWORD_FAIL,
+  RESET_PASSWORD_SUCCESS,
+  RESET_PASSWORD_FAIL,
 } from '../actions/types';
 
 const initialState = {
@@ -53,6 +57,10 @@ export default function (state = initialState, action) {
         isAuthenticated: true,
       };
 
+    case FORGOT_PASSWORD_SUCCESS:
+    case FORGOT_PASSWORD_FAIL:
+    case RESET_PASSWORD_SUCCESS:
+    case RESET_PASSWORD_FAIL:
     case UPDATE_USER_FAIL:
     case UPDATE_PASSWORD_FAIL:
     case REGISTER_FAIL:

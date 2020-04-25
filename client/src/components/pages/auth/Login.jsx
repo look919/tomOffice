@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
-import { connect } from "react-redux";
-import { login } from "../../../actions/auth";
-import Logo from "../../../img/logo.png";
-import { Link, Redirect } from "react-router-dom";
+import { connect } from 'react-redux';
+import { login } from '../../../actions/auth';
+import Logo from '../../../img/logo.png';
+import { Link, Redirect } from 'react-router-dom';
 
-import { EmailIcon, PasswordIcon } from "../../layout/Icons";
+import { EmailIcon, PasswordIcon } from '../../layout/Icons';
 
 const Login = ({ login, auth }) => {
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,13 +21,13 @@ const Login = ({ login, auth }) => {
 
     login(formData);
     setFormData({
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     });
   };
 
   if (auth) {
-    return <Redirect to={"/"} />;
+    return <Redirect to={'/'} />;
   }
 
   return (

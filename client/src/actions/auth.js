@@ -14,6 +14,10 @@ import {
   UPDATE_PASSWORD_FAIL,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_FAIL,
+  FORGOT_PASSWORD_SUCCESS,
+  FORGOT_PASSWORD_FAIL,
+  RESET_PASSWORD_SUCCESS,
+  RESET_PASSWORD_FAIL,
 } from './types';
 
 // Load User
@@ -159,7 +163,58 @@ export const updateUserOrders = (orders) => async (dispatch) => {
     });
   }
 };
+export const forgotPassword = (email) => async (dispatch) => {
+  const body = JSON.stringify({ email });
 
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  try {
+    const res = await axios.post('/api/v1/users/forgotPassword', body, config);
+    dispatch({
+      type: FORGOT_PASSWORD_SUCCESS,
+      payload: res.data,
+    });
+    dispatch(setAlert('We send you a reset token on email', 'success'));
+  } catch (err) {
+    dispatch(setAlert(err.response.data.message, 'danger'));
+    dispatch({
+      type: FORGOT_PASSWORD_FAIL,
+      payload: err.message,
+    });
+  }
+};
+export const resetPassword = (password, passwordConfirm, token) => async (
+  dispatch
+) => {
+  const body = JSON.stringify({ password, passwordConfirm });
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  try {
+    const res = await axios.patch(
+      `/api/v1/users/resetPassword/${token}`,
+      body,
+      config
+    );
+    dispatch({
+      type: RESET_PASSWORD_SUCCESS,
+      payload: res.data.data,
+    });
+    dispatch(setAlert('Password successfully changed', 'success'));
+  } catch (err) {
+    dispatch(setAlert(err.response.data.message, 'danger'));
+    dispatch({
+      type: RESET_PASSWORD_FAIL,
+      payload: err.message,
+    });
+  }
+};
+//TODO:
 //updatePassword
 export const updatePassword = (
   currentPassword,
