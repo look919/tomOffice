@@ -1,0 +1,54 @@
+.notFound {
+  height: 100vh;
+  width: 100%;
+  padding: 2rem 5rem;
+
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  grid-column-gap: 5rem;
+  align-items: center;
+
+  @media only screen and(max-width: $bp-600) {
+    grid-template-columns: auto;
+    grid-template-rows: 55rem 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  &__logo {
+    height: 30rem;
+
+    @media only screen and(max-width: $bp-1600) {
+      height: 20rem;
+    }
+  }
+  &__info {
+    font-size: 3rem;
+    padding: 0 3rem;
+    justify-self: center;
+
+    @media only screen and(max-width: $bp-1600) {
+      font-size: 2rem;
+    }
+    @media only screen and(max-width: $bp-600) {
+      font-size: 1.4rem;
+      padding: 0;
+      align-self: start;
+    }
+
+    &__header {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+
+      @media only screen and(max-width: $bp-1600) {
+        font-size: 3rem;
+      }
+      @media only screen and(max-width: $bp-600) {
+        font-size: 2rem;
+      }
+    }
+    &__link {
+      font-weight: 600;
+    }
+  }
+}
