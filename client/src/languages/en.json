@@ -1,4 +1,83 @@
 {
+  "cart": {
+    "steps": ["Cart", "Payment", "Summary"],
+    "header": "Your products",
+    "tableColumns": ["Product", "Delivery time", "Price", "Amount", "Value"],
+    "noItems": "There are no items in your cart.",
+    "deliveryMethodOne": "Delivery method",
+    "deliveryMethodTwo": "Courier delivery - free",
+    "promotialCode": "Promotional Code",
+    "promotialCodeButton": "Activate",
+    "summary": {
+      "value": "Value of goods: ",
+      "discount": "Discount: ",
+      "summ": "Summary: "
+    },
+    "button": "Log in"
+  },
+  "CategoryAndItemPages": {
+    "filters": "Filters",
+    "clearFilters": "ClearFilters",
+    "price": "Price",
+    "color": "Color",
+    "productName": "Product name",
+    "itemNotFound": "No items found with that filters",
+    "product": {
+      "limitedAmount": "Limited amount!",
+      "lastItem": "Last item!",
+      "button": "Add to cart"
+    }
+  },
+  "DashboardPage": {
+    "Overview": {
+      "squareOne": {
+        "text": "Equip your office",
+        "subText": "with modern and cheap furniture"
+      },
+      "squareTwo": {
+        "text": "Free delivery",
+        "subText": "on all products"
+      },
+      "centerHeaderOne": "Big opportunity",
+      "centerHeaderTwo": "Corner house ASTI"
+    },
+    "Recommended": {
+      "headers": ["Recommended", "New", "Hit"],
+      "button": "Add to cart"
+    }
+  },
+  "UserPage": {
+    "Nav": {
+      "aboutUser": "About you",
+      "orders": "Orders",
+      "settings": "Settings",
+      "logout": "Log out"
+    },
+    "User": {
+      "header": "User data",
+      "name": "First and last name:",
+      "email": "Email address:",
+      "phone": "Phone number:",
+      "country": "Country:",
+      "postCode": "Post Code:",
+      "town": "Town:",
+      "address": "Address:",
+      "noAddress": "Address: There is no address added",
+      "noAddressButton": "Add address"
+    },
+    "Settings": {
+      "header": "Settings",
+      "name": "First and last name:",
+      "phone": "Phone number:",
+      "country": "Country:",
+      "postCode": "Post Code:",
+      "town": "Town:",
+      "address": "Address:"
+    },
+    "Orders": {
+      "header": "Your orders"
+    }
+  },
   "RegisterPage": {
     "header": "Register",
     "namePlaceholder": "Name",
@@ -52,6 +131,8 @@
     "cart": "Cart"
   },
   "Footer": {
+    "copyrightOne": "Coded by Tomasz Wirkus 2020. Design based on",
+    "copyRightTwo": "All products and graphics comes straight from their website",
     "phone": "TEL. 12 345 67 89",
     "customerServiceOffice": "Customer Service Office",
     "time": "mon-sat 10:00-20:00, sun 10:00-18:00",
