@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
@@ -52,56 +53,81 @@ const Cart = ({ user, cart, products, getCartItems, updateUserOrders }) => {
   }
 
   return (
-    <section className='cartPage'>
+    <section className="cartPage">
       <CartSteps />
-      <div className='cartPage__products'>
-        <div className='cartPage__products__header'>
+      <div className="cartPage__products">
+        <div className="cartPage__products__header">
           <CartIcon />
-          <h4 className='heading-4 cartPage__products__header__text'>
-            Twoje produkty
+          <h4 className="heading-4 cartPage__products__header__text">
+            <FormattedMessage
+              id="Cart.header"
+              defaultMessage="Twoje produkty"
+            />
           </h4>
         </div>
 
         {cart.length > 0 ? (
-          <div className='cartPage__products__content'>
-            <span className='cartPage__products__content__header cartPage__products__content__header--first'>
-              Przedmiot
+          <div className="cartPage__products__content">
+            <span className="cartPage__products__content__header cartPage__products__content__header--first">
+              <FormattedMessage
+                id="Cart.tableColumns.one"
+                defaultMessage="Produkt"
+              />
             </span>
-            <span className='cartPage__products__content__header cartPage__products__content__header--time'>
-              Czas dostawy
+            <span className="cartPage__products__content__header cartPage__products__content__header--time">
+              <FormattedMessage
+                id="Cart.tableColumns.two"
+                defaultMessage="Czas dostawy"
+              />
             </span>
-            <span className='cartPage__products__content__header'>Cena</span>
-            <span className='cartPage__products__content__header'>Ilość</span>
-            <span className='cartPage__products__content__header'>Wartość</span>
+            <span className="cartPage__products__content__header">
+              <FormattedMessage
+                id="Cart.tableColumns.three"
+                defaultMessage="Cena"
+              />
+            </span>
+            <span className="cartPage__products__content__header">
+              <FormattedMessage
+                id="Cart.tableColumns.four"
+                defaultMessage="Ilość"
+              />
+            </span>
+            <span className="cartPage__products__content__header">
+              <FormattedMessage
+                id="Cart.tableColumns.five"
+                defaultMessage="Wartość"
+              />
+            </span>
             {cart.map((item) => (
-              <div key={uuidv4()} className='cartPage__products__content__item'>
+              <div key={uuidv4()} className="cartPage__products__content__item">
                 <img
-                  alt='product view'
+                  alt="product view"
                   src={require(`../../../img/${item.product.image}`)}
-                  className='cartPage__products__content__item__img'
+                  className="cartPage__products__content__item__img"
                 />
                 <Link
                   to={`/item/${item.product._id}`}
-                  className='cartPage__products__content__item__name'
+                  className="cartPage__products__content__item__name"
                 >
                   {item.product.name}
                 </Link>
-                <span className='cartPage__products__content__item__delivery'>
-                  {item.product.amount > 0
-                    ? 'Wysyłka do 5 dni + dostawa'
-                    : 'Wysyłka do 5 dni po dostarczeniu do magazynu + dostawa'}
+                <span className="cartPage__products__content__item__delivery">
+                  <FormattedMessage
+                    id="Cart.item.delivery"
+                    defaultMessage="Wysyłka do 5 dni + dostawa"
+                  />
                 </span>
-                <span className='cartPage__products__content__item__price'>
+                <span className="cartPage__products__content__item__price">
                   {item.product.price.toFixed(2)}
                 </span>
-                <span className='cartPage__products__content__item__amount'>
+                <span className="cartPage__products__content__item__amount">
                   {item.amount}
                 </span>
-                <span className='cartPage__products__content__item__value'>
+                <span className="cartPage__products__content__item__value">
                   {(item.product.price * item.amount).toFixed(2)}
                 </span>
                 <button
-                  className='cartPage__products__content__item__icon'
+                  className="cartPage__products__content__item__icon"
                   onClick={() => handleRemoveItemFromCart(item.product._id)}
                 >
                   <RemoveItemIcon />
@@ -110,59 +136,87 @@ const Cart = ({ user, cart, products, getCartItems, updateUserOrders }) => {
             ))}
           </div>
         ) : (
-          <div className='cartPage__products__content'>
-            <span className='cartPage__products__content__header cartPage__products__content__header--first'>
-              Brak przedmiotów w twoim koszyku.
+          <div className="cartPage__products__content">
+            <span className="cartPage__products__content__header cartPage__products__content__header--first">
+              <FormattedMessage
+                id="Cart.noItems"
+                defaultMessage="Brak przedmiotów w twoim koszyku."
+              />
             </span>
           </div>
         )}
 
-        <div className='cartPage__products__delivery'>
-          <div className='cartPage__products__header'>
+        <div className="cartPage__products__delivery">
+          <div className="cartPage__products__header">
             <TruckIconCart />
-            <h4 className='heading-4 cartPage__products__header__text'>
-              Sposób dostawy
+            <h4 className="heading-4 cartPage__products__header__text">
+              <FormattedMessage
+                id="Cart.deliveryMethodOne"
+                defaultMessage="Sposób dostawy"
+              />
             </h4>
           </div>
-          <span className='cartPage__products__delivery__item'>
-            Przesyłka kurierska - darmowa
+          <span className="cartPage__products__delivery__item">
+            <FormattedMessage
+              id="Cart.deliveryMethodTwo"
+              defaultMessage="Przesyłka kurierska - darmowa"
+            />
           </span>
         </div>
       </div>
       {cart.length > 0 && (
-        <div className='cartPage__cta'>
-          <div className='cartPage__cta__discount'>
-            <span className='cartPage__cta__discount__text'>
-              Kod promocyjny
+        <div className="cartPage__cta">
+          <div className="cartPage__cta__discount">
+            <span className="cartPage__cta__discount__text">
+              <FormattedMessage
+                id="Cart.promotialCode"
+                defaultMessage="Kod promocyjny"
+              />
             </span>
-            <input
-              className='cartPage__cta__discount__input'
-              placeholder='Wpisz kod promocyjny'
-            />
-            <button className='btn cartPage__cta__discount__btn'>
-              Aktywuj
+            <input className="cartPage__cta__discount__input" />
+            <button className="btn cartPage__cta__discount__btn">
+              <FormattedMessage
+                id="Cart.promotialCodeButton"
+                defaultMessage="Aktywuj"
+              />
             </button>
           </div>
-          <div className='cartPage__cta__summary'>
-            <span className='cartPage__cta__summary__item'>
-              Wartość towarów:
+          <div className="cartPage__cta__summary">
+            <span className="cartPage__cta__summary__item">
+              <FormattedMessage
+                id="Cart.summary.value"
+                defaultMessage="Wartość towarów: "
+              />
             </span>
-            <span className='cartPage__cta__summary__item'>
+            <span className="cartPage__cta__summary__item">
               {totalPrice.toFixed(2)}
             </span>
-            <span className='cartPage__cta__summary__item'>Rabat:</span>
-            <span className='cartPage__cta__summary__item'>-0.00</span>
-            <span className='cartPage__cta__summary__item'>Koszt dostawy:</span>
-            <span className='cartPage__cta__summary__item'>0.00</span>
-            <span className='cartPage__cta__summary__item cartPage__cta__summary__item--bigger'>
-              Podsumowanie:
+            <span className="cartPage__cta__summary__item">
+              <FormattedMessage
+                id="Cart.summary.discount"
+                defaultMessage="Rabat: "
+              />
             </span>
-            <span className='cartPage__cta__summary__item cartPage__cta__summary__item--bigger'>
+            <span className="cartPage__cta__summary__item">-0.00</span>
+            <span className="cartPage__cta__summary__item">
+              <FormattedMessage
+                id="Cart.summary.costOfDelivery"
+                defaultMessage="Koszt dostawy: "
+              />
+            </span>
+            <span className="cartPage__cta__summary__item">0.00</span>
+            <span className="cartPage__cta__summary__item cartPage__cta__summary__item--bigger">
+              <FormattedMessage
+                id="Cart.summary.summ"
+                defaultMessage="Podsumowanie: "
+              />
+            </span>
+            <span className="cartPage__cta__summary__item cartPage__cta__summary__item--bigger">
               {totalPrice.toFixed(2)}
             </span>
 
-            {user ? (
-              <div className='cartPage__cta__summary__item__payment'>
+            {user._id ? (
+              <div className="cartPage__cta__summary__item__payment">
                 <StripeCheckout
                   stripeKey={'pk_test_rcm73WxgoFhDtsH2i3B6a3C600eFskjudh'}
                   token={handleToken}
@@ -170,16 +224,19 @@ const Cart = ({ user, cart, products, getCartItems, updateUserOrders }) => {
                   shippingAddress
                   amount={totalPrice * 100}
                   name={'TomOffice'}
-                  className='btn cartPage__cta__summary__btn'
+                  className="btn cartPage__cta__summary__btn"
                 />
-                <p className='cartPage__cta__summary__item__payment__text'>
+                <p className="cartPage__cta__summary__item__payment__text">
                   Real payments for obvious reasons are disabled, to create test
                   payment use 4242 4242 4242 4242 / 04/24 / 444
                 </p>
               </div>
             ) : (
-              <Link to='/login' className='btn cartPage__cta__summary__btn'>
-                Zaloguj się
+              <Link to="/login" className="btn cartPage__cta__summary__btn">
+                <FormattedMessage
+                  id="Cart.button"
+                  defaultMessage="Zaloguj się"
+                />
               </Link>
             )}
           </div>

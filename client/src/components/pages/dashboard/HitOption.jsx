@@ -1,19 +1,25 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import selector from "../../../selectors/recProducts";
-import { connect } from "react-redux";
-import { CartIconButton } from "../../layout/Icons";
-import addItemToCart from "../../../utils/addItemToCart";
-import { getCartItems } from "../../../actions/products";
+import React, { useState } from 'react';
+import { FormattedMessage } from 'react-intl';
+import { Link } from 'react-router-dom';
+import selector from '../../../selectors/recProducts';
+import { connect } from 'react-redux';
+import { CartIconButton } from '../../layout/Icons';
+import addItemToCart from '../../../utils/addItemToCart';
+import { getCartItems } from '../../../actions/products';
 
 const HitOption = ({ products, getCartItems }) => {
   if (!products) products = [];
-  let items = selector(products, ["hit"]);
+  let items = selector(products, ['hit']);
 
-  const [buttonText, setButtonText] = useState("Dodaj do koszyka");
+  const [buttonText, setButtonText] = useState(
+    <FormattedMessage
+      id="DashboardPage.Recommended.button"
+      defaultMessage="Dodaj do koszyka"
+    />
+  );
 
   const itemJSON = {
-    id: items[0]._id || "test",
+    id: items[0]._id || 'test',
     amount: 1,
   };
 
@@ -21,10 +27,15 @@ const HitOption = ({ products, getCartItems }) => {
     addItemToCart(itemJSON);
     getCartItems(products);
 
-    setButtonText("Dziękujemy");
+    setButtonText('Dziękujemy');
 
     setTimeout(() => {
-      setButtonText("Dodaj do koszyka");
+      setButtonText(
+        <FormattedMessage
+          id="DashboardPage.Recommended.button"
+          defaultMessage="Dodaj do koszyka"
+        />
+      );
     }, 2500);
   };
 
@@ -57,7 +68,7 @@ const HitOption = ({ products, getCartItems }) => {
                   {item.price.toFixed(2)}
                 </span>
                 <span className="dashboard__recommended__content__hit-option__item__oldPrice">
-                  {item.oldPrice.toFixed(2) + ",-"}
+                  {item.oldPrice.toFixed(2) + ',-'}
                 </span>
               </div>
               <button

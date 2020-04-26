@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-
 import { connect } from 'react-redux';
 import { login } from '../../../actions/auth';
 import Logo from '../../../img/logo.png';
@@ -36,50 +36,78 @@ const Login = ({ login, auth }) => {
         <Link to="/" className="auth__form__logo">
           <img src={Logo} alt="logo" className="auth__form__logo" />
         </Link>
-        <h2 className="heading-2 auth__form__header">Log In</h2>
+        <h2 className="heading-2 auth__form__header">
+          <FormattedMessage
+            id="LoginPage.header"
+            defaultMessage="Zaloguj się"
+          />
+        </h2>
         <div className="auth__form__field">
           <EmailIcon />
-          <input
-            className="auth__form__field__input"
-            placeholder="Email"
-            name="email"
-            value={formData.email}
-            onChange={(e) => {
-              onChange(e);
-            }}
-          />
+          <FormattedMessage
+            id="LoginPage.emailPlaceholder"
+            defaultMessage="Email"
+          >
+            {(msg) => (
+              <input
+                className="auth__form__field__input"
+                placeholder={msg}
+                name="email"
+                value={formData.email}
+                onChange={(e) => {
+                  onChange(e);
+                }}
+              />
+            )}
+          </FormattedMessage>
         </div>
         <div className="auth__form__field">
           <PasswordIcon />
-          <input
-            type="password"
-            className="auth__form__field__input"
-            placeholder="Password"
-            name="password"
-            value={formData.password}
-            onChange={(e) => {
-              onChange(e);
-            }}
-          />
+          <FormattedMessage
+            id="LoginPage.passwordPlaceholder"
+            defaultMessage="Hasło"
+          >
+            {(msg) => (
+              <input
+                type="password"
+                className="auth__form__field__input"
+                placeholder={msg}
+                name="password"
+                value={formData.password}
+                onChange={(e) => {
+                  onChange(e);
+                }}
+              />
+            )}
+          </FormattedMessage>
         </div>
         <div className="auth__form__login">
           <Link
             to="/forgetPassword"
             className="auth__form__login__link auth__form__login__link--password"
           >
-            Forget your password?
+            <FormattedMessage
+              id="LoginPage.forgotPasswordLink"
+              defaultMessage="Zapomniałeś hasła?"
+            />
           </Link>
           <Link
             to="/register"
             className="auth__form__login__link auth__form__login__link--new-acc"
           >
-            Create new account
+            <FormattedMessage
+              id="LoginPage.createAccountLink"
+              defaultMessage="Stwórz nowe konto"
+            />
           </Link>
           <button
             className="btn auth__form__login__btn"
             onClick={(e) => onSubmit(e)}
           >
-            Log in
+            <FormattedMessage
+              id="LoginPage.button"
+              defaultMessage="Zaloguj się"
+            />
           </button>
         </div>
       </form>

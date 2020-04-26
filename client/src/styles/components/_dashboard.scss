@@ -153,10 +153,17 @@
     grid-template-rows: min-content min-content;
 
     &__list {
-      display: flex;
-      justify-content: center;
-      width: 40%;
+      width: 100%;
       justify-self: center;
+      padding: 0 20rem;
+
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      justify-items: center;
+
+      @media only screen and (max-width: $bp-800) {
+        padding: 0 5rem;
+      }
 
       &__item {
         background: none;
@@ -165,8 +172,13 @@
         font-size: 2rem;
         cursor: pointer;
         padding: 0.5rem 1rem;
-        width: 12rem;
+        width: 20rem;
 
+        @media only screen and (max-width: $bp-600) {
+          width: auto;
+          font-size: 1.6rem;
+          padding: 0.5rem 2rem;
+        }
         &:focus {
           outline: none;
         }

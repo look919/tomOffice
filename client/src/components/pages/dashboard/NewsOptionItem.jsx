@@ -1,4 +1,6 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
+
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { CartIconButton } from '../../layout/Icons';
@@ -17,40 +19,44 @@ const NewsOptionItem = (props) => {
   };
 
   return (
-    <div className='dashboard__recommended__content__news-option__item'>
+    <div className="dashboard__recommended__content__news-option__item">
       <Link
         to={props.link}
-        className='dashboard__recommended__content__news-option__item__name'
+        className="dashboard__recommended__content__news-option__item__name"
       >
         {props.name}
       </Link>
-      <span className='dashboard__recommended__content__news-option__item__desc'>
+      <span className="dashboard__recommended__content__news-option__item__desc">
         {props.desc}
       </span>
       <Link
         to={props.link}
-        className='dashboard__recommended__content__news-option__item__view'
+        className="dashboard__recommended__content__news-option__item__view"
       >
         <img
           src={require(`../../../img/${props.img}`)}
-          alt='item view'
-          className='dashboard__recommended__content__news-option__item__view__img'
+          alt="item view"
+          className="dashboard__recommended__content__news-option__item__view__img"
         />
       </Link>
 
-      <div className='dashboard__recommended__content__news-option__item__prices'>
-        <span className='dashboard__recommended__content__news-option__item__price'>
+      <div className="dashboard__recommended__content__news-option__item__prices">
+        <span className="dashboard__recommended__content__news-option__item__price">
           {props.price.toFixed(2)}
         </span>
-        <span className='dashboard__recommended__content__news-option__item__oldPrice'>
+        <span className="dashboard__recommended__content__news-option__item__oldPrice">
           {props.oldPrice.toFixed(2)}
         </span>
       </div>
       <button
         onClick={handleButton}
-        className='btn dashboard__recommended__content__news-option__item__btn'
+        className="btn dashboard__recommended__content__news-option__item__btn"
       >
-        <CartIconButton /> Dodaj do koszyka
+        <CartIconButton />{' '}
+        <FormattedMessage
+          id="DashboardPage.Recommended.button"
+          defaultMessage="Dodaj do koszyka"
+        />
       </button>
     </div>
   );

@@ -240,6 +240,7 @@
           }
         }
         &__delivery {
+          text-align: center;
           @media only screen and (max-width: $bp-800) {
             display: none;
           }
@@ -262,7 +263,6 @@
     &__delivery {
       display: grid;
       grid-template-rows: 5rem min-content;
-
       align-items: center;
 
       &__item {

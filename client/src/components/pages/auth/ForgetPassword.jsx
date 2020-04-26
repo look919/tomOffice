@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -34,38 +35,59 @@ const ForgetPassword = ({ auth, forgotPassword }) => {
         <Link to="/" className="auth__form__logo">
           <img src={Logo} alt="logo" className="auth__form__logo" />
         </Link>
-        <h2 className="heading-2 auth__form__header">Password Reset</h2>
+        <h2 className="heading-2 auth__form__header">
+          <FormattedMessage
+            id="ForgotPasswordPage.header"
+            defaultMessage="Zresetuj hasło"
+          />
+        </h2>
         <div className="auth__form__field">
           <EmailIcon />
-          <input
-            type="email"
-            className="auth__form__field__input"
-            placeholder="Email"
-            name="email"
-            value={formData.email}
-            onChange={(e) => {
-              onChange(e);
-            }}
-          />
+          <FormattedMessage
+            id="ForgotPasswordPage.emailPlaceholder"
+            defaultMessage="Email"
+          >
+            {(msg) => (
+              <input
+                type="email"
+                className="auth__form__field__input"
+                placeholder={msg}
+                name="email"
+                value={formData.email}
+                onChange={(e) => {
+                  onChange(e);
+                }}
+              />
+            )}
+          </FormattedMessage>
         </div>
         <div className="auth__form__login">
           <Link
             to="/login"
             className="auth__form__login__link auth__form__login__link--password"
           >
-            Log in
+            <FormattedMessage
+              id="ForgotPasswordPage.loginLink"
+              defaultMessage="Zaloguj się"
+            />
           </Link>
           <Link
-            to="/register"
+            to="/"
             className="auth__form__login__link auth__form__login__link--new-acc"
           >
-            Main Page
+            <FormattedMessage
+              id="ForgotPasswordPage.mainPageLink"
+              defaultMessage="Strona główna"
+            />
           </Link>
           <button
             className="btn auth__form__login__btn"
             onClick={(e) => onSubmit(e)}
           >
-            Log in
+            <FormattedMessage
+              id="ForgotPasswordPage.button"
+              defaultMessage="Resetuj"
+            />
           </button>
         </div>
       </form>

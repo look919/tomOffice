@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -53,82 +54,125 @@ const Register = ({ auth, register }) => {
         <Link to="/" className="auth__form__logo">
           <img src={Logo} alt="logo" className="auth__form__logo" />
         </Link>
-        <h2 className="heading-2 auth__form__header">Register</h2>
+        <h2 className="heading-2 auth__form__header">
+          <FormattedMessage
+            id="RegisterPage.header"
+            defaultMessage="Rejestracja"
+          />
+        </h2>
         <div className="auth__form__field">
           <UserRegisterIcon />
-          <input
-            required
-            className="auth__form__field__input"
-            placeholder="Imię i nazwisko"
-            name="name"
-            value={formData.name}
-            onChange={(e) => {
-              onChange(e);
-            }}
-          />
+          <FormattedMessage
+            id="RegisterPage.namePlaceholder"
+            defaultMessage="Imię i nazwisko"
+          >
+            {(msg) => (
+              <input
+                required
+                className="auth__form__field__input"
+                placeholder={msg}
+                name="name"
+                value={formData.name}
+                onChange={(e) => {
+                  onChange(e);
+                }}
+              />
+            )}
+          </FormattedMessage>
         </div>
         <div className="auth__form__field">
           <EmailIcon />
-          <input
-            required
-            type="email"
-            className="auth__form__field__input"
-            placeholder="Email"
-            name="email"
-            value={formData.email}
-            onChange={(e) => {
-              onChange(e);
-            }}
-          />
+          <FormattedMessage
+            id="RegisterPage.emailPlaceholder"
+            defaultMessage="Email"
+          >
+            {(msg) => (
+              <input
+                required
+                type="email"
+                className="auth__form__field__input"
+                placeholder={msg}
+                name="email"
+                value={formData.email}
+                onChange={(e) => {
+                  onChange(e);
+                }}
+              />
+            )}
+          </FormattedMessage>
         </div>
         <div className="auth__form__field">
           <PasswordIcon />
-          <input
-            required
-            type="password"
-            className="auth__form__field__input"
-            placeholder="Hasło"
-            name="password"
-            value={formData.password}
-            onChange={(e) => {
-              onChange(e);
-            }}
-          />
+          <FormattedMessage
+            id="RegisterPage.passwordPlaceholder"
+            defaultMessage="Hasło"
+          >
+            {(msg) => (
+              <input
+                required
+                type="password"
+                className="auth__form__field__input"
+                placeholder={msg}
+                name="password"
+                value={formData.password}
+                onChange={(e) => {
+                  onChange(e);
+                }}
+              />
+            )}
+          </FormattedMessage>
         </div>
         <div className="auth__form__field">
           <PasswordIcon />
-          <input
-            required
-            type="password"
-            className="auth__form__field__input"
-            placeholder="Potwierdź hasło"
-            name="passwordConfirm"
-            value={formData.passwordConfirm}
-            onChange={(e) => {
-              onChange(e);
-            }}
-          />
+          <FormattedMessage
+            id="RegisterPage.passwordConfirmPlaceholder"
+            defaultMessage="Powtórz hasło"
+          >
+            {(msg) => (
+              <input
+                required
+                type="password"
+                className="auth__form__field__input"
+                placeholder={msg}
+                name="passwordConfirm"
+                value={formData.passwordConfirm}
+                onChange={(e) => {
+                  onChange(e);
+                }}
+              />
+            )}
+          </FormattedMessage>
         </div>
         <div className="auth__form__field">
           <PhoneRegisterIcon />
-          <input
-            type="tel"
-            required
-            className="auth__form__field__input"
-            placeholder="Numer telefonu"
-            name="phone"
-            value={formData.phone}
-            onChange={(e) => {
-              onChange(e);
-            }}
-          />
+          <FormattedMessage
+            id="RegisterPage.phonePlaceholder"
+            defaultMessage="Telefon"
+          >
+            {(msg) => (
+              <input
+                type="tel"
+                required
+                className="auth__form__field__input"
+                placeholder={msg}
+                name="phone"
+                value={formData.phone}
+                onChange={(e) => {
+                  onChange(e);
+                }}
+              />
+            )}
+          </FormattedMessage>
         </div>
         <div className="auth__form__login">
           <button
             className="btn auth__form__login__btn--register"
             onClick={(e) => onSubmit(e)}
           >
-            Register
+            <FormattedMessage
+              id="RegisterPage.button"
+              defaultMessage="Rejestracja"
+            />
           </button>
         </div>
       </form>

@@ -1,14 +1,21 @@
-import React, { useState, Fragment } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import addItemToCart from "../../../utils/addItemToCart";
-import selector from "../../../selectors/singleProduct";
-import { CartIconButton } from "../../layout/Icons";
-import { getCartItems } from "../../../actions/products";
+import React, { useState, Fragment } from 'react';
+import { FormattedMessage } from 'react-intl';
+
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import addItemToCart from '../../../utils/addItemToCart';
+import selector from '../../../selectors/singleProduct';
+import { CartIconButton } from '../../layout/Icons';
+import { getCartItems } from '../../../actions/products';
 
 export const Item = ({ products, id, getCartItems }) => {
   //button text
-  const [buttonText, setButtonText] = useState("Dodaj do koszyka");
+  const [buttonText, setButtonText] = useState(
+    <FormattedMessage
+      id="CategoryAndItemPages.product.button"
+      defaultMessage="Dodaj do koszyka"
+    />
+  );
 
   //amount
   const [amount, setAmount] = useState(1);
@@ -32,10 +39,10 @@ export const Item = ({ products, id, getCartItems }) => {
     setAmount(1);
     getCartItems(products);
 
-    setButtonText("Dziękujemy");
+    setButtonText('Dziękujemy');
 
     setTimeout(() => {
-      setButtonText("Dodaj do koszyka");
+      setButtonText('Dodaj do koszyka');
     }, 3500);
   };
 
@@ -62,11 +69,17 @@ export const Item = ({ products, id, getCartItems }) => {
               </span>
             ) : item.amount > 1 ? (
               <span className="itemPage__amount itemPage__amount--multi">
-                Ograniczona ilość!
+                <FormattedMessage
+                  id="CategoryAndItemPages.product.limitedAmount"
+                  defaultMessage="Ograniczona ilość"
+                />
               </span>
             ) : item.amount === 1 ? (
               <span className="itemPage__amount itemPage__amount--single">
-                Ostatnia sztuka!
+                <FormattedMessage
+                  id="CategoryAndItemPages.product.lastItem"
+                  defaultMessage="Ostatnia sztuka"
+                />
               </span>
             ) : (
               <span className="itemPage__amount itemPage__amount--empty">
