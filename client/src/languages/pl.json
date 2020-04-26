@@ -1,10 +1,176 @@
 {
+  "cart": {
+    "steps": ["Koszyk", "Płatność", "Podsumowanie"],
+    "header": "Twoje produkty",
+    "tableColumns": ["Produkt", "Czas dostawy", "Cena", "Ilość", "Wartość"],
+    "noItems": "Brak przedmiotów w twoim koszyku.",
+    "deliveryMethodOne": "Sposób dostawy",
+    "deliveryMethodTwo": "Przesyłka kurierska - darmowa",
+    "promotialCode": "Kod promocyjny",
+    "promotialCodeButton": "Aktywuj",
+    "summary": {
+      "value": "Wartość towarów",
+      "discount": "Rabat: ",
+      "summ": "Podsumowanie: "
+    },
+    "button": "Zaloguj się"
+  },
+  "CategoryAndItemPages": {
+    "filters": "Filtry",
+    "clearFilters": "Wyczyść filtry",
+    "price": "Cena",
+    "color": "Kolor",
+    "productName": "Nazwa",
+    "itemNotFound": "Brak przedmiotów z określonymi filtrami",
+    "product": {
+      "limitedAmount": "Ograniczona ilość!",
+      "lastItem": "Ostatnia sztuka!",
+      "button": "Dodaj do koszyka"
+    }
+  },
+  "DashboardPage": {
+    "Overview": {
+      "squareOne": {
+        "text": "Wyposaż swoje biuro",
+        "subText": "w modne i nowoczesne meble"
+      },
+      "squareTwo": {
+        "text": "Darmowa dostawa",
+        "subText": "na wszystkie produkty"
+      },
+      "centerHeaderOne": "Wielka okazja",
+      "centerHeaderTwo": "Narożnik ASTI"
+    },
+    "Recommended": {
+      "headers": ["Polecane", "Nowe", "Hit"],
+      "button": "Dodaj do koszyka"
+    }
+  },
+  "UserPage": {
+    "Nav": {
+      "aboutUser": "O tobie",
+      "orders": "Zamówienia",
+      "settings": "Ustawienia",
+      "logout": "Wyloguj się"
+    },
+    "User": {
+      "header": "Dane użytkownika",
+      "name": "Imię i nazwisko:",
+      "email": "Email:",
+      "phone": "Telefon:",
+      "country": "Kraj:",
+      "postCode": "Kod pocztowy:",
+      "town": "Miasto:",
+      "address": "Adres:",
+      "noAddress": "Adres: Brak dodanego adresu",
+      "noAddressButton": "Dodaj adres"
+    },
+    "Settings": {
+      "header": "Ustawienia",
+      "name": "Imię i nazwisko:",
+      "phone": "Telefon:",
+      "country": "Kraj:",
+      "postCode": "Kod pocztowy:",
+      "town": "Miasto:",
+      "address": "Adres:"
+    },
+    "Orders": {
+      "header": "Twoje zamówienia"
+    }
+  },
+  "RegisterPage": {
+    "header": "Rejestracja",
+    "namePlaceholder": "Imię i nazwisko",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Hasło",
+    "passwordConfirmPlaceholder": "Potwierdź hasło",
+    "phonePlaceholder": "Nr telefonu",
+    "button": "Zarejestruj"
+  },
+  "LoginPage": {
+    "header": "Zaloguj się",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Hasło",
+    "forgotPasswordLink": "Zapomniałeś hasła?",
+    "createAccountLink": "Stwórz nowe konto",
+    "button": "Zaloguj"
+  },
+  "ForgotPasswordPage": {
+    "header": "Resetowanie hasła",
+    "emailPlaceholder": "Email",
+    "loginLink": "Zaloguj się",
+    "mainPageLink": "Strona główna",
+    "button": "Zresetuj"
+  },
+  "ResetPasswordPage": {
+    "header": "Nowe hasło",
+    "passwordPlaceholder": "Hasło",
+    "passwordConfirmPlaceholder": "Potwierdź hasło",
+    "loginLink": "Zaloguj się",
+    "mainPageLink": "Main Page",
+    "button": "Zmień hasło"
+  },
+  "NotFoundPage": {
+    "header": "404 Strona nie znaleziona",
+    "paragraph": "Strona której szukasz nie istnieje lub jest uszkodzona ",
+    "link": "wróc do strony głównej"
+  },
   "BottomNav": {
-    "MainPage": "Strona główna",
-    "OfficeCabinets": "Szafy",
-    "Sofas": "Sofy",
-    "Desks": "Biurka",
-    "Chairs": "Krzesła",
-    "Lighting": "Oświetlenie"
+    "mainPage": "Strona główna",
+    "officeCabinets": "Regały",
+    "sofas": "Sofy",
+    "desks": "Biurka",
+    "chairs": "Krzesła",
+    "lighting": "Oświetlenie"
+  },
+  "TopNav": {
+    "searchInputPlaceholder": "Szukasz czegoś konkretnego?",
+    "searchInputInfoOne": "Brak przedmiotów",
+    "searchInputInfoTwo": "Wprowadź conajmniej 3 litery",
+    "myAccount": "Moje konto",
+    "cart": "Koszyk"
+  },
+  "Footer": {
+    "copyrightOne": "Coded by Tomasz Wirkus 2020. Design based on",
+    "copyRightTwo": "All products and graphics comes straight from their website",
+    "phone": "TEL. 12 345 67 89",
+    "customerServiceOffice": "Centrum obsługi klienta",
+    "time": "pon-sob 10:00-20:00, niedz 10:00-18:00",
+    "info": "(Opłata za połączenie zgodna ze stawką przewidzianą przez operatora wg aktualnego cennika)",
+    "list": {
+      "offerHeader": "Oferta",
+      "customerServiceHeader": "Obsługa klienta",
+      "companyHeader": "Firma",
+      "offer": [
+        "Aktualne promocje",
+        "Meble według typów",
+        "Strefa premium",
+        "Dostawa",
+        "Dostawa w salonach",
+        "Karta podarunkowa",
+        "eKarta podarunkowa",
+        "Zakupy przez telefon"
+      ],
+      "customerService": [
+        "Reklamacje i zwroty",
+        "FAQ",
+        "Metody płatności",
+        "Zakupy na raty",
+        "Regulamin",
+        "Polityka prywatności",
+        "Bezpieczne zakupy",
+        "Podziel się opinią"
+      ],
+      "company": [
+        "Kontakt",
+        "O nas",
+        "Nasze salony",
+        "Nasze produkty",
+        "Kariera",
+        "Oferty pracy",
+        "Dla dostawców",
+        "Dla mediów"
+      ]
+    }
   }
 }

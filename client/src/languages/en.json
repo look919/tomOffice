@@ -111,7 +111,7 @@
     "button": "Change password"
   },
   "NotFoundPage": {
-    "header": "Page not found",
+    "header": "404 Page not found",
     "paragraph": "Page you are looking for propably does not exist ",
     "link": "go to the main page"
   },
@@ -127,7 +127,7 @@
     "searchInputPlaceholder": "Looking for something special?",
     "searchInputInfoOne": "There are no item with such criteria.",
     "searchInputInfoTwo": "You must provide at least 3 letters",
-    "myAccount": "MyAccount",
+    "myAccount": "My Account",
     "cart": "Cart"
   },
   "Footer": {
