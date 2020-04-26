@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import RecommendedOption from './RecommendedOption';
 import NewsOption from './NewsOption';
@@ -13,8 +14,8 @@ const RecommendedStuff = () => {
   };
 
   return (
-    <section className='dashboard__recommended'>
-      <ul className='dashboard__recommended__list'>
+    <section className="dashboard__recommended">
+      <ul className="dashboard__recommended__list">
         <li>
           <button
             className={
@@ -22,11 +23,14 @@ const RecommendedStuff = () => {
                 ? 'dashboard__recommended__list__item--active dashboard__recommended__list__item'
                 : 'dashboard__recommended__list__item'
             }
-            name='choosen'
+            name="choosen"
             value={'recommended'}
             onClick={(e) => onChange(e)}
           >
-            Polecane
+            <FormattedMessage
+              id="DashboardPage.Recommended.headers.one"
+              defaultMessage="Polecane"
+            />
           </button>
         </li>
         <li>
@@ -36,11 +40,14 @@ const RecommendedStuff = () => {
                 ? 'dashboard__recommended__list__item--active dashboard__recommended__list__item'
                 : 'dashboard__recommended__list__item'
             }
-            name='choosen'
+            name="choosen"
             value={'news'}
             onClick={(e) => onChange(e)}
           >
-            Nowe
+            <FormattedMessage
+              id="DashboardPage.Recommended.headers.two"
+              defaultMessage="Nowe"
+            />
           </button>
         </li>
         <li>
@@ -50,15 +57,18 @@ const RecommendedStuff = () => {
                 ? 'dashboard__recommended__list__item--active dashboard__recommended__list__item'
                 : 'dashboard__recommended__list__item'
             }
-            name='choosen'
+            name="choosen"
             value={'hit'}
             onClick={(e) => onChange(e)}
           >
-            Hit
+            <FormattedMessage
+              id="DashboardPage.Recommended.headers.three"
+              defaultMessage="Hit"
+            />
           </button>
         </li>
       </ul>
-      <div className='dashboard__recommended__content'>
+      <div className="dashboard__recommended__content">
         {option.choosen === 'recommended' ? (
           <RecommendedOption />
         ) : option.choosen === 'news' ? (

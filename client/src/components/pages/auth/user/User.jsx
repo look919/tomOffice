@@ -1,55 +1,95 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
+import PropTypes from 'prop-types';
 
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import UserNav from "./UserNav";
+import UserNav from './UserNav';
 
 export const User = ({ user }) => {
   return (
     <section className="userPage">
       <UserNav />
       <section className="userPage__about">
-        <h2 className="userPage__about__header">Dane użytownika</h2>
+        <h2 className="userPage__about__header">
+          <FormattedMessage
+            id="UserPage.User.header"
+            defaultMessage="Dane użytkownika"
+          />
+        </h2>
         <ul className="userPage__about__list">
           <li className="userPage__about__list__item">
-            Imię i nazwisko: {user.name}
+            <FormattedMessage
+              id="UserPage.User.name"
+              defaultMessage="Imię i nazwisko: "
+            />{' '}
+            {user.name}
           </li>
           <li className="userPage__about__list__item">
-            Adres email: {user.email}
+            <FormattedMessage
+              id="UserPage.User.email"
+              defaultMessage="Email: "
+            />{' '}
+            {user.email}
           </li>
           <li className="userPage__about__list__item">
-            Numer telefonu: {user.phone}
+            <FormattedMessage
+              id="UserPage.User.phone"
+              defaultMessage="Telefon: "
+            />{' '}
+            {user.phone}
           </li>
           {user.address.town ? (
             <div className="userPage__about__list__item__address">
               <span className="userPage__about__list__item__address__text">
-                Kraj: {` ${user.address.country}`}
+                <FormattedMessage
+                  id="UserPage.User.country"
+                  defaultMessage="Kraj: "
+                />{' '}
+                {` ${user.address.country}`}
               </span>
               <span className="userPage__about__list__item__address__text">
-                Kod pocztowy: {` ${user.address.postCode}`}
+                <FormattedMessage
+                  id="UserPage.User.postCode"
+                  defaultMessage="Kod pocztowy: "
+                />{' '}
+                {` ${user.address.postCode}`}
               </span>
               <span className="userPage__about__list__item__address__text">
-                Miasto: {` ${user.address.town}`}
+                <FormattedMessage
+                  id="UserPage.User.town"
+                  defaultMessage="Miasto: "
+                />{' '}
+                {` ${user.address.town}`}
               </span>
               <span className="userPage__about__list__item__address__text">
-                Adres: {` ${user.address.street}`}
+                <FormattedMessage
+                  id="UserPage.User.address"
+                  defaultMessage="Adres: "
+                />{' '}
+                {` ${user.address.street}`}
               </span>
             </div>
           ) : (
             <div className="userPage__about__list__item__address">
               <span className="userPage__about__list__item__address__text">
-                Adres: Brak dodanego adresu
+                <FormattedMessage
+                  id="UserPage.User.noAddress"
+                  defaultMessage="Adres: Brak dodanego adresu"
+                />
               </span>
               <Link
                 to="/settings"
                 className="btn userPage__about__list__item__address__link"
               >
-                Dodaj adres
+                <FormattedMessage
+                  id="UserPage.User.noAddressButton"
+                  defaultMessage="Dodaj adres"
+                />
               </Link>
             </div>
-          )}{" "}
+          )}{' '}
         </ul>
       </section>
     </section>

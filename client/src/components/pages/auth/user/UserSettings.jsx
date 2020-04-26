@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -40,95 +41,121 @@ const UserSettings = ({ user, updateUser }) => {
   };
 
   return (
-    <section className='userPage'>
+    <section className="userPage">
       <UserNav />
-      <form className='userPage__settings'>
-        <h2 className='userPage__settings__header'>Ustawienia</h2>
-        <div className='userPage__settings__list'>
-          <div className='userPage__settings__input-container'>
+      <form className="userPage__settings">
+        <h2 className="userPage__settings__header">
+          <FormattedMessage
+            id="UserPage.Settings.header"
+            defaultMessage="Ustawienia"
+          />
+        </h2>
+        <div className="userPage__settings__list">
+          <div className="userPage__settings__input-container">
             <UserRegisterIcon />
-            <span className='userPage__settings__input-container__text'>
-              Imię i nazwisko:
+            <span className="userPage__settings__input-container__text">
+              <FormattedMessage
+                id="UserPage.Settings.name"
+                defaultMessage="Imię i nazwisko:"
+              />
             </span>
             <input
-              className='userPage__settings__input-container__input'
-              name='name'
+              className="userPage__settings__input-container__input"
+              name="name"
               value={formData.name}
               onChange={(e) => onChange(e)}
               placeholder={user.name}
             />
           </div>
-          <div className='userPage__settings__input-container'>
+          <div className="userPage__settings__input-container">
             <PhoneRegisterIcon />
-            <span className='userPage__settings__input-container__text'>
-              Numer telefonu:
+            <span className="userPage__settings__input-container__text">
+              <FormattedMessage
+                id="UserPage.Settings.phone"
+                defaultMessage="Telefon:"
+              />
             </span>
             <input
-              className='userPage__settings__input-container__input'
-              type='tel'
-              name='phone'
+              className="userPage__settings__input-container__input"
+              type="tel"
+              name="phone"
               value={formData.phone}
               onChange={(e) => onChange(e)}
               placeholder={user.phone}
             />
           </div>
-          <div className='userPage__settings__input-container'>
+          <div className="userPage__settings__input-container">
             <CountryRegisterIcon />
-            <span className='userPage__settings__input-container__text'>
-              Kraj:
+            <span className="userPage__settings__input-container__text">
+              <FormattedMessage
+                id="UserPage.Settings.country"
+                defaultMessage="Kraj:"
+              />
             </span>
             <input
-              className='userPage__settings__input-container__input'
-              name='country'
+              className="userPage__settings__input-container__input"
+              name="country"
               value={formData.country}
               onChange={(e) => onChange(e)}
               placeholder={user.address.country}
             />
           </div>
-          <div className='userPage__settings__input-container'>
+          <div className="userPage__settings__input-container">
             <TownRegisterIcon />
-            <span className='userPage__settings__input-container__text'>
-              Miasto:
+            <span className="userPage__settings__input-container__text">
+              <FormattedMessage
+                id="UserPage.Settings.town"
+                defaultMessage="Miasto:"
+              />
             </span>
             <input
-              className='userPage__settings__input-container__input'
-              name='town'
+              className="userPage__settings__input-container__input"
+              name="town"
               value={formData.town}
               onChange={(e) => onChange(e)}
               placeholder={user.address.town}
             />
           </div>
-          <div className='userPage__settings__input-container'>
+          <div className="userPage__settings__input-container">
             <PostCodeRegisterIcon />
-            <span className='userPage__settings__input-container__text'>
-              Kod pocztowy:
+            <span className="userPage__settings__input-container__text">
+              <FormattedMessage
+                id="UserPage.Settings.postCode"
+                defaultMessage="Kod pocztowy:"
+              />
             </span>
             <input
-              className='userPage__settings__input-container__input'
-              name='postCode'
+              className="userPage__settings__input-container__input"
+              name="postCode"
               value={formData.postCode}
               onChange={(e) => onChange(e)}
               placeholder={user.address.postCode}
             />
           </div>
-          <div className='userPage__settings__input-container'>
+          <div className="userPage__settings__input-container">
             <AddressRegisterIcon />
-            <span className='userPage__settings__input-container__text'>
-              Adres:
+            <span className="userPage__settings__input-container__text">
+              <FormattedMessage
+                id="UserPage.Settings.address"
+                defaultMessage="Adres:"
+              />
             </span>
             <input
-              className='userPage__settings__input-container__input'
-              name='street'
+              className="userPage__settings__input-container__input"
+              name="street"
               value={formData.street}
               onChange={(e) => onChange(e)}
               placeholder={user.address.street}
             />
           </div>
           <button
-            className='btn userPage__settings__btn'
+            className="btn userPage__settings__btn"
             onClick={(e) => onSubmit(e)}
           >
-            Aktualizuj
+            <FormattedMessage
+              id="UserPage.Settings.button"
+              defaultMessage="Aktualizuj"
+            />
           </button>
         </div>
       </form>

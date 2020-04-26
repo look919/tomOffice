@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { Context } from '../../Wrapper';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -24,17 +25,31 @@ const TopNav = ({ auth, products, cart }) => {
     setSearch({ ...search, [e.target.name]: e.target.value });
   };
 
+  const placeholder = (
+    <FormattedMessage
+      id="TopNav.searchInputInfoOne"
+      defaultMessage="Brak przedmiotów o takiej nazwie"
+    />
+  );
+
   return (
     <nav className="nav__top">
       <div className="nav__top__item nav__top__item__search">
-        <input
-          className="nav__top__item__input"
-          placeholder="Looking for something special?"
-          value={search.text}
-          name="text"
-          onChange={(e) => onChange(e)}
-          autoComplete="off"
-        />
+        <FormattedMessage
+          id="TopNav.searchInputInfoOne"
+          defaultMessage="Brak przedmiotów o takiej nazwie"
+        >
+          {(msg) => (
+            <input
+              placeholder={msg}
+              className="nav__top__item__input"
+              name="text"
+              onChange={(e) => onChange(e)}
+              autoComplete="off"
+              value={search.text}
+            />
+          )}
+        </FormattedMessage>
         <SearchIcon />
         {searchedItems.length > 0 ? (
           <div className="nav__top__item__search__items">
@@ -57,11 +72,17 @@ const TopNav = ({ auth, products, cart }) => {
           </div>
         ) : search.text.length >= 3 ? (
           <div className="nav__top__item__search__items">
-            Brak przedmiotów z podaną nazwą
+            <FormattedMessage
+              id="TopNav.searchInputInfoOne"
+              defaultMessage="Brak przedmiotów o takiej nazwie"
+            />
           </div>
         ) : (
           <div className="nav__top__item__search__items">
-            Wpisz co najmniej 3 litery
+            <FormattedMessage
+              id="TopNav.searchInputInfoTwo"
+              defaultMessage="Wprowadź conajmniej 3 litery"
+            />
           </div>
         )}
       </div>
@@ -83,17 +104,29 @@ const TopNav = ({ auth, products, cart }) => {
       {auth ? (
         <Link to="/user" className="nav__top__item">
           <UserIcon />
-          <p className="nav__top__item__p">Moje konto</p>
+          <p className="nav__top__item__p">
+            <FormattedMessage
+              id="TopNav.myAccount"
+              defaultMessage="Moje konto"
+            />
+          </p>
         </Link>
       ) : (
         <Link to="/login" className="nav__top__item">
           <UserIcon />
-          <p className="nav__top__item__p">Moje konto</p>
+          <p className="nav__top__item__p">
+            <FormattedMessage
+              id="TopNav.myAccount"
+              defaultMessage="Moje konto"
+            />
+          </p>
         </Link>
       )}
       <Link to="/cart" className="nav__top__item">
         <CartIcon />
-        <p className="nav__top__item__p">Koszyk</p>
+        <p className="nav__top__item__p">
+          <FormattedMessage id="TopNav.cart" defaultMessage="Koszyk" />
+        </p>
         <div className="nav__top__item__circle">
           <p className="nav__top__item__circle__p">
             {cart.reduce((currentTotal, item) => {
