@@ -15,8 +15,10 @@
   "Cart.promotialCodeButton": "Aktywuj",
   "Cart.summary.value": "Wartość towarów: ",
   "Cart.summary.discount": "Rabat: ",
+  "Cart.summary.costOfDelivery": "Koszt dostawy: ",
   "Cart.summary.summ": "Podsumowanie: ",
   "Cart.button": "Zaloguj się",
+  "Cart.item.delivery": "Wysyłka do 5 dni + dostawa",
 
   "CategoryAndItemPages.filters": "Filtry",
   "CategoryAndItemPages.clearFilters": "Wyczyść filtry",
@@ -26,6 +28,7 @@
   "CategoryAndItemPages.itemNotFound": "Brak przedmiotów z określonymi filtrami",
   "CategoryAndItemPages.product.limitedAmount": "Ograniczona ilość!",
   "CategoryAndItemPages.product.lastItem": "Ostatnia sztuka!",
+  "CategoryAndItemPages.product.delivery": "Wysyłka do 5 dni + dostawa",
   "CategoryAndItemPages.product.button": "Dodaj do koszyka",
 
   "DashboardPage.Overview.squareOne.text": "Wyposaż swoje biuro",
