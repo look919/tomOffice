@@ -115,14 +115,12 @@
     "paragraph": "Page you are looking for propably does not exist ",
     "link": "go to the main page"
   },
-  "BottomNav": {
-    "mainPage": "Main Page",
-    "officeCabinets": "Office Cabinets",
-    "sofas": "Sofas",
-    "desks": "Desks",
-    "chairs": "Chairs",
-    "lighting": "Lighting"
-  },
+  "BottomNav.mainPage": "MainPage",
+  "BottomNav.officeCabinets": "Office Cabinets",
+  "BottomNav.sofas": "Sofas",
+  "BottomNav.desks": "Desks",
+  "BottomNav.chairs": "Chairs",
+  "BottomNav.lighting": "Lighting",
   "TopNav": {
     "searchInputPlaceholder": "Looking for something special?",
     "searchInputInfoOne": "There are no item with such criteria.",
