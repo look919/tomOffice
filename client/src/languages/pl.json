@@ -83,11 +83,11 @@
   "LoginPage.createAccountLink": "Stwórz nowe konto",
   "LoginPage.button": "Zaloguj",
 
-  "ForgotPasswordPage.header": "Resetowanie hasła",
+  "ForgotPasswordPage.header": "Zresetuj hasło",
   "ForgotPasswordPage.emailPlaceholder": "Email",
   "ForgotPasswordPage.loginLink": "Zaloguj się",
   "ForgotPasswordPage.mainPageLink": "Strona główna",
-  "ForgotPasswordPage.button": "Zresetuj",
+  "ForgotPasswordPage.button": "Resetuj",
 
   "ResetPasswordPage.header": "Nowe hasło",
   "ResetPasswordPage.passwordPlaceholder": "Hasło",
@@ -97,7 +97,7 @@
   "ResetPasswordPage.button": "Zmień hasło",
 
   "NotFoundPage.header": "404 Strona nie znaleziona",
-  "NotFoundPage.paragraph": "trona której szukasz nie istnieje lub jest uszkodzona ",
+  "NotFoundPage.paragraph": "Strona której szukasz nie istnieje lub jest uszkodzona ",
   "NotFoundPage.link": "wróc do strony głównej",
 
   "BottomNav.mainPage": "Strona główna",

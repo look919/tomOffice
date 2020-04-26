@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -33,51 +34,79 @@ const ResetPassword = ({ resetPassword, ...props }) => {
         <Link to="/" className="auth__form__logo">
           <img src={Logo} alt="logo" className="auth__form__logo" />
         </Link>
-        <h2 className="heading-2 auth__form__header">New password</h2>
+        <h2 className="heading-2 auth__form__header">
+          <FormattedMessage
+            id="ResetPasswordPage.header"
+            defaultMessage="Nowe hasło"
+          />
+        </h2>
         <div className="auth__form__field">
           <PasswordIcon />
-          <input
-            type="password"
-            className="auth__form__field__input"
-            placeholder="Password"
-            name="password"
-            value={formData.password}
-            onChange={(e) => {
-              onChange(e);
-            }}
-          />
+          <FormattedMessage
+            id="ResetPasswordPage.passwordPlaceholder"
+            defaultMessage="Hasło"
+          >
+            {(msg) => (
+              <input
+                type="password"
+                className="auth__form__field__input"
+                placeholder={msg}
+                name="password"
+                value={formData.password}
+                onChange={(e) => {
+                  onChange(e);
+                }}
+              />
+            )}
+          </FormattedMessage>
         </div>
         <div className="auth__form__field">
           <PasswordIcon />
-          <input
-            type="password"
-            className="auth__form__field__input"
-            placeholder="Password Confirm"
-            name="passwordConfirm"
-            value={formData.passwordConfirm}
-            onChange={(e) => {
-              onChange(e);
-            }}
-          />
+          <FormattedMessage
+            id="ResetPasswordPage.passwordConfirmPlaceholder"
+            defaultMessage="Powtórz hasło"
+          >
+            {(msg) => (
+              <input
+                type="password"
+                className="auth__form__field__input"
+                placeholder={msg}
+                name="passwordConfirm"
+                value={formData.passwordConfirm}
+                onChange={(e) => {
+                  onChange(e);
+                }}
+              />
+            )}
+          </FormattedMessage>
         </div>
         <div className="auth__form__login">
           <Link
             to="/login"
             className="auth__form__login__link auth__form__login__link--password"
           >
-            Log in
+            <FormattedMessage
+              id="ResetPasswordPage.loginLink"
+              defaultMessage="Zaloguj się"
+            />
           </Link>
           <Link
             to="/"
             className="auth__form__login__link auth__form__login__link--new-acc"
           >
-            Main page
+            <FormattedMessage
+              id="ResetPasswordPage.mainPageLink"
+              defaultMessage="Strona główna"
+            />
           </Link>
           <button
             className="btn auth__form__login__btn"
             onClick={(e) => onSubmit(e)}
           >
-            Change password
+            <FormattedMessage
+              id="ResetPasswordPage.button"
+              defaultMessage="Zmień hasło"
+            />
           </button>
         </div>
       </form>
