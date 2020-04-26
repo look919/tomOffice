@@ -68,7 +68,7 @@ const ResetPassword = ({ resetPassword, ...props }) => {
             Log in
           </Link>
           <Link
-            to="/r"
+            to="/"
             className="auth__form__login__link auth__form__login__link--new-acc"
           >
             Main page

@@ -1,0 +1,95 @@
+{
+  "RegisterPage": {
+    "header": "Register",
+    "namePlaceholder": "Name",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "passwordConfirmPlaceholder": "Password confirm",
+    "phonePlaceholder": "Phone number",
+    "button": "Register"
+  },
+  "LoginPage": {
+    "header": "Log in",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "forgotPasswordLink": "Forgot your password?",
+    "createAccountLink": "Create new account",
+    "button": "Log in"
+  },
+  "ForgotPasswordPage": {
+    "header": "Password Reset",
+    "emailPlaceholder": "Email",
+    "loginLink": "Log in",
+    "mainPageLink": "Main Page",
+    "button": "Reset"
+  },
+  "ResetPasswordPage": {
+    "header": "New password",
+    "passwordPlaceholder": "Password",
+    "passwordConfirmPlaceholder": "Password confirm",
+    "loginLink": "Log in",
+    "mainPageLink": "Main Page",
+    "button": "Change password"
+  },
+  "NotFoundPage": {
+    "header": "Page not found",
+    "paragraph": "Page you are looking for propably does not exist ",
+    "link": "go to the main page"
+  },
+  "BottomNav": {
+    "mainPage": "Main Page",
+    "officeCabinets": "Office Cabinets",
+    "sofas": "Sofas",
+    "desks": "Desks",
+    "chairs": "Chairs",
+    "lighting": "Lighting"
+  },
+  "TopNav": {
+    "searchInputPlaceholder": "Looking for something special?",
+    "searchInputInfoOne": "There are no item with such criteria.",
+    "searchInputInfoTwo": "You must provide at least 3 letters",
+    "myAccount": "MyAccount",
+    "cart": "Cart"
+  },
+  "Footer": {
+    "phone": "TEL. 12 345 67 89",
+    "customerServiceOffice": "Customer Service Office",
+    "time": "mon-sat 10:00-20:00, sun 10:00-18:00",
+    "info": "(Connection fee as per the rate set by the operator according to the current price list)",
+    "list": {
+      "offerHeader": "Offer",
+      "customerServiceHeader": "Customer service",
+      "companyHeader": "Company",
+      "offer": [
+        "Current promotions",
+        "Furniture by type",
+        "Premium zone",
+        "Delivery",
+        "Delivery in showrooms",
+        "Gift Card",
+        "Gift eCard",
+        "Shopping over the phone"
+      ],
+      "customerService": [
+        "Complaints and returns",
+        "FAQ",
+        "Payment methods",
+        "Installment purchases",
+        "Regulations",
+        "Privacy policy",
+        "Safe shopping",
+        "Share your opinion"
+      ],
+      "company": [
+        "Contact",
+        "About us",
+        "Our showrooms",
+        "Our products",
+        "Career",
+        "Job offers",
+        "For suppliers",
+        "For media"
+      ]
+    }
+  }
+}

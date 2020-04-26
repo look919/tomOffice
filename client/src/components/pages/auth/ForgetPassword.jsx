@@ -65,7 +65,7 @@ const ForgetPassword = ({ auth, forgotPassword }) => {
             className="btn auth__form__login__btn"
             onClick={(e) => onSubmit(e)}
           >
-            Log in
+            Reset
           </button>
         </div>
       </form>
