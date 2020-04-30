@@ -11,7 +11,7 @@
   "Cart.noItems": "There are no items in your cart.",
   "Cart.deliveryMethodOne": "Delivery method",
   "Cart.deliveryMethodTwo": "Courier delivery - free",
-  "Cart.promotialCode": "Promotional Code",
+  "Cart.promotialCode": "Promotional Code: ",
   "Cart.promotialCodeButton": "Activate",
   "Cart.summary.value": "Value of goods: ",
   "Cart.summary.discount": "Discount: ",
@@ -114,7 +114,7 @@
   "TopNav.cart": "Cart",
 
   "Footer.copyrightOne": "Coded by Tomasz Wirkus 2020. Design based on",
-  "Footer.copyRightTwo": "All products and graphics comes straight from their website",
+  "Footer.copyrightTwo": "All products and graphics comes straight from their website",
   "Footer.phone": "TEL. 12 345 67 89",
   "Footer.customerServiceOffice": "Customer Service Office",
   "Footer.time": "mon-sat 10:00-20:00, sun 10:00-18:00",

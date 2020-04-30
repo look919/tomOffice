@@ -11,7 +11,7 @@
   "Cart.noItems": "Brak przedmiotów w twoim koszyku.",
   "Cart.deliveryMethodOne": "Sposób dostawy",
   "Cart.deliveryMethodTwo": "Przesyłka kurierska - darmowa",
-  "Cart.promotialCode": "Kod promocyjny",
+  "Cart.promotialCode": "Kod promocyjny: ",
   "Cart.promotialCodeButton": "Aktywuj",
   "Cart.summary.value": "Wartość towarów: ",
   "Cart.summary.discount": "Rabat: ",
@@ -114,7 +114,7 @@
   "TopNav.cart": "Koszyk",
 
   "Footer.copyrightOne": "Coded by Tomasz Wirkus 2020. Design based on",
-  "Footer.copyRightTwo": "All products and graphics comes straight from their website",
+  "Footer.copyrightTwo": "All products and graphics comes straight from their website",
   "Footer.phone": "TEL. 12 345 67 89",
   "Footer.customerServiceOffice": "Centrum obsługi klienta",
   "Footer.time": "pon-sob 10:00-20:00, niedz 10:00-18:00",

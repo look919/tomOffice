@@ -303,11 +303,11 @@
         font-weight: 600;
         color: $color-primary-dark;
 
-        @media only screen and (max-width: $bp-1000) {
+        @media only screen and (max-width: $bp-1400) {
           font-size: 1.6rem;
         }
         @media only screen and (max-width: $bp-500) {
-          display: none;
+          font-size: 1.2rem;
         }
       }
       &__input {
@@ -317,6 +317,10 @@
         background: none;
         border-bottom: 1px solid $color-black;
         margin: 0 2rem;
+
+        @media only screen and (max-width: $bp-500) {
+          width: 20rem;
+        }
 
         &:focus {
           outline: none;

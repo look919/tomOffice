@@ -25,19 +25,12 @@ const TopNav = ({ auth, products, cart }) => {
     setSearch({ ...search, [e.target.name]: e.target.value });
   };
 
-  const placeholder = (
-    <FormattedMessage
-      id="TopNav.searchInputInfoOne"
-      defaultMessage="Brak przedmiotów o takiej nazwie"
-    />
-  );
-
   return (
     <nav className="nav__top">
       <div className="nav__top__item nav__top__item__search">
         <FormattedMessage
-          id="TopNav.searchInputInfoOne"
-          defaultMessage="Brak przedmiotów o takiej nazwie"
+          id="TopNav.searchInputPlaceholder"
+          defaultMessage="Szukasz czegoś konkretnego?"
         >
           {(msg) => (
             <input
