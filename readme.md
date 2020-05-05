@@ -34,8 +34,4 @@ List of things i learned during development:
 
 - Working with Stripe
 - Working with selectors
-
-#### Things I plan to implement to the project
-
-- at least 2 language versions (english, polish)
-- expand mongoose product aggregation possibilities
+- Translating websites with react-intl
