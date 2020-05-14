@@ -167,13 +167,17 @@ const Cart = ({ user, cart, products, getCartItems, updateUserOrders }) => {
       {cart.length > 0 && (
         <div className="cartPage__cta">
           <div className="cartPage__cta__discount">
-            <span className="cartPage__cta__discount__text">
-              <FormattedMessage
-                id="Cart.promotialCode"
-                defaultMessage="Kod promocyjny"
-              />
-            </span>
-            <input className="cartPage__cta__discount__input" />
+            <FormattedMessage
+              id="Cart.promotialCode"
+              defaultMessage="Promotial code: "
+            >
+              {(msg) => (
+                <input
+                  className="cartPage__cta__discount__input"
+                  placeholder={msg}
+                />
+              )}
+            </FormattedMessage>
             <button className="btn cartPage__cta__discount__btn">
               <FormattedMessage
                 id="Cart.promotialCodeButton"

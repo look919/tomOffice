@@ -232,14 +232,22 @@ export const CategoryPageItem = ({ products, category, getCartItems }) => {
           )}
         </div>
         <div className="categoryPage__filters__text">
-          <input
-            className="categoryPage__filters__input__search"
-            placeholder="Insert item name"
-            name="text"
-            value={filters.text}
-            autoComplete="off"
-            onChange={(e) => onChange(e)}
-          />
+          <FormattedMessage
+            id="CategoryAndItemPages.searchProduct"
+            defaultMessage="Insert item name"
+          >
+            {(msg) => (
+              <input
+                className="categoryPage__filters__input__search"
+                placeholder={msg}
+                name="text"
+                value={filters.text}
+                autoComplete="off"
+                onChange={(e) => onChange(e)}
+              />
+            )}
+          </FormattedMessage>
+
           <SearchIcon />
         </div>
       </div>

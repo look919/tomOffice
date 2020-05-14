@@ -34,4 +34,5 @@ List of things i learned during development:
 
 - Working with Stripe
 - Working with selectors
+- Password forget and reset tokens
 - Translating websites with react-intl

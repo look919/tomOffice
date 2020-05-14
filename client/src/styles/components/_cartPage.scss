@@ -275,13 +275,13 @@
   }
 
   &__cta {
-    padding: 2rem 5rem;
+    padding: 2rem 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     @media only screen and (max-width: $bp-1000) {
-      padding: 1rem;
+      padding: 1rem 0;
     }
     @media only screen and (max-width: $bp-800) {
       flex-direction: column;
@@ -289,7 +289,7 @@
     }
 
     &__discount {
-      padding: 2rem 3rem;
+      padding: 2rem 0;
       display: flex;
       justify-content: space-evenly;
       align-items: center;
