@@ -7,11 +7,13 @@ import Logo from '../../../img/logo.png';
 import { Link, Redirect } from 'react-router-dom';
 
 import { EmailIcon, PasswordIcon } from '../../layout/Icons';
+import LoadingGif from '../../../img/loading.gif';
 
 const Login = ({ login, auth }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
+    loading: false,
   });
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,10 +21,16 @@ const Login = ({ login, auth }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    login(formData);
-    setFormData({
+    await setFormData({
+      ...formData,
+      loading: true,
+    });
+    await login(formData);
+
+    await setFormData({
       email: '',
       password: '',
+      loading: false,
     });
   };
 
@@ -104,10 +112,18 @@ const Login = ({ login, auth }) => {
             className="btn auth__form__login__btn"
             onClick={(e) => onSubmit(e)}
           >
-            <FormattedMessage
-              id="LoginPage.button"
-              defaultMessage="Zaloguj się"
-            />
+            {!formData.loading ? (
+              <FormattedMessage
+                id="LoginPage.button"
+                defaultMessage="Zaloguj się"
+              />
+            ) : (
+              <img
+                src={LoadingGif}
+                alt="loading..."
+                className="auth__form__gif"
+              />
+            )}
           </button>
         </div>
       </form>

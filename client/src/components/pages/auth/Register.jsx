@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { register } from '../../../actions/auth';
 
 import Logo from '../../../img/logo.png';
+import LoadingGif from '../../../img/loading.gif';
 
 import {
   UserRegisterIcon,
@@ -21,6 +22,7 @@ const Register = ({ auth, register }) => {
     password: '',
     passwordConfirm: '',
     phone: '',
+    loading: false,
   });
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -28,19 +30,25 @@ const Register = ({ auth, register }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    register(
+    await setFormData({
+      ...formData,
+      loading: true,
+    });
+
+    await register(
       formData.name,
       formData.email,
       formData.password,
       formData.passwordConfirm,
       formData.phone
     );
-    setFormData({
+    await setFormData({
       name: '',
       email: '',
       password: '',
       passwordConfirm: '',
       phone: '',
+      loading: false,
     });
   };
 
@@ -169,10 +177,18 @@ const Register = ({ auth, register }) => {
             className="btn auth__form__login__btn--register"
             onClick={(e) => onSubmit(e)}
           >
-            <FormattedMessage
-              id="RegisterPage.button"
-              defaultMessage="Rejestracja"
-            />
+            {!formData.loading ? (
+              <FormattedMessage
+                id="RegisterPage.button"
+                defaultMessage="Rejestracja"
+              />
+            ) : (
+              <img
+                src={LoadingGif}
+                alt="loading..."
+                className="auth__form__gif"
+              />
+            )}
           </button>
         </div>
       </form>

@@ -6,11 +6,13 @@ import { connect } from 'react-redux';
 import { forgotPassword } from '../../../actions/auth';
 
 import Logo from '../../../img/logo.png';
+import LoadingGif from '../../../img/loading.gif';
 import { EmailIcon } from '../../layout/Icons';
 
 const ForgetPassword = ({ auth, forgotPassword }) => {
   const [formData, setFormData] = useState({
     email: '',
+    loading: false,
   });
   const { email } = formData;
 
@@ -20,9 +22,16 @@ const ForgetPassword = ({ auth, forgotPassword }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    forgotPassword(email);
-    setFormData({
+    await setFormData({
+      ...formData,
+      loading: true,
+    });
+
+    await forgotPassword(email);
+
+    await setFormData({
       email: '',
+      loading: false,
     });
   };
   if (auth) {
@@ -84,10 +93,18 @@ const ForgetPassword = ({ auth, forgotPassword }) => {
             className="btn auth__form__login__btn"
             onClick={(e) => onSubmit(e)}
           >
-            <FormattedMessage
-              id="ForgotPasswordPage.button"
-              defaultMessage="Resetuj"
-            />
+            {!formData.loading ? (
+              <FormattedMessage
+                id="ForgotPasswordPage.button"
+                defaultMessage="Resetuj"
+              />
+            ) : (
+              <img
+                src={LoadingGif}
+                alt="loading..."
+                className="auth__form__gif"
+              />
+            )}
           </button>
         </div>
       </form>

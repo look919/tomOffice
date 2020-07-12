@@ -6,12 +6,14 @@ import { connect } from 'react-redux';
 import { resetPassword } from '../../../actions/auth';
 
 import Logo from '../../../img/logo.png';
+import LoadingGif from '../../../img/loading.gif';
 import { PasswordIcon } from '../../layout/Icons';
 
 const ResetPassword = ({ resetPassword, ...props }) => {
   const [formData, setFormData] = useState({
     password: '',
     passwordConfirm: '',
+    loading: false,
   });
   const { password, passwordConfirm } = formData;
 
@@ -21,11 +23,17 @@ const ResetPassword = ({ resetPassword, ...props }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    resetPassword(password, passwordConfirm, props.match.params.token);
+    await setFormData({
+      ...formData,
+      loading: true,
+    });
 
-    setFormData({
+    await resetPassword(password, passwordConfirm, props.match.params.token);
+
+    await setFormData({
       password: '',
       passwordConfirm: '',
+      loading: false,
     });
   };
   return (
@@ -103,10 +111,18 @@ const ResetPassword = ({ resetPassword, ...props }) => {
             className="btn auth__form__login__btn"
             onClick={(e) => onSubmit(e)}
           >
-            <FormattedMessage
-              id="ResetPasswordPage.button"
-              defaultMessage="Zmień hasło"
-            />
+            {!formData.loading ? (
+              <FormattedMessage
+                id="ResetPasswordPage.button"
+                defaultMessage="Zmień hasło"
+              />
+            ) : (
+              <img
+                src={LoadingGif}
+                alt="loading..."
+                className="auth__form__gif"
+              />
+            )}
           </button>
         </div>
       </form>
