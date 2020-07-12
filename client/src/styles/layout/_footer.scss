@@ -17,6 +17,7 @@
     grid-template-columns: repeat(3, 1fr);
 
     align-items: center;
+    padding-top: 4rem;
   }
 
   &__contact {
@@ -159,5 +160,9 @@
     font-size: 1.4rem;
     padding: 2rem 3rem;
     text-align: center;
+
+    @media only screen and (max-width: $bp-500) {
+      margin-top: 2rem;
+    }
   }
 }

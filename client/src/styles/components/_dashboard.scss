@@ -31,10 +31,11 @@
       margin-bottom: 5rem;
 
       @media only screen and (max-width: $bp-1600) {
-        grid-template-rows: 6rem 1fr;
+        grid-template-rows: 5rem 1fr;
       }
       @media only screen and (max-width: $bp-800) {
         justify-items: center;
+        margin-bottom: 0;
       }
 
       &__heading {
@@ -42,7 +43,7 @@
         justify-content: space-evenly;
         align-items: center;
 
-        @media only screen and (max-width: $bp-1200) {
+        @media only screen and (max-width: $bp-1600) {
           font-size: 1.4rem;
         }
 
@@ -67,6 +68,12 @@
 
       @media only screen and (max-width: $bp-1600) {
         padding: 1rem;
+        padding-bottom: 0;
+      }
+      @media only screen and (max-width: $bp-600) {
+        object-fit: cover;
+        padding: 2rem;
+        padding-bottom: 0;
       }
     }
 
@@ -157,9 +164,9 @@
       justify-self: center;
       padding: 0 20rem;
 
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      justify-items: center;
+      display: flex;
+
+      justify-content: center;
 
       @media only screen and (max-width: $bp-800) {
         padding: 0 5rem;
@@ -370,6 +377,7 @@
           &__btn {
             grid-row: 3 / 4;
             grid-column: 2 / 3;
+            padding: 1rem;
 
             width: 100%;
             @media only screen and (max-width: $bp-1600) {
@@ -400,7 +408,7 @@
           grid-template-rows: 3rem 1fr;
           grid-template-columns: repeat(2, 1fr);
           align-items: center;
-          padding: 1rem 3rem;
+          padding: 1rem 2rem;
 
           @media only screen and (max-width: $bp-1400) {
             width: 100%;
@@ -482,6 +490,10 @@
             font-size: 1.8rem;
             color: $color-grey-light-2;
             text-decoration: line-through;
+          }
+          &__btn {
+            margin: 0 2rem;
+            padding: 1rem 2rem;
           }
         }
       }

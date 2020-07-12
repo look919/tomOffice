@@ -14,6 +14,10 @@
     grid-column: full-start / full-end;
     padding: 1rem 0;
   }
+  @media only screen and (max-width: $bp-600) {
+    align-items: center;
+    justify-items: center;
+  }
 
   &__steps {
     display: flex;
@@ -83,6 +87,7 @@
       font-style: normal;
       color: $color-grey-light-2;
       margin: 0 1rem;
+      margin-left: 0.5rem;
 
       @media only screen and (max-width: $bp-500) {
         font-size: 1.2rem;
@@ -106,11 +111,13 @@
       @media only screen and (max-width: $bp-500) {
         width: 4rem;
         margin: 0 1.5rem;
+        margin-right: 3rem;
       }
 
       @media only screen and (max-width: $bp-400) {
         width: 3.5rem;
         margin: 0 0.5rem;
+        margin-right: 2rem;
       }
     }
   }
@@ -135,6 +142,10 @@
         font-style: normal;
         font-weight: 600;
         letter-spacing: 1px;
+
+        @media only screen and (max-width: $bp-500) {
+          font-size: 1.4rem;
+        }
       }
     }
 
@@ -161,9 +172,11 @@
       @media only screen and (max-width: $bp-500) {
         grid-template-columns: 20rem repeat(3, 9rem) 5rem;
         padding: 0;
+        margin-left: 2rem;
       }
       @media only screen and (max-width: $bp-400) {
         grid-template-columns: 15rem repeat(3, 8rem) 5rem;
+        margin-left: 0;
       }
 
       &__header {
@@ -266,10 +279,14 @@
       align-items: center;
 
       &__item {
-        margin-top: 2rem;
+        margin-top: 1rem;
         font-size: 1.6rem;
         font-weight: 600;
         letter-spacing: 1px;
+
+        @media only screen and (max-width: $bp-500) {
+          padding: 0 2rem;
+        }
       }
     }
   }
@@ -287,6 +304,9 @@
       flex-direction: column;
       align-items: flex-start;
     }
+    @media only screen and (max-width: $bp-500) {
+      padding: 0;
+    }
 
     &__discount {
       padding: 2rem 0;
@@ -296,6 +316,9 @@
 
       @media only screen and (max-width: $bp-1000) {
         padding: 1rem 0;
+      }
+      @media only screen and (max-width: $bp-500) {
+        padding-top: 0;
       }
 
       &__text {
@@ -320,6 +343,7 @@
 
         @media only screen and (max-width: $bp-500) {
           width: 20rem;
+          margin: 0 1rem;
         }
 
         &:focus {
@@ -337,6 +361,9 @@
       align-items: center;
       justify-items: end;
 
+      @media only screen and (max-width: $bp-500) {
+        grid-row-gap: 1.5rem;
+      }
       &__item {
         font-size: 1.8rem;
         font-weight: 400;
@@ -371,6 +398,10 @@
       &__btn {
         grid-column: 1 / -1;
         text-transform: none;
+
+        @media only screen and (max-width: $bp-500) {
+          height: 4rem;
+        }
       }
     }
   }

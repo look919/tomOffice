@@ -76,7 +76,7 @@
         }
 
         &::before {
-          content: "";
+          content: '';
           position: absolute;
           top: 0;
           left: 0;
@@ -154,7 +154,10 @@
 
           display: flex;
           flex-direction: column;
-          //align-items: center;
+
+          @media only screen and (max-width: $bp-500) {
+            align-items: center;
+          }
 
           &__text {
             margin-right: 1rem;

@@ -10,6 +10,9 @@
   padding-bottom: 2rem;
   border-bottom: 1px dotted $color-grey-light-2;
 
+  @media only screen and (max-width: $bp-450) {
+    padding-bottom: 1rem;
+  }
   &__logo {
     height: 15rem;
     object-fit: cover;
